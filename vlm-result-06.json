@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, this is a 'Stress Testing' certification view.  \n(2) Yes, it shows 8 scenario cards. The verbatim scenario names are: Yahoo Finance Offline, Polygon.io Offline, Redis Restart, Event Flood, Database Slowdown, High Volatility, FOMC Day, CPI Release. Count: 8.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331873,
+  "id": "2026071807442838199bd14aeb443e",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "2026071807442838199bd14aeb443e",
+  "usage": {
+    "completion_tokens": 74,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1933,
+    "prompt_tokens_details": {
+      "cached_tokens": 8
+    },
+    "total_tokens": 2007
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, this is a 'Decision Certification' view.  \n(2) Yes, it shows checks for Trade Readiness, Entry/Exit Timing, Risk, Stop, Target. The check names (verbatim) are:  \n- Trade Readiness  \n- Entry Timing  \n- Exit Timing  \n- Risk  \n- Stop Placement  \n- Target Placement",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331862,
+  "id": "202607180744194aefeefeca714545",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "202607180744194aefeefeca714545",
+  "usage": {
+    "completion_tokens": 74,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1918,
+    "prompt_tokens_details": {
+      "cached_tokens": 7
+    },
+    "total_tokens": 1992
+  }
+}

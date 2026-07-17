@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, this is a 'Forecast Certification' view.  \n(2) Yes, it shows checks for MAE, RMSE, Directional Accuracy, Calibration, and Bull/Base/Bear.  \n\nMetric/check names (verbatim):  \n- MAE (Mean Absolute Error (price units))  \n- RMSE (Root Mean Square Error)  \n- Directional Accuracy (Up/down prediction correctness)  \n- Calibration (Predicted vs observed frequency slope (ideal = 1.0))  \n- Bull / Base / Bear (Regime-conditional forecast accuracy)",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331887,
+  "id": "20260718074445680f66b6cc7b4c78",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260718074445680f66b6cc7b4c78",
+  "usage": {
+    "completion_tokens": 118,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1922,
+    "prompt_tokens_details": {
+      "cached_tokens": 8
+    },
+    "total_tokens": 2040
+  }
+}

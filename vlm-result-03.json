@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, this is an 'Intelligence Certification' view (title \"INTELLIGENCE CERTIFICATION\" is visible).  \n(2) Yes, it shows a verification grid of 7 DNA objects. The verbatim items (and count) are: Technical, Options, Market, Narrative, Forecast, Trade, Operations (7 total).",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331867,
+  "id": "2026071807442356f2eba678eb40c3",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "2026071807442356f2eba678eb40c3",
+  "usage": {
+    "completion_tokens": 74,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1927,
+    "prompt_tokens_details": {
+      "cached_tokens": 31
+    },
+    "total_tokens": 2001
+  }
+}

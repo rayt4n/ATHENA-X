@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, the page is titled \"STAGE 14.5 – PRODUCTION CERTIFICATION\".  \n(2) Yes, there is a hero score ring showing \"85.5% OVERALL\" with \"2 critical · 3 warnings\".  \n(3) Yes, there is a \"VERDICT\" label with \"X NOT CERTIFIED\" and \"FAIL\".  \n(4) Yes, there are 8 module cards (Module 1 to Module 8).  \n(5) Yes, there is an \"EXIT CRITERIA\" sidebar listing requirements (e.g., \"All 10 must pass to advance to Stage 15\", \"Full regression suite passes\", etc.).  \n\nVisible elements verbatim:  \n- \"STAGE 14.5 – PRODUCTION CERTIFICATION\"  \n- \"Institutional acceptance gate before Stage 15 (Report Engine)\"  \n- \"Run Full Certification\" button, \"reset\" link  \n- \"VERDICT\" section with \"X NOT CERTIFIED\", \"FAIL\"  \n- \"Build athx-14.2.0+sha.7c9e3a1 · valid until 7/18/2026, 11:40:30 PM\"  \n- \"MODULES 7 / 8\", \"PASSING 2 / 7\", \"EXIT CRITERIA 10 / 10\"  \n- \"Download Production Certificate (PDF)\" button  \n- \"CERTIFICATION MODULES\" section with \"Click any module to drill into detailed checks\"  \n- 8 module cards (Module 1: Data Certification, Module 2: Intelligence Certification, Module 3: Forecast Certification, Module 4: Decision Certification, Module 5: Stress Testing, Module 6: Replay Certification, Module 7: Performance Certification, Module 8: Production Certificate)  \n- \"EXIT CRITERIA\" sidebar with items like \"All 10 must pass to advance to Stage 15\", \"Full regression suite passes\", \"Live data stable for ≥ 1 trading session\", etc.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331899,
+  "id": "202607180744484a113dca03084eae",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "202607180744484a113dca03084eae",
+  "usage": {
+    "completion_tokens": 422,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1947,
+    "prompt_tokens_details": {
+      "cached_tokens": 23
+    },
+    "total_tokens": 2369
+  }
+}

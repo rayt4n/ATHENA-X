@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, it is a 'Production Readiness Certificate' panel (header text: \"PRODUCTION READINESS CERTIFICATE\").  \n(2) No, it shows a summary, not a full certificate document.  \n(3) Yes, there is a score ring (circular chart with \"85.5% OVERALL\").  \n(4) Yes, there is a verdict (\"X NOT CERTIFIED\").  \n(5) Yes, there is a module table (columns: \"MODULE\", \"SCORE\", \"STATUS\"; rows: Data Certification, Intelligence Certification, etc.).  \n(6) Yes, there is an exit criteria sidebar (header: \"EXIT CRITERIA VERIFICATION\"; list of 10 criteria).  \n\nVisible elements verbatim:  \n- \"PRODUCTION READINESS CERTIFICATE\"  \n- \"ATHENA-X Production Certification\"  \n- \"85.5% OVERALL\" (score ring)  \n- \"X NOT CERTIFIED\" (verdict)  \n- \"MODULE\", \"SCORE\", \"STATUS\" (module table headers)  \n- \"Data Certification\", \"71.06%\", \"FAIL\" (module table row)  \n- \"EXIT CRITERIA VERIFICATION\" (sidebar header)  \n- \"10 of 10 passed\" (sidebar top)",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331904,
+  "id": "20260718074459ee5345c891574bbf",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260718074459ee5345c891574bbf",
+  "usage": {
+    "completion_tokens": 262,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1940,
+    "prompt_tokens_details": {
+      "cached_tokens": 33
+    },
+    "total_tokens": 2202
+  }
+}

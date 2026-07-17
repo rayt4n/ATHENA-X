@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, this is a 'Data Certification' module detail view.  \n(2) Yes, it lists exactly 6 checks. The check names (verbatim) are: Provider Freshness, Validation Accuracy, Standardization Accuracy, Missing Data, Replay Accuracy, Synchronization.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331881,
+  "id": "20260718074436db40946b0ba047e7",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260718074436db40946b0ba047e7",
+  "usage": {
+    "completion_tokens": 60,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1924,
+    "prompt_tokens_details": {
+      "cached_tokens": 7
+    },
+    "total_tokens": 1984
+  }
+}

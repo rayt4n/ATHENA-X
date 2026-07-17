@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, it is a 'Replay Certification' view. (2) Yes, it shows 5 historical day cards: Yesterday, CPI, FOMC, OPEX, Flash Crash. (3) Yes, the cards show drift metrics. Day labels (verbatim, count 5): Yesterday, CPI Day, FOMC Day, OPEX, Flash Crash.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331875,
+  "id": "20260718074433ad20b5cb39c24fb2",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "20260718074433ad20b5cb39c24fb2",
+  "usage": {
+    "completion_tokens": 83,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1936,
+    "prompt_tokens_details": {
+      "cached_tokens": 8
+    },
+    "total_tokens": 2019
+  }
+}

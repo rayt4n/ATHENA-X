@@ -1,0 +1,28 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "(1) Yes, this is a 'Performance Certification' view.  \n(2) It shows 8 checks:  \n- Event Bus Latency  \n- DB Write Latency  \n- Forecast Latency  \n- Dashboard Latency  \n- Memory  \n- CPU  \n- GPU  \n- Queue Depth  \nCount: 8.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1784331884,
+  "id": "202607180744428527cc73b97a4f3f",
+  "model": "glm-4.6v",
+  "object": "chat.completion",
+  "request_id": "202607180744428527cc73b97a4f3f",
+  "usage": {
+    "completion_tokens": 68,
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "prompt_tokens": 1927,
+    "prompt_tokens_details": {
+      "cached_tokens": 33
+    },
+    "total_tokens": 1995
+  }
+}
