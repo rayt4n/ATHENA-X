@@ -1,0 +1,17 @@
+[project]
+name = "athena-x-runtime-event-priority"
+version = "0.1.0"
+description = "4-level priority queue for events (Stage 6 req 3)"
+requires-python = ">=3.11"
+dependencies = ["athena-x-runtime-event-envelope"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_event_priority"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
