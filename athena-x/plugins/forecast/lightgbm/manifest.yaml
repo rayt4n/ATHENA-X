@@ -1,0 +1,12 @@
+id: lightgbm
+name: "LightGBM"
+version: "1.0.0"
+category: gradient_boosting
+runtime: python-gpu
+refresh_interval_seconds: 3
+inputs: [features]
+outputs: [direction, target_price, confidence, risk_estimate]
+dependencies: []
+enabled: true
+description: "LightGBM classifier"
+author: "ATHENA-X"

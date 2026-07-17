@@ -1,0 +1,12 @@
+id: rule_based
+name: "Rule-Based"
+version: "1.0.0"
+category: rules
+runtime: cpu
+refresh_interval_seconds: 1
+inputs: [features]
+outputs: [direction, target_price, confidence, risk_estimate]
+dependencies: []
+enabled: true
+description: "Rule-based forecast from DNA objects"
+author: "ATHENA-X"

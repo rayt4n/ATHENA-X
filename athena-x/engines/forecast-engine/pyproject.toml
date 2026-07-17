@@ -1,0 +1,21 @@
+[project]
+name = "athena-x-engine-forecast-engine"
+version = "0.1.0"
+description = "Forecast Engine - Feature Fusion + Ensemble + Validation + Explainability"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-plugin-forecast-base",
+    "athena-x-runtime-logger",
+    "athena-x-runtime-event-envelope",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_engine_forecast_engine"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

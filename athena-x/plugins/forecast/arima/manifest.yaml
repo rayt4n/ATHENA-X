@@ -1,0 +1,12 @@
+id: arima
+name: "ARIMA"
+version: "1.0.0"
+category: statistical
+runtime: cpu
+refresh_interval_seconds: 1
+inputs: [features]
+outputs: [direction, target_price, confidence, risk_estimate]
+dependencies: []
+enabled: true
+description: "Statistical ARIMA model"
+author: "ATHENA-X"

@@ -1,0 +1,12 @@
+id: lstm
+name: "LSTM"
+version: "1.0.0"
+category: deep_learning
+runtime: python-gpu
+refresh_interval_seconds: 5
+inputs: [features]
+outputs: [direction, target_price, confidence, risk_estimate]
+dependencies: []
+enabled: true
+description: "PyTorch LSTM (NEVER browser)"
+author: "ATHENA-X"

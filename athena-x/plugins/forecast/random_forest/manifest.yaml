@@ -1,0 +1,12 @@
+id: random_forest
+name: "Random Forest"
+version: "1.0.0"
+category: ensemble
+runtime: browser-onnx
+refresh_interval_seconds: 3
+inputs: [features]
+outputs: [direction, target_price, confidence, risk_estimate]
+dependencies: []
+enabled: true
+description: "Random Forest (browser ONNX)"
+author: "ATHENA-X"

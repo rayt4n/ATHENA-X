@@ -1,0 +1,12 @@
+id: tabpfn
+name: "TabPFN"
+version: "1.0.0"
+category: in_context
+runtime: python-gpu
+refresh_interval_seconds: 10
+inputs: [features]
+outputs: [direction, target_price, confidence, risk_estimate]
+dependencies: []
+enabled: true
+description: "TabPFN in-context learning"
+author: "ATHENA-X"

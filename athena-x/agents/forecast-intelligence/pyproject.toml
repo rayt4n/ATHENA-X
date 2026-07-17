@@ -1,0 +1,21 @@
+[project]
+name = "athena-x-agent-forecast-intelligence"
+version = "0.1.0"
+description = "Forecast DNA Agent + Market Memory Service (Stage 11)"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-engine-forecast-engine",
+    "athena-x-runtime-event-envelope",
+    "athena-x-runtime-logger",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_agent_forecast_intelligence"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
