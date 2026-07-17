@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Activity, Radio, Cpu, Database, Layers, Gauge, ShieldCheck, Beaker, Bell, RotateCcw } from "lucide-react";
+import { Activity, Radio, Cpu, Database, Layers, Gauge, ShieldCheck, Beaker, Bell, RotateCcw, Award } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StatusDot } from "./status-dot";
 import { fmtClock, fmtAge } from "@/modules/engineering-console/lib/format";
@@ -50,6 +50,13 @@ const NAV_GROUPS: { id: string; label: string; items: { id: string; label: strin
       { id: "eventbus", label: "Event Bus", icon: <Activity className="h-3.5 w-3.5" /> },
       { id: "database", label: "Database", icon: <Database className="h-3.5 w-3.5" /> },
       { id: "dna", label: "DNA Matrix", icon: <Beaker className="h-3.5 w-3.5" /> },
+    ],
+  },
+  {
+    id: "certification",
+    label: "Stage 14.5",
+    items: [
+      { id: "certification", label: "Certification", icon: <Award className="h-3.5 w-3.5" /> },
     ],
   },
 ];

@@ -15,6 +15,8 @@ import { AgentHealthPanel } from "@/modules/engineering-console/components/panel
 import { DatabasePanel } from "@/modules/engineering-console/components/panels/database-panel";
 import { DNAMatrixPanel } from "@/modules/engineering-console/components/panels/dna-matrix-panel";
 import { AlarmsPanel } from "@/modules/engineering-console/components/panels/alarms-panel";
+import { CertificationRouterPanel } from "@/modules/engineering-console/components/panels/cert-router-panel";
+import { runFullCertification } from "@/modules/engineering-console/lib/certification-engine";
 
 /**
  * Engineering Console entry — the validation cockpit.
@@ -25,6 +27,35 @@ import { AlarmsPanel } from "@/modules/engineering-console/components/panels/ala
 export default function EngineeringConsolePage() {
   const { telemetry, reset } = useTelemetry(1500);
   const [section, setSection] = useState("overview");
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+
+  const handleDownloadPdf = async () => {
+    setIsGeneratingPdf(true);
+    try {
+      // Compute the latest certification state and POST it to the PDF endpoint
+      const certState = runFullCertification(telemetry);
+      const res = await fetch("/api/certification-pdf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(certState),
+      });
+      if (!res.ok) throw new Error(`PDF generation failed: ${res.status}`);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `athena-x-certification-${new Date().toISOString().slice(0, 10)}.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to generate PDF. Check console for details.");
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
 
   return (
     <DashboardShell
@@ -45,6 +76,13 @@ export default function EngineeringConsolePage() {
       {section === "agents" && <AgentHealthPanel agents={telemetry.agents} />}
       {section === "database" && <DatabasePanel schemas={telemetry.database} />}
       {section === "dna" && <DNAMatrixPanel dna={telemetry.dna} />}
+      {section === "certification" && (
+        <CertificationRouterPanel
+          telemetry={telemetry}
+          onDownloadPdf={handleDownloadPdf}
+          isGeneratingPdf={isGeneratingPdf}
+        />
+      )}
     </DashboardShell>
   );
 }
