@@ -1,0 +1,11 @@
+"""Environment enum."""
+from enum import Enum
+
+
+class Environment(str, Enum):
+    DEVELOPMENT = "development"
+    STAGING = "staging"
+    PRODUCTION = "production"
+
+    def __str__(self) -> str:
+        return self.value

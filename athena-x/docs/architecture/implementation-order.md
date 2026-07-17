@@ -1,43 +1,43 @@
-# STEP 4 — Implementation Order
+# STEP 4 — Implementation Order (Final, User-Approved)
 
-The 18-stage sequence (Change 20 of STEP 2.1). Each stage ships with
-`tsc --noEmit` + `next lint` + `pytest` + `next build` passing.
-Zero errors before proceeding to the next stage.
+> **Authoritative source**: `STEP-4-PLAN.md`
+> **Approval**: "Approved with modifications" — see STEP-4-PLAN.md §0.
 
-| # | Stage | Key deliverables |
-|---|---|---|
-| 1 | Foundation / Core Runtime | event-bus, logger, health-monitor, di, config |
-| 2 | Data Collection AI | collection-agent, validation-agent, standardization-agent |
-| 3 | Data Validation AI | (covered in stage 2 — listed separately per user spec) |
-| 4 | Database Layer | 4 schemas, RLS, migrations, seeds |
-| 5 | Event Bus | full bus impl + WebSocket bridge |
-| 6 | Technical Analysis Engine | 23 TA agents + 14 indicator plugins |
-| 7 | Options Intelligence | 15 options agents + 6 options plugins |
-| 8 | Market Intelligence | macro-agent + news-agent + cross-market (20 agents) |
-| 9 | Cross-Market Intelligence | spy-intelligence-aggregator |
-| 10 | AI Forecast Engine | hybrid AI router (LSTM/Transformer/etc.) |
-| 11 | Probability Engine | Monte Carlo |
-| 12 | Supervisor AI | conflict detection, retries, confidence weighting |
-| 13 | Validation AI | Institutional Validation Layer |
-| 14 | Report Engine | markdown → json → pdf → storage |
-| 15 | Dashboard / UI | Next.js modules, panels, palette |
-| 16 | Self-Correction & Learning | prediction scoring, weight adjustment |
-| 17 | Backtesting & Strategy Validation | vectorbt strategies |
-| 18 | Performance Optimization | caching, batching, profiling |
+## The 18 stages
 
-## Per-stage quality gates
+1. **Core Foundation** — event-bus, config, logger, health, scheduler, DI, auth, secrets
+2. **Data Collection AI** ⭐ — 20 instruments + news + macro + alt data
+3. **Validation AI** ⭐⭐⭐ — cross-provider, outlier rejection, confidence scoring
+4. **Data Standardization** — canonical schema, UTC, normalized symbols
+5. **Database Layer** — 12 schemas with RLS
+6. **Event Bus** — connect everything end-to-end
+7. **Technical Analysis Engine** — 23 plugins + 23 agents
+8. **Options Intelligence** — 15 agents
+9. **Cross-Market Intelligence** — correlate 14+ instruments
+10. **News & Macro Intelligence** — Reuters/CNBC/WSJ/CNN + Fed + Treasury
+11. **Forecast Engine** — ARIMA, LSTM, Transformer, XGBoost, LightGBM, CatBoost, TabPFN, Ensemble
+12. **Decision Intelligence** — regime, probability, timing, scenarios
+13. **Supervisor AI** — health, conflicts, confidence, recovery
+14. **Self-Validation** — prediction vs outcome, auto-weight adjustment
+15. **Reporting Engine** — 1-min, 5-min, intraday, weekly reports
+16. **Dashboard** — display only, never calculates
+17. **Backtesting** — vectorbt replay with full pipeline
+18. **Performance & Optimization** — GPU, caching, indexes, latency
 
-```bash
-# TypeScript
-pnpm --filter @athena-x/dashboard typecheck
-pnpm --filter @athena-x/dashboard lint
-pnpm --filter @athena-x/dashboard test
-pnpm --filter @athena-x/dashboard build
+## Mandatory acceptance criteria (every stage)
 
-# Python
-uv run ruff check .
-uv run mypy .
-uv run pytest
-```
+A stage is **only complete** when ALL six pass:
 
-All four must pass (zero errors) before the next stage begins.
+1. **Functional tests** — features behave as specified
+2. **Integration tests** — downstream components work correctly
+3. **Data accuracy tests** — cross-checked against provider data
+4. **Stress tests** — high event rates (FOMC, CPI)
+5. **Recovery tests** — failover works when providers disconnect
+6. **Performance tests** — latency and throughput within budget
+
+See `STEP-4-PLAN.md` §3 for full criteria and §4 for performance budgets.
+
+## Current status
+
+- **Stage 1**: 🟡 In progress (implementation begins now)
+- **Stages 2–18**: ⚪ Pending (will start after Stage 1 acceptance tests pass)

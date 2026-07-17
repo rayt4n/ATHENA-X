@@ -1,9 +1,12 @@
 [project]
 name = "athena-x-runtime-scheduler"
 version = "0.1.0"
-description = "Cron + on-demand task scheduling"
+description = "Cron + on-demand task scheduling (APScheduler wrapper)"
 requires-python = ">=3.11"
-dependencies = ["apscheduler>=3.10.0", "redis>=5.0.0"]
+dependencies = [
+    "apscheduler>=3.10.0",
+    "athena-x-runtime-logger",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -11,3 +14,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/athena_x_runtime_scheduler"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

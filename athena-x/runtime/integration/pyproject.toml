@@ -1,0 +1,33 @@
+[project]
+name = "athena-x-runtime-integration"
+version = "0.1.0"
+description = "Integration tests for Stage 1 Core Foundation"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-config",
+    "athena-x-runtime-logger",
+    "athena-x-runtime-event-bus",
+    "athena-x-runtime-health-monitor",
+    "athena-x-runtime-scheduler",
+    "athena-x-runtime-di",
+    "athena-x-runtime-auth",
+    "athena-x-runtime-secrets",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "functional: functional tests",
+    "integration: integration tests",
+    "accuracy: data accuracy tests",
+    "stress: stress tests (high event rates)",
+    "failover: recovery/failover tests",
+    "performance: performance tests",
+]

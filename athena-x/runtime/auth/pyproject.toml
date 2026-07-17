@@ -1,0 +1,23 @@
+[project]
+name = "athena-x-runtime-auth"
+version = "0.1.0"
+description = "Supabase JWT authentication + service-role access"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.9.0",
+    "pyjwt>=2.9.0",
+    "httpx>=0.27.0",
+    "athena-x-runtime-config",
+    "athena-x-runtime-logger",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_auth"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

@@ -1,11 +1,24 @@
-"""Structured logger."""
-from __future__ import annotations
-import structlog
+"""ATHENA-X structured logger."""
+from .logger import get_logger, configure_logging
+from .context import (
+    LogContext,
+    log_context,
+    new_correlation_id,
+    set_correlation_id,
+    get_correlation_id,
+    set_agent_id,
+    get_agent_id,
+)
 
-
-def get_logger(name: str) -> structlog.BoundLogger:
-    """Get a structured logger bound to the given name (usually agent_id)."""
-    return structlog.get_logger(name)
-
-
-__all__ = ["get_logger"]
+__all__ = [
+    "get_logger",
+    "configure_logging",
+    "set_correlation_id",
+    "get_correlation_id",
+    "set_agent_id",
+    "get_agent_id",
+    "new_correlation_id",
+    "LogContext",
+    "log_context",
+]
+__version__ = "0.1.0"
