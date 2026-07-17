@@ -1,0 +1,11 @@
+id: economic
+name: "Economic Releases"
+version: "1.0.0"
+category: economic
+refresh_interval_seconds: 1
+inputs: [raw_articles]
+outputs: [classified_events, impact_assessment]
+dependencies: []
+enabled: true
+description: "CPI, PPI, NFP, GDP, Retail Sales, PMI, ISM, Housing"
+author: "ATHENA-X"

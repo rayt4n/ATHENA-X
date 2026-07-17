@@ -1,0 +1,11 @@
+id: earnings
+name: "Earnings"
+version: "1.0.0"
+category: earnings
+refresh_interval_seconds: 1
+inputs: [raw_articles]
+outputs: [classified_events, impact_assessment]
+dependencies: []
+enabled: true
+description: "MAG7, S&P 500, Nasdaq 100, SOXX companies"
+author: "ATHENA-X"

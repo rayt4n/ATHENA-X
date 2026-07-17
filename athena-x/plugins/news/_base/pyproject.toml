@@ -1,0 +1,17 @@
+[project]
+name = "athena-x-plugin-news-base"
+version = "0.1.0"
+description = "NewsPlugin Protocol - stable interface for news category plugins (Stage 10)"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.9.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_plugin_news_base"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

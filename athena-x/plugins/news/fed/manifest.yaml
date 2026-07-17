@@ -1,0 +1,11 @@
+id: fed
+name: "Federal Reserve"
+version: "1.0.0"
+category: fed
+refresh_interval_seconds: 1
+inputs: [raw_articles]
+outputs: [classified_events, impact_assessment]
+dependencies: []
+enabled: true
+description: "FOMC, Powell, Governors, Beige Book, Minutes"
+author: "ATHENA-X"

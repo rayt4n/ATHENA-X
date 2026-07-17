@@ -1,0 +1,11 @@
+id: regulatory
+name: "Regulatory"
+version: "1.0.0"
+category: regulatory
+refresh_interval_seconds: 5
+inputs: [raw_articles]
+outputs: [classified_events, impact_assessment]
+dependencies: []
+enabled: true
+description: "SEC, CFTC, OCC, Exchanges"
+author: "ATHENA-X"

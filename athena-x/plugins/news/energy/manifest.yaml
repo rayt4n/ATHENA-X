@@ -1,0 +1,11 @@
+id: energy
+name: "Energy"
+version: "1.0.0"
+category: energy
+refresh_interval_seconds: 5
+inputs: [raw_articles]
+outputs: [classified_events, impact_assessment]
+dependencies: []
+enabled: true
+description: "OPEC, Oil, LNG, Natural Gas"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: breaking
+name: "Breaking News"
+version: "1.0.0"
+category: breaking
+refresh_interval_seconds: 1
+inputs: [raw_articles]
+outputs: [classified_events, impact_assessment]
+dependencies: []
+enabled: true
+description: "Reuters, Bloomberg, CNBC, WSJ, CNN Business"
+author: "ATHENA-X"

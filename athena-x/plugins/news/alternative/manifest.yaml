@@ -1,0 +1,11 @@
+id: alternative
+name: "Alternative"
+version: "1.0.0"
+category: alternative
+refresh_interval_seconds: 10
+inputs: [raw_articles]
+outputs: [classified_events, impact_assessment]
+dependencies: []
+enabled: true
+description: "Polymarket, Company announcements, Gov press releases"
+author: "ATHENA-X"
