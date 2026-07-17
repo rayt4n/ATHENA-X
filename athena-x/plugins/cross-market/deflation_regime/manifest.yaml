@@ -1,0 +1,11 @@
+id: deflation_regime
+name: "Deflation Regime"
+version: "1.0.0"
+category: regime
+refresh_interval_seconds: 10
+inputs: [quotes, returns]
+outputs: [regime_active, confidence]
+dependencies: []
+enabled: true
+description: "Deflation-driven regime"
+author: "ATHENA-X"

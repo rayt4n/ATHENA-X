@@ -1,0 +1,11 @@
+id: qqq_nvda_corr
+name: "QQQ-NVDA Correlation"
+version: "1.0.0"
+category: correlation
+refresh_interval_seconds: 60
+inputs: [returns]
+outputs: [correlation, leading_symbol]
+dependencies: []
+enabled: true
+description: "QQQ vs NVDA correlation"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: growth_to_value
+name: "Growth to Value"
+version: "1.0.0"
+category: rotation
+refresh_interval_seconds: 30
+inputs: [quotes, returns]
+outputs: [rotation_active, from_sector, to_sector]
+dependencies: []
+enabled: true
+description: "Growth to value rotation"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: semi_to_software
+name: "Semi to Software"
+version: "1.0.0"
+category: rotation
+refresh_interval_seconds: 30
+inputs: [quotes, returns]
+outputs: [rotation_active, from_sector, to_sector]
+dependencies: []
+enabled: true
+description: "Semiconductor to software rotation"
+author: "ATHENA-X"

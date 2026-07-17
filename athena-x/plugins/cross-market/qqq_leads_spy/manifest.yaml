@@ -1,0 +1,11 @@
+id: qqq_leads_spy
+name: "QQQ Leads SPY"
+version: "1.0.0"
+category: leadership
+refresh_interval_seconds: 5
+inputs: [quotes, returns]
+outputs: [leader, lagger, signal]
+dependencies: []
+enabled: true
+description: "Is QQQ leading SPY?"
+author: "ATHENA-X"

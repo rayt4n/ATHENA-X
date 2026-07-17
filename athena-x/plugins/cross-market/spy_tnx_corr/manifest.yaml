@@ -1,0 +1,11 @@
+id: spy_tnx_corr
+name: "SPY-TNX Correlation"
+version: "1.0.0"
+category: correlation
+refresh_interval_seconds: 60
+inputs: [returns]
+outputs: [correlation, leading_symbol]
+dependencies: []
+enabled: true
+description: "SPY vs TNX correlation"
+author: "ATHENA-X"

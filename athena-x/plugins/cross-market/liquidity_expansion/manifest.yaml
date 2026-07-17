@@ -1,0 +1,11 @@
+id: liquidity_expansion
+name: "Liquidity Expansion"
+version: "1.0.0"
+category: regime
+refresh_interval_seconds: 10
+inputs: [quotes, returns]
+outputs: [regime_active, confidence]
+dependencies: []
+enabled: true
+description: "Liquidity expansion regime"
+author: "ATHENA-X"

@@ -1,0 +1,12 @@
+id: usdjpy
+name: "USDJPY Monitor"
+version: "1.0.0"
+category: market_monitor
+market_group: currency
+refresh_interval_seconds: 1
+inputs: [quotes]
+outputs: [status, change_pct, volume]
+dependencies: []
+enabled: true
+description: "USD/JPY exchange rate"
+author: "ATHENA-X"

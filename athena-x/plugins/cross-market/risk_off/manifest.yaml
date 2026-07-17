@@ -1,0 +1,11 @@
+id: risk_off
+name: "Risk-Off Regime"
+version: "1.0.0"
+category: regime
+refresh_interval_seconds: 10
+inputs: [quotes, returns]
+outputs: [regime_active, confidence]
+dependencies: []
+enabled: true
+description: "Risk-off market regime detection"
+author: "ATHENA-X"

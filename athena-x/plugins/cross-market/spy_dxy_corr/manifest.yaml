@@ -1,0 +1,11 @@
+id: spy_dxy_corr
+name: "SPY-DXY Correlation"
+version: "1.0.0"
+category: correlation
+refresh_interval_seconds: 60
+inputs: [returns]
+outputs: [correlation, leading_symbol]
+dependencies: []
+enabled: true
+description: "SPY vs DXY correlation"
+author: "ATHENA-X"

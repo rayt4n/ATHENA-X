@@ -1,0 +1,12 @@
+id: amd
+name: "AMD Monitor"
+version: "1.0.0"
+category: market_monitor
+market_group: semiconductor
+refresh_interval_seconds: 1
+inputs: [quotes]
+outputs: [status, change_pct, volume]
+dependencies: []
+enabled: true
+description: "Advanced Micro Devices"
+author: "ATHENA-X"

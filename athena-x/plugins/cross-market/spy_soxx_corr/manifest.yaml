@@ -1,0 +1,11 @@
+id: spy_soxx_corr
+name: "SPY-SOXX Correlation"
+version: "1.0.0"
+category: correlation
+refresh_interval_seconds: 60
+inputs: [returns]
+outputs: [correlation, leading_symbol]
+dependencies: []
+enabled: true
+description: "SPY vs SOXX correlation"
+author: "ATHENA-X"

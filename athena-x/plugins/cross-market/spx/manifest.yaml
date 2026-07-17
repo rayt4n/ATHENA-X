@@ -1,0 +1,12 @@
+id: spx
+name: "SPX Monitor"
+version: "1.0.0"
+category: market_monitor
+market_group: core
+refresh_interval_seconds: 1
+inputs: [quotes]
+outputs: [status, change_pct, volume]
+dependencies: []
+enabled: true
+description: "S&P 500 Index"
+author: "ATHENA-X"

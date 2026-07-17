@@ -1,0 +1,11 @@
+id: nvda_leading
+name: "NVDA Leading"
+version: "1.0.0"
+category: divergence
+refresh_interval_seconds: 5
+inputs: [quotes, returns]
+outputs: [divergence_active, description]
+dependencies: []
+enabled: true
+description: "NVDA leading the market"
+author: "ATHENA-X"

@@ -1,0 +1,12 @@
+id: move
+name: "MOVE Monitor"
+version: "1.0.0"
+category: market_monitor
+market_group: volatility
+refresh_interval_seconds: 1
+inputs: [quotes]
+outputs: [status, change_pct, volume]
+dependencies: []
+enabled: true
+description: "ICE BofA MOVE Index"
+author: "ATHENA-X"

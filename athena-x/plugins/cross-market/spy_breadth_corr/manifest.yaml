@@ -1,0 +1,11 @@
+id: spy_breadth_corr
+name: "SPY-Breadth Correlation"
+version: "1.0.0"
+category: correlation
+refresh_interval_seconds: 60
+inputs: [returns]
+outputs: [correlation, leading_symbol]
+dependencies: []
+enabled: true
+description: "SPY vs Breadth correlation"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: inflation_regime
+name: "Inflation Regime"
+version: "1.0.0"
+category: regime
+refresh_interval_seconds: 10
+inputs: [quotes, returns]
+outputs: [regime_active, confidence]
+dependencies: []
+enabled: true
+description: "Inflation-driven regime"
+author: "ATHENA-X"

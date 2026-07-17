@@ -1,0 +1,11 @@
+id: vix_not_confirming
+name: "VIX Not Confirming"
+version: "1.0.0"
+category: divergence
+refresh_interval_seconds: 5
+inputs: [quotes, returns]
+outputs: [divergence_active, description]
+dependencies: []
+enabled: true
+description: "VIX not confirming price action"
+author: "ATHENA-X"

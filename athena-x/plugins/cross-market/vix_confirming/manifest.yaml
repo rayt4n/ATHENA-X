@@ -1,0 +1,11 @@
+id: vix_confirming
+name: "VIX Confirming"
+version: "1.0.0"
+category: leadership
+refresh_interval_seconds: 5
+inputs: [quotes, returns]
+outputs: [leader, lagger, signal]
+dependencies: []
+enabled: true
+description: "Is VIX confirming the move?"
+author: "ATHENA-X"

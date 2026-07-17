@@ -1,0 +1,12 @@
+id: nikkei
+name: "Nikkei Monitor"
+version: "1.0.0"
+category: market_monitor
+market_group: global
+refresh_interval_seconds: 1
+inputs: [quotes]
+outputs: [status, change_pct, volume]
+dependencies: []
+enabled: true
+description: "Nikkei 225 Index"
+author: "ATHENA-X"

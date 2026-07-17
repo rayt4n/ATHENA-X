@@ -1,0 +1,11 @@
+id: soxx_breakout
+name: "SOXX Breakout"
+version: "1.0.0"
+category: divergence
+refresh_interval_seconds: 5
+inputs: [quotes, returns]
+outputs: [divergence_active, description]
+dependencies: []
+enabled: true
+description: "SOXX breaking out"
+author: "ATHENA-X"

@@ -1,0 +1,12 @@
+id: aapl
+name: "AAPL Monitor"
+version: "1.0.0"
+category: market_monitor
+market_group: mag7
+refresh_interval_seconds: 1
+inputs: [quotes]
+outputs: [status, change_pct, volume]
+dependencies: []
+enabled: true
+description: "Apple Inc"
+author: "ATHENA-X"

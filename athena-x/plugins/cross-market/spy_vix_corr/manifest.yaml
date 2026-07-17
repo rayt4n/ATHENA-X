@@ -1,0 +1,11 @@
+id: spy_vix_corr
+name: "SPY-VIX Correlation"
+version: "1.0.0"
+category: correlation
+refresh_interval_seconds: 60
+inputs: [returns]
+outputs: [correlation, leading_symbol]
+dependencies: []
+enabled: true
+description: "SPY vs VIX correlation"
+author: "ATHENA-X"

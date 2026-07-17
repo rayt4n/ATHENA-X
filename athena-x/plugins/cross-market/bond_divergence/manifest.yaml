@@ -1,0 +1,11 @@
+id: bond_divergence
+name: "Bond Divergence"
+version: "1.0.0"
+category: divergence
+refresh_interval_seconds: 5
+inputs: [quotes, returns]
+outputs: [divergence_active, description]
+dependencies: []
+enabled: true
+description: "Bonds diverging from equities"
+author: "ATHENA-X"

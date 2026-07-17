@@ -1,0 +1,12 @@
+id: natgas
+name: "Natural Gas Monitor"
+version: "1.0.0"
+category: market_monitor
+market_group: commodities
+refresh_interval_seconds: 1
+inputs: [quotes]
+outputs: [status, change_pct, volume]
+dependencies: []
+enabled: true
+description: "Natural Gas"
+author: "ATHENA-X"

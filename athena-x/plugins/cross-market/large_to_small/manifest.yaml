@@ -1,0 +1,11 @@
+id: large_to_small
+name: "Large to Small"
+version: "1.0.0"
+category: rotation
+refresh_interval_seconds: 30
+inputs: [quotes, returns]
+outputs: [rotation_active, from_sector, to_sector]
+dependencies: []
+enabled: true
+description: "Large cap to small cap rotation"
+author: "ATHENA-X"

@@ -1,0 +1,12 @@
+id: xly
+name: "XLY Monitor"
+version: "1.0.0"
+category: market_monitor
+market_group: sectors
+refresh_interval_seconds: 1
+inputs: [quotes]
+outputs: [status, change_pct, volume]
+dependencies: []
+enabled: true
+description: "Consumer Discretionary Select Sector ETF"
+author: "ATHENA-X"
