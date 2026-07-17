@@ -1,0 +1,42 @@
+[project]
+name = "athena-x-runtime-stage4-integration"
+version = "0.1.0"
+description = "Stage 4 integration — 8-category acceptance tests"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-canonical-types",
+    "athena-x-runtime-schema-registry",
+    "athena-x-runtime-symbol-dictionary",
+    "athena-x-runtime-market-calendars",
+    "athena-x-standardizer-base",
+    "athena-x-standardizer-market",
+    "athena-x-standardizer-options",
+    "athena-x-standardizer-news",
+    "athena-x-standardizer-macro",
+    "athena-x-runtime-validation-types",
+    "athena-x-runtime-audit-trail",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_stage4_integration"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "functional: functional tests",
+    "integration: integration tests",
+    "accuracy: data accuracy tests",
+    "stress: stress tests",
+    "failover: failover tests",
+    "performance: performance tests",
+    "replay: determinism/replay tests",
+    "migration: schema migration tests",
+    "schema_compat: schema compatibility tests",
+]

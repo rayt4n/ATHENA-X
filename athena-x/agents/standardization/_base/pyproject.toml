@@ -1,0 +1,24 @@
+[project]
+name = "athena-x-standardizer-base"
+version = "0.1.0"
+description = "Base standardizer + 8-stage standardization pipeline"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-canonical-types",
+    "athena-x-runtime-symbol-dictionary",
+    "athena-x-runtime-market-calendars",
+    "athena-x-runtime-schema-registry",
+    "athena-x-runtime-session-awareness",
+    "athena-x-runtime-logger",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_standardizer_base"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

@@ -1,0 +1,21 @@
+[project]
+name = "athena-x-standardizer-options"
+version = "0.1.0"
+description = "Options Standardization Agent (chains, greeks, IV, OI)"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-standardizer-base",
+    "athena-x-runtime-canonical-types",
+    "athena-x-runtime-schema-registry",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_standardizer_options"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

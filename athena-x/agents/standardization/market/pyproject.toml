@@ -1,0 +1,21 @@
+[project]
+name = "athena-x-standardizer-market"
+version = "0.1.0"
+description = "Market Standardization Agent (equities, ETFs, futures, indices, FX, commodities)"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-standardizer-base",
+    "athena-x-runtime-canonical-types",
+    "athena-x-runtime-schema-registry",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_standardizer_market"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
