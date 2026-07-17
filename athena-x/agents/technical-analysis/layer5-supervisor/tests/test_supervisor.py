@@ -41,8 +41,8 @@ async def test_supervisor_reports_active_agents(repo):
     ema = EMAAgent()
     sup.register_agent(ema)
 
-    # Run the agent
-    await ema.compute("SPY", Timeframe.FIFTEEN_MIN, repo)
+    # Run the agent using compute_and_publish (updates stats)
+    await ema.compute_and_publish("SPY", Timeframe.FIFTEEN_MIN, repo, event_bus=None)
 
     result = await sup.compute("SPY", Timeframe.DAILY, repo)
     assert result.value["active_agents"] == 1

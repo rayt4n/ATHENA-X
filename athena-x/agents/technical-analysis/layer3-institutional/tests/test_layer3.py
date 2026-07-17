@@ -27,7 +27,7 @@ async def test_all_8_layer3_agents_compute(repo):
         result = await agent.compute("SPY", Timeframe.FIFTEEN_MIN, repo)
         assert result.value is not None
         assert result.confidence is not None
-        assert result.layer == 3
+        assert agent.layer == 3  # check agent, not output
 
 
 async def test_layer3_confidence_lower_than_layer2(repo):

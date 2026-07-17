@@ -55,7 +55,7 @@ class TechnicalSupervisor(BaseTAAgent):
         latencies = []
         for agent in self._registered_agents:
             health = agent.get_health()
-            if not health["running"]:
+            if health["calculation_count"] == 0:
                 report.failed_agents.append(agent.name)
             elif health["last_calculation"]:
                 last = datetime.fromisoformat(health["last_calculation"])
@@ -64,6 +64,8 @@ class TechnicalSupervisor(BaseTAAgent):
                     report.stale_agents.append(agent.name)
                 else:
                     report.active_agents += 1
+            else:
+                report.active_agents += 1
             latencies.append(health.get("avg_calculation_time_ms", 0))
 
         if latencies:

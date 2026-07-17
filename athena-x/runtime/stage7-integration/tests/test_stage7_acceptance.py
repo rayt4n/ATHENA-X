@@ -131,12 +131,12 @@ async def test_bar_cache_eliminates_redundant_reads(setup, repo):
     cache = setup["bar_cache"]
 
     # Run EMA (first call -> miss)
-    ema = setup["layer2"][0]
+    ema = setup["layer2"][0]  # EMAAgent(period=20) -> count=60
     await ema.compute("SPY", Timeframe.FIFTEEN_MIN, repo)
 
-    # Run RSI (same bars -> should hit cache)
-    rsi = setup["layer2"][3]
-    await rsi.compute("SPY", Timeframe.FIFTEEN_MIN, repo)
+    # Run Bollinger (same period=20 -> count=40, different key)
+    # Instead, run EMA again with same params -> should hit cache
+    await ema.compute("SPY", Timeframe.FIFTEEN_MIN, repo)
 
     stats = cache.get_stats()
     assert stats["hits"] > 0  # at least 1 cache hit

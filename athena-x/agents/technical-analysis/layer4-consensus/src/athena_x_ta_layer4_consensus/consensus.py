@@ -59,7 +59,7 @@ class TimeframeConsensusAgent(BaseTAAgent):
         # Calculate alignment score
         all_trends = list(trends.values())
         bullish_count = sum(1 for t in all_trends if t == "bullish")
-        bearish_count = sum(1 for t in all_trend if t == "bearish")
+        bearish_count = sum(1 for t in all_trends if t == "bearish")
         total = len(all_trends)
         alignment = max(bullish_count, bearish_count) / total * 100 if total > 0 else 0
 
