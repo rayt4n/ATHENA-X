@@ -4,5 +4,5 @@ from pydantic import BaseModel
 
 
 class SupervisorAgentConfig(BaseModel):
-    """Instance configuration. Add fields as needed in STEP 4."""
+    """Instance configuration."""
     enabled: bool = True

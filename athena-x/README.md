@@ -2,20 +2,35 @@
 
 > Institutional-grade quantitative intelligence terminal.
 > Modular · Plugin-based · Event-driven · AI-supervised · Self-learning.
+> Strict 8-layer data pipeline (STEP 3.5).
 
 ## What this is
 
 ATHENA-X is a Bloomberg-style market intelligence platform built around
-a strict layered architecture:
+a strict layered architecture (STEP 3.5):
 
 ```
-Data Collection AI → Data Validation AI → Data → Standardization AI
-   → Market Data Database → Raw Intelligence Agents → Decision Intelligence
-   → Supervisor AI → Institutional Validation → Report Engine → Dashboard
+Layer 8 ─ Dashboard            ◄── reads Report Database only
+            ▲
+Layer 7 ─ Report Generator     ◄── reads Decision Database only
+            ▲
+Layer 6 ─ Decision Agents      ◄── combine information, NO calculations
+            ▲
+Layer 5 ─ Intelligence Agents  ◄── EMA, RSI, MACD, Chan Theory, Wyckoff, Gamma, etc.
+                                  ONLY read database
+            ▲
+Layer 4 ─ Institutional Database (10 separate databases — never mix)
+            ▲
+Layer 3 ─ Standardization Agents
+            ▲
+Layer 2 ─ Data Validation Agents
+            ▲
+Layer 1 ─ Provider Adapters    ◄── ONLY download data, NEVER calculate
 ```
 
-Nothing enters the system without passing through the data pipeline.
-The dashboard never calculates — it only displays.
+**Nothing above Layer 1 calls providers directly.**
+**Nothing above Layer 3 touches raw data.**
+**The dashboard never calculates — it only displays.**
 
 ## Repository layout
 
@@ -23,12 +38,12 @@ The dashboard never calculates — it only displays.
 |---|---|
 | `apps/` | Deployable applications (Next.js dashboard, Python backend) |
 | `packages/` | Shared, framework-agnostic packages |
-| `agents/` | All AI agents (Python) — independent, supervised |
+| `agents/` | All AI agents — hierarchical under Supervisor (10 divisions × ~55 teams) |
 | `engines/` | Orchestration frameworks (data, AI runtime, backtest, etc.) |
 | `plugins/` | Installable indicator/pattern/options plugins |
-| `providers/` | Market data provider adapters |
+| `providers/` | 14 market data provider adapters |
 | `schemas/` | Single source of truth for events, DB, AI models |
-| `database/` | Four logical databases (raw, processed, AI, reports) |
+| `database/` | 12 schemas (10 institutional + 2 infrastructure) |
 | `runtime/` | Bus, queue, scheduler, health, logging, metrics |
 | `docs/` | Architecture, ADRs, runbooks |
 | `tests/` | Cross-cutting e2e/load tests |
@@ -38,10 +53,9 @@ The dashboard never calculates — it only displays.
 
 ## Status
 
-**STEP 3** — folder skeleton. No feature implementation yet.
+**STEP 3.5** — Institutional Data Layer complete. Skeleton ready.
 
-See `docs/architecture/STEP-2-REVISED.md` for the full architecture specification
-and `docs/architecture/implementation-order.md` for the STEP 4 plan.
+See `docs/architecture/STEP-3.5-ARCHITECTURE.md` for the authoritative spec.
 
 ## Quick start
 

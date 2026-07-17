@@ -1,0 +1,1 @@
+"""Tests for Databento adapter."""

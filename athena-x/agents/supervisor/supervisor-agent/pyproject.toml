@@ -1,7 +1,7 @@
 [project]
 name = "athena_x_agent_supervisor_supervisor_agent"
 version = "0.1.0"
-description = "Supervisor AI — supervisor agent for ATHENA-X"
+description = "Supervisor AI — supervisor agent"
 requires-python = ">=3.11"
 dependencies = [
     "athena-x-runtime-event-bus",

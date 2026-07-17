@@ -1,29 +1,33 @@
 # database/
 
-Four logical databases (Change 14). Implemented as four Postgres schemas
-in a single Supabase instance for dev/staging, optionally separate clusters
-in production.
+12 Postgres schemas (10 institutional + 2 infrastructure) per STEP 3.5.
 
-## Layout
+## The 10 Institutional Databases (Layer 4)
 
-```
-database/
-├── raw-market-data/         # Schema: raw_market_data — untouched provider output
-├── processed-market-data/   # Schema: processed_market_data — normalized + validated
-├── ai-intelligence/         # Schema: ai_intelligence — agent outputs, predictions, weights
-├── historical-reports/      # Schema: historical_reports — reports + backtests
-├── migrations/              # Supabase migrations (timestamped)
-├── seeds/                   # Dev seed data
-└── policies/                # Row-level security policies
-```
+| # | Schema | Layer | Writer | Purpose |
+|---|---|---|---|---|
+| 1 | `market_db` | 4 | standardization.market | Validated + standardized market data (quotes, bars, trades) |
+| 2 | `options_db` | 4 | standardization.options | Validated + standardized options data (chains, greeks, IV) |
+| 3 | `news_db` | 4 | standardization.news | Validated + standardized news (headlines, sentiment, entities) |
+| 4 | `macro_db` | 4 | standardization.macro | Validated + standardized macro (indicators, yields, FX, commodities) |
+| 5 | `validation_db` | 4 | validation agents | Validation decisions + quality scores |
+| 6 | `ai_db` | 4 | intelligence agents (each owns its tables) | TA signals, options signals, news signals, macro signals, cross-market signals, regime classifications |
+| 7 | `forecast_db` | 4 | decision agents | Forecast trajectories, scenarios, expected moves, probability trees, AI consensus |
+| 8 | `historical_db` | 4 | report-engine + validator-engine | Reports + backtests |
+| 9 | `market_replay_db` | 4 | market-replay-recorder | Minute-by-minute cross-domain snapshots (NEW) |
+| 10 | `ai_memory_db` | 4 | self-correction agents | Predictions + outcomes + lessons learned (NEW) |
 
-## Writer access (enforced by RLS)
+## Infrastructure schemas
 
-| Schema | Writer |
+| Schema | Purpose |
 |---|---|
-| `raw_market_data` | `collection-agent` only (service role) |
-| `processed_market_data` | `standardization-agent` only (service role) |
-| `ai_intelligence` | Each agent writes only to its own tables |
-| `historical_reports` | `report-engine` + `validator-engine` |
+| `raw_landing` | Layer 1 raw payloads (provider output as-received) |
+| `app` | User workspaces, watchlists, module instances |
 
-Reader access is open to all authenticated users (subject to user RLS).
+## Critical rules
+
+1. **Never mix raw and processed data** — raw goes in `raw_landing`, processed goes in domain databases.
+2. **Each database has exactly ONE writer** — enforced by RLS.
+3. **Every row carries a `confidence` column** (0.0–1.0) — confidence scoring from Layer 2.
+4. **Read access is open** to authenticated users (subject to user RLS).
+5. **Writer access is locked** to the designated agent per schema.

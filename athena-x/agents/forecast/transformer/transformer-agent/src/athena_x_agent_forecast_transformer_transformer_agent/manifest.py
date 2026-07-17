@@ -1,0 +1,32 @@
+"""Agent manifest."""
+from __future__ import annotations
+from dataclasses import dataclass, field
+
+
+@dataclass(frozen=True)
+class TransformerAgentManifest:
+    agent_id: str = "forecast.transformer.transformer-agent"
+    name: str = "Transformer Forecast AI"
+    division: str = "forecast"
+    team: str = "transformer"
+    layer: str = "5-intelligence"
+    description: str = 'PyTorch Transformer (attention-based). NEVER runs in browser — always Python GPU.'
+    version: str = "0.1.0"
+    subscribes_to: tuple = (
+        "market:bar-closed",
+    )
+    publishes: tuple = (
+        "forecast:trajectory-computed",
+        "forecast:catalyst-detected",
+    )
+    plugin_dependencies: tuple = (
+        # no plugin deps
+    )
+    capabilities: dict = field(default_factory=lambda: {
+        "multi_instance": True,
+        "headless": True,
+        "default_hotkey": "",
+    })
+
+
+MANIFEST = TransformerAgentManifest()

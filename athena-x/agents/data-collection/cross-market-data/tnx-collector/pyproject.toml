@@ -1,0 +1,17 @@
+[project]
+name = "athena_x_agent_data_collection_cross_market_data_tnx_collector"
+version = "0.1.0"
+description = "TNX Cross-Market Collector — data-collection agent"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-event-bus",
+    "athena-x-runtime-logger",
+    "athena-x-runtime-health-monitor",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_agent_data_collection_cross_market_data_tnx_collector"]

@@ -6,6 +6,7 @@ class SupervisorAgentAgent:
     """
     Supervisor AI.
 
+    Division: supervisor
     Layer: supervisor
 
     Implementation comes in STEP 4 per the order in
@@ -13,6 +14,7 @@ class SupervisorAgentAgent:
     """
 
     agent_id = "supervisor.supervisor-agent"
+    division = "supervisor"
     layer = "supervisor"
 
     def __init__(self, config):

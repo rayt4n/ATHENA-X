@@ -1,0 +1,31 @@
+"""Agent manifest."""
+from __future__ import annotations
+from dataclasses import dataclass, field
+
+
+@dataclass(frozen=True)
+class DatabentoCollectorManifest:
+    agent_id: str = "data-collection.market-data.databento-collector"
+    name: str = "Databento Collector"
+    division: str = "data-collection"
+    team: str = "market-data"
+    layer: str = "1-provider-adapters"
+    description: str = 'Downloads institutional-grade futures/options from Databento (PIT-validated).'
+    version: str = "0.1.0"
+    subscribes_to: tuple = (
+        # source agent
+    )
+    publishes: tuple = (
+        # sink agent
+    )
+    plugin_dependencies: tuple = (
+        # no plugin deps
+    )
+    capabilities: dict = field(default_factory=lambda: {
+        "multi_instance": True,
+        "headless": True,
+        "default_hotkey": "",
+    })
+
+
+MANIFEST = DatabentoCollectorManifest()

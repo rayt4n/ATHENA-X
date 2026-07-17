@@ -1,8 +1,10 @@
 # Supervisor AI
 
+> Division: **supervisor**
+> Team: **core**
 > Layer: **supervisor**
 
-Every AI agent reports to the Supervisor (Change 3). Detects conflicting signals, checks stale data, detects failing agents, triggers retries, performs confidence weighting, delegates report generation, runs self-learning, and tracks performance statistics.
+Top-level Supervisor. Every division leader reports here. Detects conflicts, checks stale data, detects failing agents, triggers retries, performs confidence weighting, delegates reports, runs self-learning, tracks performance statistics.
 
 ## Event subscriptions
 
@@ -15,12 +17,8 @@ Every AI agent reports to the Supervisor (Change 3). Detects conflicting signals
 - `supervisor:retry-requested`
 - `supervisor:confidence-adjusted`
 
-## Plugin dependencies
-
-- (none)
-
 ## Implementation status
 
-- [x] Scaffold
+- [x] Scaffold (STEP 3.5)
 - [ ] Implementation (STEP 4)
 - [ ] Tests (STEP 4)

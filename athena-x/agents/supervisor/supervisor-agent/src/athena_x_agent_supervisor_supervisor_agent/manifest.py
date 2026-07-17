@@ -5,11 +5,12 @@ from dataclasses import dataclass, field
 
 @dataclass(frozen=True)
 class SupervisorAgentManifest:
-    """Manifest for the Supervisor AI."""
     agent_id: str = "supervisor.supervisor-agent"
     name: str = "Supervisor AI"
+    division: str = "supervisor"
+    team: str = "core"
     layer: str = "supervisor"
-    description: str = "Every AI agent reports to the Supervisor (Change 3). Detects conflicting signals, checks stale data, detects failing agents, triggers retries, performs confidence weighting, delegates report generation, runs self-learning, and tracks performance statistics."
+    description: str = 'Top-level Supervisor. Every division leader reports here. Detects conflicts, checks stale data, detects failing agents, triggers retries, performs confidence weighting, delegates reports, runs self-le'
     version: str = "0.1.0"
     subscribes_to: tuple = (
         "*",
@@ -21,7 +22,7 @@ class SupervisorAgentManifest:
         "supervisor:confidence-adjusted",
     )
     plugin_dependencies: tuple = (
-        # no plugin dependencies
+        # no plugin deps
     )
     capabilities: dict = field(default_factory=lambda: {
         "multi_instance": True,

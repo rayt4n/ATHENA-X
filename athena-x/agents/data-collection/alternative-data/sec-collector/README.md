@@ -1,0 +1,21 @@
+# SEC Collector
+
+> Division: **data-collection**
+> Team: **alternative-data**
+> Layer: **1-provider-adapters**
+
+Downloads SEC EDGAR filings (13F, 10-K, 10-Q, 8-K).
+
+## Event subscriptions
+
+- (source agent — no subscriptions)
+
+## Event publications
+
+- (sink agent — no publications)
+
+## Implementation status
+
+- [x] Scaffold (STEP 3.5)
+- [ ] Implementation (STEP 4)
+- [ ] Tests (STEP 4)

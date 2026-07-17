@@ -1,4 +1,4 @@
--- Dev seed data: default watchlist symbols
+-- Dev seed data: default watchlist symbols (STEP 3.5)
 INSERT INTO app.workspaces (user_id, name, main_indicator)
 VALUES ('00000000-0000-0000-0000-000000000000', 'Default', 'SPY')
 ON CONFLICT DO NOTHING;
