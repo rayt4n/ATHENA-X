@@ -1,0 +1,39 @@
+namespace: ta
+version: 1.0.0
+
+events:
+  - name: indicator-computed
+    description: Output of a TA plugin computation (Raw Intelligence)
+    payload:
+      type: object
+      required: [symbol, timeframe, indicator, value]
+      properties:
+        symbol:     { type: string }
+        timeframe:  { type: string }
+        indicator:  { type: string }   # e.g., "ema", "rsi", "macd"
+        value:      { type: number }
+        context:    { type: object, additionalProperties: true }
+
+  - name: signal-emitted
+    description: Directional signal from a TA agent (Raw Intelligence)
+    payload:
+      type: object
+      required: [symbol, agentId, direction, strength, weight]
+      properties:
+        symbol:    { type: string }
+        agentId:   { type: string }
+        direction: { type: string, enum: [long, short, neutral] }
+        strength:  { type: string, enum: [weak, moderate, strong] }
+        weight:    { type: number, minimum: 0, maximum: 1 }
+        evidence:  { type: array, items: { type: string } }
+
+  - name: level-identified
+    description: Support/resistance level
+    payload:
+      type: object
+      required: [symbol, level, type, strength]
+      properties:
+        symbol:   { type: string }
+        level:    { type: number }
+        type:     { type: string, enum: [support, resistance] }
+        strength: { type: number, minimum: 0, maximum: 1 }

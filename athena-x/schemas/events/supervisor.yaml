@@ -1,0 +1,42 @@
+namespace: supervisor
+version: 1.0.0
+
+events:
+  - name: conflict-detected
+    description: Two or more agents disagree
+    payload:
+      type: object
+      required: [symbol, agents, description]
+      properties:
+        symbol:      { type: string }
+        agents:      { type: array, items: { type: string } }
+        description: { type: string }
+        severity:    { type: string, enum: [low, medium, high] }
+
+  - name: agent-failing
+    payload:
+      type: object
+      required: [agentId, reason, lastSeenAt]
+      properties:
+        agentId:    { type: string }
+        reason:     { type: string }
+        lastSeenAt: { type: integer, format: unix-millis }
+
+  - name: retry-requested
+    payload:
+      type: object
+      required: [agentId, retryCount]
+      properties:
+        agentId:    { type: string }
+        retryCount: { type: integer }
+
+  - name: confidence-adjusted
+    description: Supervisor adjusted an agent's confidence weighting
+    payload:
+      type: object
+      required: [agentId, oldWeight, newWeight, reason]
+      properties:
+        agentId:   { type: string }
+        oldWeight: { type: number }
+        newWeight: { type: number }
+        reason:    { type: string }

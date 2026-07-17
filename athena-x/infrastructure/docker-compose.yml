@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: supabase/postgres:15.6.1
+    ports: ["5432:5432"]
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ../database/raw-market-data/schema.sql:/docker-entrypoint-initdb.d/01-raw.sql:ro
+      - ../database/processed-market-data/schema.sql:/docker-entrypoint-initdb.d/02-processed.sql:ro
+      - ../database/ai-intelligence/schema.sql:/docker-entrypoint-initdb.d/03-ai.sql:ro
+      - ../database/historical-reports/schema.sql:/docker-entrypoint-initdb.d/04-reports.sql:ro
+
+  redis:
+    image: redis:7.4-alpine
+    ports: ["6379:6379"]
+    volumes:
+      - redis_data:/data
+
+  nats:
+    image: nats:2.10-alpine
+    ports: ["4222:4222", "8222:8222"]
+    command: ["--jetstream"]
+
+volumes:
+  postgres_data:
+  redis_data:

@@ -1,0 +1,34 @@
+namespace: forecast
+version: 1.0.0
+
+events:
+  - name: trajectory-computed
+    description: Price forecast trajectory from an AI model
+    payload:
+      type: object
+      required: [symbol, modelId, horizon, points]
+      properties:
+        symbol:   { type: string }
+        modelId:  { type: string, enum: [lstm, transformer, tabpfn, xgboost, catboost, lightgbm-large, lightgbm-small, random-forest, logistic] }
+        runtime:  { type: string, enum: [python-gpu, browser-onnx] }
+        horizon:  { type: string }
+        points:   { type: array, items: { type: object, properties: { t: {type: integer}, price: {type: number}, confidence: {type: number} } } }
+        inferenceTimeMs: { type: number }
+
+  - name: catalyst-detected
+    payload:
+      type: object
+      required: [symbol, catalyst, impact]
+      properties:
+        symbol:   { type: string }
+        catalyst: { type: string }
+        impact:   { type: number }
+
+  - name: rerun-requested
+    description: UI → backend, request forecast re-run
+    payload:
+      type: object
+      required: [symbol, config]
+      properties:
+        symbol: { type: string }
+        config: { type: object, additionalProperties: true }

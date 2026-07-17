@@ -1,0 +1,81 @@
+namespace: options
+version: 1.0.0
+
+events:
+  - name: chain-refreshed
+    description: Options chain refreshed for a symbol
+    payload:
+      type: object
+      required: [symbol, expiry, chain]
+      properties:
+        symbol: { type: string }
+        expiry: { type: string, format: date }
+        chain:  { type: array, items: { $ref: "#/components/OptionRow" } }
+
+  - name: unusual-activity
+    payload:
+      type: object
+      required: [symbol, strike, expiry, type, size, premium]
+      properties:
+        symbol:  { type: string }
+        strike:  { type: number }
+        expiry:  { type: string, format: date }
+        type:    { type: string, enum: [call, put] }
+        size:    { type: integer }
+        premium: { type: number }
+
+  - name: iv-updated
+    payload:
+      type: object
+      required: [symbol, iv]
+      properties:
+        symbol:    { type: string }
+        iv:        { type: number }
+        ivSkew:    { type: number }
+        ivTerm:    { type: object, additionalProperties: { type: number } }
+
+  - name: greeks-computed
+    payload:
+      type: object
+      required: [symbol, strike, expiry, delta, gamma, theta, vega, rho]
+      properties:
+        symbol: { type: string }
+        strike: { type: number }
+        expiry: { type: string, format: date }
+        delta:  { type: number }
+        gamma:  { type: number }
+        theta:  { type: number }
+        vega:   { type: number }
+        rho:    { type: number }
+
+  - name: gamma-exposure-updated
+    payload:
+      type: object
+      required: [symbol, gex, gammaFlip]
+      properties:
+        symbol:     { type: string }
+        gex:        { type: number }
+        gammaFlip:  { type: number }
+
+  - name: max-pain-updated
+    payload:
+      type: object
+      required: [symbol, expiry, maxPain]
+      properties:
+        symbol:   { type: string }
+        expiry:   { type: string, format: date }
+        maxPain:  { type: number }
+
+components:
+  OptionRow:
+    type: object
+    properties:
+      strike:    { type: number }
+      callIv:    { type: number }
+      callVol:   { type: integer }
+      callOi:    { type: integer }
+      callDelta: { type: number }
+      putIv:     { type: number }
+      putVol:    { type: integer }
+      putOi:     { type: integer }
+      putDelta:  { type: number }

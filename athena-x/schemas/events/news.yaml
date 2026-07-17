@@ -1,0 +1,44 @@
+namespace: news
+version: 1.0.0
+
+events:
+  - name: headline-received
+    payload:
+      type: object
+      required: [id, headline, source, timestamp]
+      properties:
+        id:       { type: string }
+        headline: { type: string }
+        source:   { type: string }
+        url:      { type: string }
+        timestamp: { type: integer, format: unix-millis }
+        symbols:  { type: array, items: { type: string } }
+        category: { type: string, enum: [earnings, analyst, regulatory, macro, product, mna, geopolitical] }
+
+  - name: sentiment-scored
+    payload:
+      type: object
+      required: [id, sentiment, score, model]
+      properties:
+        id:        { type: string }
+        sentiment: { type: string, enum: [positive, neutral, negative] }
+        score:     { type: number, minimum: -1, maximum: 1 }
+        model:     { type: string }
+
+  - name: impact-classified
+    payload:
+      type: object
+      required: [id, impact, confidence]
+      properties:
+        id:         { type: string }
+        impact:     { type: integer, minimum: 0, maximum: 100 }
+        confidence: { type: number, minimum: 0, maximum: 1 }
+
+  - name: entity-mentioned
+    payload:
+      type: object
+      required: [entity, type, count]
+      properties:
+        entity: { type: string }
+        type:   { type: string }
+        count:  { type: integer }

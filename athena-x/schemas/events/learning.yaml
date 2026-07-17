@@ -1,0 +1,28 @@
+namespace: learning
+version: 1.0.0
+
+events:
+  - name: prediction-scored
+    description: A prediction was compared to actual outcome and scored
+    payload:
+      type: object
+      required: [modelId, predictionId, predicted, actual, error]
+      properties:
+        modelId:       { type: string }
+        predictionId:  { type: string }
+        predicted:     { type: number }
+        actual:        { type: number }
+        error:         { type: number }
+        absoluteError: { type: number }
+
+  - name: weight-adjusted
+    description: Self-correction engine adjusted a model's weight
+    payload:
+      type: object
+      required: [modelId, oldWeight, newWeight, reason]
+      properties:
+        modelId:   { type: string }
+        oldWeight: { type: number }
+        newWeight: { type: number }
+        reason:    { type: string }
+        evidence:  { type: array, items: { type: string } }

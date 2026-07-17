@@ -1,0 +1,14 @@
+# Provider failover chain (Change 1.2 of original STEP 2)
+# Order: top to bottom. On failure, failover to the next.
+chain:
+  - yahoo
+  - finnhub
+  - polygon
+  - flashalpha
+  - fred
+  - alphavantage
+
+# Simulated is never in the production failover chain.
+# It's only used in development when ENABLE_SIMULATED=true.
+dev_only:
+  - simulated

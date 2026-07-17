@@ -1,0 +1,17 @@
+[project]
+name = "athena_x_agent_raw_intelligence/technical_analysis_multi_timeframe"
+version = "0.1.0"
+description = "Multi-Timeframe AI — raw-intelligence/technical-analysis agent for ATHENA-X"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-event-bus",
+    "athena-x-runtime-logger",
+    "athena-x-runtime-health-monitor",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_agent_raw_intelligence/technical_analysis_multi_timeframe"]

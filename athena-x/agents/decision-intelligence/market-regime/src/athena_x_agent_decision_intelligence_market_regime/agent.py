@@ -1,0 +1,19 @@
+"""Market Regime AI — agent implementation."""
+from __future__ import annotations
+
+
+class MarketRegimeAgent:
+    """
+    Market Regime AI.
+
+    Layer: decision-intelligence
+
+    Implementation comes in STEP 4 per the order in
+    docs/architecture/implementation-order.md.
+    """
+
+    agent_id = "decision-intelligence.market-regime"
+    layer = "decision-intelligence"
+
+    def __init__(self, config):
+        self.config = config

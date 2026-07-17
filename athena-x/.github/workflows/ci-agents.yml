@@ -1,0 +1,17 @@
+name: CI Agents
+
+on:
+  push:
+    paths: ['agents/**']
+  pull_request:
+    paths: ['agents/**']
+
+jobs:
+  agents:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+      - run: uv sync
+      - run: uv run ruff check agents/
+      - run: uv run pytest agents/

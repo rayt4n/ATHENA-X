@@ -1,0 +1,39 @@
+namespace: validator
+version: 1.0.0
+
+events:
+  - name: report-approved
+    description: Report passed Institutional Validation Layer
+    payload:
+      type: object
+      required: [reportId, score, checks]
+      properties:
+        reportId: { type: string }
+        score:    { type: number }
+        checks:   { type: object, additionalProperties: true }
+
+  - name: report-rejected
+    payload:
+      type: object
+      required: [reportId, failedChecks, reason]
+      properties:
+        reportId:    { type: string }
+        failedChecks: { type: array, items: { type: string } }
+        reason:      { type: string }
+
+  - name: backtest-run
+    payload:
+      type: object
+      required: [strategyId, config, results]
+      properties:
+        strategyId: { type: string }
+        config:     { type: object, additionalProperties: true }
+        results:    { type: object, additionalProperties: true }
+
+  - name: calibration-updated
+    payload:
+      type: object
+      required: [model, buckets]
+      properties:
+        model:   { type: string }
+        buckets: { type: array, items: { type: object } }

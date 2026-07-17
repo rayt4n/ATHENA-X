@@ -1,0 +1,38 @@
+namespace: report
+version: 1.0.0
+
+events:
+  - name: generation-started
+    payload:
+      type: object
+      required: [reportId, config]
+      properties:
+        reportId: { type: string }
+        config:   { type: object, additionalProperties: true }
+
+  - name: generation-completed
+    payload:
+      type: object
+      required: [reportId, markdown, jsonContent, pdfPath]
+      properties:
+        reportId:    { type: string }
+        markdown:    { type: string }
+        jsonContent: { type: object }
+        pdfPath:     { type: string }
+
+  - name: exported
+    payload:
+      type: object
+      required: [reportId, format, url]
+      properties:
+        reportId: { type: string }
+        format:   { type: string, enum: [markdown, json, pdf] }
+        url:      { type: string }
+
+  - name: stored
+    payload:
+      type: object
+      required: [reportId, storagePath]
+      properties:
+        reportId:    { type: string }
+        storagePath: { type: string }

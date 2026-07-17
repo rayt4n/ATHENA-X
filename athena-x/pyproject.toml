@@ -1,0 +1,32 @@
+[project]
+name = "athena-x"
+version = "0.1.0"
+description = "Institutional-grade quantitative intelligence terminal"
+requires-python = ">=3.11"
+
+[tool.uv.workspace]
+members = [
+    "apps/python-backend",
+    "agents/*/*",
+    "engines/*",
+    "providers/*",
+    "runtime/*",
+    "tools/*",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "B", "UP", "RUF"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-ra --strict-markers"

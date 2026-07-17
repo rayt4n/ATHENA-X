@@ -1,0 +1,31 @@
+namespace: probability
+version: 1.0.0
+
+events:
+  - name: simulation-run
+    payload:
+      type: object
+      required: [symbol, config, stats]
+      properties:
+        symbol: { type: string }
+        config: { type: object, additionalProperties: true }
+        stats:  { type: object, additionalProperties: true }
+        paths:  { type: array, items: { type: array, items: { type: number } } }
+
+  - name: profit-scored
+    payload:
+      type: object
+      required: [symbol, strategy, probability, expectedValue]
+      properties:
+        symbol:       { type: string }
+        strategy:     { type: string }
+        probability:  { type: number, minimum: 0, maximum: 1 }
+        expectedValue: { type: number }
+
+  - name: strategy-matrix-updated
+    payload:
+      type: object
+      required: [symbol, matrix]
+      properties:
+        symbol: { type: string }
+        matrix: { type: array, items: { type: object } }

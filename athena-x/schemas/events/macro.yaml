@@ -1,0 +1,40 @@
+namespace: macro
+version: 1.0.0
+
+events:
+  - name: indicator-released
+    payload:
+      type: object
+      required: [indicator, region, value, previous, surprise]
+      properties:
+        indicator: { type: string }
+        region:    { type: string, enum: [US, EU, CN, JP, UK, Global] }
+        freq:      { type: string, enum: [Daily, Weekly, Monthly, Quarterly] }
+        value:     { type: number }
+        previous:  { type: number }
+        surprise:  { type: number }
+
+  - name: yield-curve-updated
+    payload:
+      type: object
+      required: [points]
+      properties:
+        points: { type: array, items: { type: object, properties: { tenor: {type: string}, yield: {type: number} } } }
+
+  - name: fx-rate-updated
+    payload:
+      type: object
+      required: [pair, rate, change]
+      properties:
+        pair:   { type: string }
+        rate:   { type: number }
+        change: { type: number }
+
+  - name: commodity-updated
+    payload:
+      type: object
+      required: [commodity, price, change]
+      properties:
+        commodity: { type: string }
+        price:     { type: number }
+        change:    { type: number }

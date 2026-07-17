@@ -1,0 +1,7 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "@athena-x/eslint-config/presets/dashboard"
+  ],
+  "rules": {}
+}

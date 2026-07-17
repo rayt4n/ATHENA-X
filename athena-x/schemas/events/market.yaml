@@ -1,0 +1,79 @@
+# Market data events — published by agents/data-collection/.
+namespace: market
+version: 1.0.0
+
+events:
+  - name: quote-updated
+    description: Real-time quote for a symbol
+    payload:
+      type: object
+      required: [symbol, last, bid, ask, timestamp]
+      properties:
+        symbol: { type: string }
+        last:   { type: number }
+        bid:    { type: number }
+        ask:    { type: number }
+        high:   { type: number }
+        low:    { type: number }
+        open:   { type: number }
+        prevClose: { type: number }
+        volume: { type: number }
+        change: { type: number }
+        changePercent: { type: number }
+        timestamp: { type: integer, format: unix-millis }
+
+  - name: trade-printed
+    description: Individual trade print
+    payload:
+      type: object
+      required: [symbol, price, size, side, timestamp]
+      properties:
+        symbol: { type: string }
+        price:  { type: number }
+        size:   { type: integer }
+        side:   { type: string, enum: [buy, sell, unknown] }
+        timestamp: { type: integer, format: unix-millis }
+
+  - name: level2-updated
+    description: Order book depth update
+    payload:
+      type: object
+      required: [symbol, bids, asks, timestamp]
+      properties:
+        symbol: { type: string }
+        bids:   { type: array, items: { type: array, items: { type: number }, minItems: 2, maxItems: 2 } }
+        asks:   { type: array, items: { type: array, items: { type: number }, minItems: 2, maxItems: 2 } }
+        timestamp: { type: integer, format: unix-millis }
+
+  - name: bar-closed
+    description: OHLCV bar finalized for a timeframe
+    payload:
+      type: object
+      required: [symbol, timeframe, bar]
+      properties:
+        symbol:    { type: string }
+        timeframe: { type: string, enum: [1m, 5m, 15m, 30m, 1h, 4h, 1D, 1W, 1M] }
+        bar:       { $ref: "#/components/Bar" }
+
+  - name: provider-failed-over
+    description: Provider failover event
+    payload:
+      type: object
+      required: [from, to, reason, timestamp]
+      properties:
+        from:      { type: string }
+        to:        { type: string }
+        reason:    { type: string }
+        timestamp: { type: integer, format: unix-millis }
+
+components:
+  Bar:
+    type: object
+    required: [timestamp, open, high, low, close, volume]
+    properties:
+      timestamp: { type: integer, format: unix-millis }
+      open:      { type: number }
+      high:      { type: number }
+      low:       { type: number }
+      close:     { type: number }
+      volume:    { type: number }

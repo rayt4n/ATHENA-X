@@ -1,0 +1,43 @@
+namespace: ui
+version: 1.0.0
+
+events:
+  - name: symbol-selected
+    payload:
+      type: object
+      required: [symbol, source]
+      properties:
+        symbol: { type: string }
+        source: { type: string, enum: [sidebar, palette, chart, watchlist, ticker] }
+
+  - name: module-launched
+    payload:
+      type: object
+      required: [moduleId, instanceId, config]
+      properties:
+        moduleId:    { type: string }
+        instanceId:  { type: string }
+        config:      { type: object, additionalProperties: true }
+
+  - name: module-closed
+    payload:
+      type: object
+      required: [instanceId]
+      properties:
+        instanceId: { type: string }
+
+  - name: main-indicator-switched
+    description: ES ⇄ SPY switch (Change 2.2)
+    payload:
+      type: object
+      required: [indicator]
+      properties:
+        indicator: { type: string, enum: [ES, SPY] }
+
+  - name: layout-updated
+    payload:
+      type: object
+      required: [workspaceId, layout]
+      properties:
+        workspaceId: { type: string }
+        layout:      { type: object, additionalProperties: true }

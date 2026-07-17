@@ -1,0 +1,73 @@
+namespace: decision
+version: 1.0.0
+
+events:
+  - name: regime-classified
+    description: Market regime classification (prerequisite for all decisions)
+    payload:
+      type: object
+      required: [symbol, regime, confidence, evidence]
+      properties:
+        symbol:    { type: string }
+        regime:    { type: string, enum: [trending, ranging, breakout, mean-reversion, high-vol, low-vol, news-driven, option-driven, dealer-controlled] }
+        confidence: { type: number, minimum: 0, maximum: 1 }
+        evidence:  { type: array, items: { type: string } }
+
+  - name: timeframe-alignment-updated
+    description: Multi-timeframe alignment score
+    payload:
+      type: object
+      required: [symbol, alignmentScore, breakdown]
+      properties:
+        symbol:         { type: string }
+        alignmentScore: { type: number, minimum: 0, maximum: 100 }
+        breakdown:      { type: object, additionalProperties: { type: string, enum: [bullish, bearish, neutral] } }
+
+  - name: scenario-updated
+    description: Bull/Base/Bear scenario probabilities
+    payload:
+      type: object
+      required: [symbol, bull, base, bear]
+      properties:
+        symbol: { type: string }
+        bull:   { type: number, minimum: 0, maximum: 1 }
+        base:   { type: number, minimum: 0, maximum: 1 }
+        bear:   { type: number, minimum: 0, maximum: 1 }
+
+  - name: volatility-projected
+    payload:
+      type: object
+      required: [symbol, projectedVol, horizon]
+      properties:
+        symbol:      { type: string }
+        projectedVol: { type: number }
+        horizon:     { type: string }
+
+  - name: expected-move-updated
+    payload:
+      type: object
+      required: [symbol, expectedMove, horizon, confidence]
+      properties:
+        symbol:       { type: string }
+        expectedMove: { type: number }
+        horizon:      { type: string }
+        confidence:   { type: number }
+
+  - name: probability-tree-updated
+    payload:
+      type: object
+      required: [symbol, tree]
+      properties:
+        symbol: { type: string }
+        tree:   { type: object, additionalProperties: true }
+
+  - name: ai-consensus-updated
+    description: Aggregate AI consensus across all decision agents
+    payload:
+      type: object
+      required: [symbol, consensus, agreement]
+      properties:
+        symbol:    { type: string }
+        consensus: { type: string, enum: [bullish, bearish, neutral] }
+        agreement: { type: number, minimum: 0, maximum: 1 }
+        components: { type: array, items: { type: object } }

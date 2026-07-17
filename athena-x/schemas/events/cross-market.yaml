@@ -1,0 +1,21 @@
+namespace: cross_market
+version: 1.0.0
+
+events:
+  - name: symbol-state-updated
+    description: Per-symbol cross-market state
+    payload:
+      type: object
+      required: [symbol, state]
+      properties:
+        symbol: { type: string, enum: [SPY, SPX, ES, QQQ, NQ, IWM, DIA, SOXX, VIX, VVIX, MOVE, DXY, TNX, Gold, Oil, Copper, USDJPY, Europe, Asia, Crypto] }
+        state:  { type: object, additionalProperties: true }
+
+  - name: spy-intelligence-updated
+    description: Aggregated SPY intelligence from all cross-market agents
+    payload:
+      type: object
+      required: [summary, components]
+      properties:
+        summary:   { type: string }
+        components: { type: array, items: { type: object, properties: { source: {type: string}, contribution: {type: number} } } }

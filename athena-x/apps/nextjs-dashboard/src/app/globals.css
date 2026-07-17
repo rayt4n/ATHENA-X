@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-background: oklch(1.97% 0 0);
+    --color-foreground: oklch(95.36% 0 0);
+    --color-card: oklch(5.24% 0 0);
+    --color-muted: oklch(9.49% 0 0);
+    --color-border: oklch(100% 0 0 / 0.08);
+    --color-primary: oklch(69.89% 0 0);
+    --color-pos: oklch(69.89% 0 0);     /* institutional green */
+    --color-neg: oklch(57.02% 0 0);     /* institutional red */
+    --color-accent: oklch(69.89% 0 0);
+    --color-sidebar: oklch(1.18% 0 0);
+    --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+    --font-mono: var(--font-geist-mono), monospace;
+}
+
+@layer base {
+    html { color-scheme: dark; }
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-feature-settings: 'tnum' on;
+    }
+}
+
+/* Custom utilities (kept from STEP 1) */
+.grid-bg {
+    background-image: linear-gradient(oklch(100% 0 0 / 0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, oklch(100% 0 0 / 0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(100% 0 0 / 0.15) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: oklch(100% 0 0 / 0.15);
+    border-radius: 3px;
+}
+
+@keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.6; transform: scale(0.85); }
+}

@@ -1,0 +1,35 @@
+{
+  "extends": "../../packages/tsconfig/tsconfig.nextjs.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@athena-x/ui-kit": [
+        "../../packages/ui-kit/src"
+      ],
+      "@athena-x/event-schema": [
+        "../../packages/event-schema/src"
+      ],
+      "@athena-x/types": [
+        "../../packages/types/src"
+      ]
+    },
+    "incremental": true,
+    "noEmit": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,73 @@
+namespace: system
+version: 1.0.0
+
+events:
+  - name: agent-started
+    payload:
+      type: object
+      required: [agentId, moduleId, version]
+      properties:
+        agentId:  { type: string }
+        moduleId: { type: string }
+        version:  { type: string }
+
+  - name: agent-stopped
+    payload:
+      type: object
+      required: [agentId]
+      properties:
+        agentId: { type: string }
+        reason:  { type: string }
+
+  - name: agent-heartbeat
+    description: Periodic health heartbeat from an agent
+    payload:
+      type: object
+      required: [agentId, timestamp, metrics]
+      properties:
+        agentId:   { type: string }
+        timestamp: { type: integer, format: unix-millis }
+        metrics:
+          type: object
+          required: [running, cpu, memory, queueLength, errorCount, restartCount, confidence]
+          properties:
+            running:       { type: boolean }
+            lastUpdate:    { type: integer, format: unix-millis }
+            cpu:           { type: number }
+            memory:        { type: number }
+            apiLatency:    { type: number }
+            queueLength:   { type: integer }
+            errorCount:    { type: integer }
+            restartCount:  { type: integer }
+            confidence:    { type: number }
+            version:       { type: string }
+
+  - name: bus-connected
+    payload:
+      type: object
+      required: [transport]
+      properties:
+        transport: { type: string, enum: [websocket, redis, nats] }
+
+  - name: bus-disconnected
+    payload:
+      type: object
+      required: [reason]
+      properties:
+        reason: { type: string }
+
+  - name: provider-health-updated
+    description: Provider health for Data Quality Dashboard (Change 18)
+    payload:
+      type: object
+      required: [provider, status]
+      properties:
+        provider:        { type: string }
+        status:          { type: string, enum: [connected, disconnected, degraded] }
+        delay:           { type: number }
+        missingBars:     { type: integer }
+        missingTicks:    { type: integer }
+        apiErrors:       { type: integer }
+        failoverCount:   { type: integer }
+        freshness:       { type: number }
+        reliabilityScore: { type: number, minimum: 0, maximum: 1 }

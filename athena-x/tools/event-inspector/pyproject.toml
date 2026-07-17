@@ -1,0 +1,16 @@
+[project]
+name = "athena-x-event-inspector"
+version = "0.1.0"
+description = "Bus event debugger — subscribes and prints events"
+requires-python = ">=3.11"
+dependencies = ["click>=8.1.0", "rich>=13.8.0", "athena-x-runtime-event-bus"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_event_inspector"]
+
+[project.scripts]
+athena-bus-inspect = "athena_x_event_inspector.cli:main"
