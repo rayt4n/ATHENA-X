@@ -1,0 +1,17 @@
+[project]
+name = "athena-x-runtime-validation-types"
+version = "0.1.0"
+description = "Shared validation types (ValidationResult, QualityGrade, AuditEntry, QuarantineRecord)"
+requires-python = ">=3.11"
+dependencies = ["pydantic>=2.9.0"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_validation_types"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

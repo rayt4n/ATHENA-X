@@ -1,0 +1,17 @@
+[project]
+name = "athena-x-validator-market-logic"
+version = "0.1.0"
+description = "Market logic validator — detects impossible values (high<low, neg vol, IV>1000%)"
+requires-python = ">=3.11"
+dependencies = ["athena-x-validator-base"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_validator_market_logic"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

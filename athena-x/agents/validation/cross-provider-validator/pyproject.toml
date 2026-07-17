@@ -1,0 +1,17 @@
+[project]
+name = "athena-x-validator-cross-provider"
+version = "0.1.0"
+description = "Cross-provider validator — consensus check, outlier rejection"
+requires-python = ">=3.11"
+dependencies = ["athena-x-validator-base"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_validator_cross_provider"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

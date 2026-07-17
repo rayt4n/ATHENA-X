@@ -1,0 +1,48 @@
+[project]
+name = "athena-x-runtime-stage3-integration"
+version = "0.1.0"
+description = "Stage 3 integration — full validation pipeline + 7-category tests"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-validation-types",
+    "athena-x-runtime-audit-trail",
+    "athena-x-validator-base",
+    "athena-x-validator-schema",
+    "athena-x-validator-timestamp",
+    "athena-x-validator-market-calendar",
+    "athena-x-validator-cross-provider",
+    "athena-x-validator-market-logic",
+    "athena-x-validator-completeness",
+    "athena-x-validator-duplicate",
+    "athena-x-validator-outlier",
+    "athena-x-validator-confidence",
+    "athena-x-validator-market-state",
+    "athena-x-validator-quarantine",
+    "athena-x-runtime-event-bus",
+    "athena-x-runtime-logger",
+    "athena-x-runtime-institutional-metadata",
+    "athena-x-runtime-session-awareness",
+    "athena-x-runtime-raw-archival",
+    "athena-x-runtime-data-freshness",
+    "athena-x-provider-simulated",
+    "athena-x-provider-failover",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "functional: functional tests",
+    "integration: integration tests",
+    "accuracy: data accuracy tests",
+    "stress: stress tests",
+    "failover: recovery/failover tests",
+    "performance: performance tests",
+    "replay: determinism/replay tests",
+]
