@@ -1,0 +1,41 @@
+[project]
+name = "athena-x-runtime-stage5-integration"
+version = "0.1.0"
+description = "Stage 5 integration - 9-category acceptance tests"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-repository-interface",
+    "athena-x-runtime-in-memory-repository",
+    "athena-x-runtime-db-roles",
+    "athena-x-runtime-db-partitioning",
+    "athena-x-runtime-db-events",
+    "athena-x-runtime-db-monitoring",
+    "athena-x-runtime-db-backup",
+    "athena-x-runtime-event-bus",
+    "athena-x-runtime-canonical-types",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_stage5_integration"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "functional: functional tests",
+    "integration: integration tests",
+    "accuracy: data accuracy tests",
+    "stress: stress tests",
+    "failover: failover tests",
+    "performance: performance tests",
+    "replay: replay tests",
+    "migration: migration tests",
+    "integrity: integrity tests",
+    "recovery: recovery tests",
+]

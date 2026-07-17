@@ -1,0 +1,23 @@
+[project]
+name = "athena-x-runtime-in-memory-repository"
+version = "0.1.0"
+description = "In-memory repository implementation (tests + dev - no DB required)"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-repository-interface",
+    "athena-x-runtime-canonical-types",
+    "athena-x-runtime-db-events",
+    "athena-x-runtime-db-monitoring",
+    "athena-x-runtime-logger",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_in_memory_repository"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

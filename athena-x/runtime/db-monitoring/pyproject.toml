@@ -1,0 +1,17 @@
+[project]
+name = "athena-x-runtime-db-monitoring"
+version = "0.1.0"
+description = "Database performance monitoring + health metrics (Stage 5 req 10)"
+requires-python = ">=3.11"
+dependencies = ["athena-x-runtime-logger"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_db_monitoring"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
