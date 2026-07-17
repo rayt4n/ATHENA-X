@@ -1,0 +1,21 @@
+[project]
+name = "athena-x-runtime-stage14-integration"
+version = "0.1.0"
+description = "Stage 14 integration - System Validation Framework tests"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-engine-validation-framework",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_stage14_integration"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
