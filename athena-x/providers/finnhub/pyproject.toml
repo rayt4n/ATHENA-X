@@ -1,9 +1,14 @@
 [project]
 name = "athena-x-provider-finnhub"
 version = "0.1.0"
-description = "Finnhub market data provider for ATHENA-X"
+description = "Finnhub provider adapter (REST + WebSocket)"
 requires-python = ">=3.11"
-dependencies = ["httpx>=0.27.0", "websockets>=13.0", "pydantic>=2.9.0"]
+dependencies = [
+    "athena-x-provider-base",
+    "athena-x-runtime-logger",
+    "httpx>=0.27.0",
+    "websockets>=13.0",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -11,3 +16,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/athena_x_provider_finnhub"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

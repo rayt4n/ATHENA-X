@@ -1,0 +1,41 @@
+[project]
+name = "athena-x-runtime-stage2-integration"
+version = "0.1.0"
+description = "Stage 2 integration tests + DI wiring"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-runtime-config",
+    "athena-x-runtime-event-bus",
+    "athena-x-runtime-logger",
+    "athena-x-runtime-health-monitor",
+    "athena-x-runtime-institutional-metadata",
+    "athena-x-runtime-session-awareness",
+    "athena-x-runtime-raw-archival",
+    "athena-x-runtime-data-freshness",
+    "athena-x-provider-base",
+    "athena-x-provider-simulated",
+    "athena-x-provider-failover",
+    "athena-x-collector-base",
+    "athena-x-collector-market-data",
+    "athena-x-collector-options-data",
+    "athena-x-collector-news-data",
+    "athena-x-collector-cross-market",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "functional: functional tests",
+    "integration: integration tests",
+    "accuracy: data accuracy tests",
+    "stress: stress tests (high event rates)",
+    "failover: recovery/failover tests",
+    "performance: performance tests",
+]
