@@ -63,6 +63,32 @@ class ZeroDTEIntelligenceSnapshot:
     # Overall
     overall_confidence: float = 0.0
 
+    def to_dict(self) -> dict:
+        """Serialize snapshot to dict for event payloads and downstream consumption.
+
+        This method exists on the dataclass itself (not on the agent) so that
+        any consumer that holds a ZeroDTEIntelligenceSnapshot can serialize
+        it without needing a reference to the agent.
+        """
+        return {
+            "symbol": self.symbol,
+            "timestamp": self.timestamp.isoformat(),
+            "gamma_flip_level": self.gamma_flip_level,
+            "dealer_gamma": self.dealer_gamma,
+            "dealer_hedge_direction": self.dealer_hedge_direction,
+            "major_call_wall": self.major_call_wall,
+            "major_put_wall": self.major_put_wall,
+            "iv_regime": self.iv_regime,
+            "iv_crush_risk": self.iv_crush_risk,
+            "expected_move": self.expected_move,
+            "theta_decay_rate": self.theta_decay_rate,
+            "positioning": self.positioning,
+            "intraday_risk": self.intraday_risk,
+            "breakout_probability": self.breakout_probability,
+            "mean_reversion_probability": self.mean_reversion_probability,
+            "overall_confidence": self.overall_confidence,
+        }
+
 
 class ZeroDTEIntelligenceAgent:
     """Aggregates all options metrics into a single 0DTE intelligence snapshot.
@@ -177,32 +203,11 @@ class ZeroDTEIntelligenceAgent:
                 source_agent="options-intelligence.0dte",
                 symbol=symbol,
                 priority=EventPriority.HIGH,
-                payload=self._snapshot_to_dict(snapshot),
+                payload=snapshot.to_dict(),
             )
             await self._bus.publish(event)
 
         return snapshot
-
-    def _snapshot_to_dict(self, snapshot: ZeroDTEIntelligenceSnapshot) -> dict:
-        """Convert snapshot to dict for event payload."""
-        return {
-            "symbol": snapshot.symbol,
-            "timestamp": snapshot.timestamp.isoformat(),
-            "gamma_flip_level": snapshot.gamma_flip_level,
-            "dealer_gamma": snapshot.dealer_gamma,
-            "dealer_hedge_direction": snapshot.dealer_hedge_direction,
-            "major_call_wall": snapshot.major_call_wall,
-            "major_put_wall": snapshot.major_put_wall,
-            "iv_regime": snapshot.iv_regime,
-            "iv_crush_risk": snapshot.iv_crush_risk,
-            "expected_move": snapshot.expected_move,
-            "theta_decay_rate": snapshot.theta_decay_rate,
-            "positioning": snapshot.positioning,
-            "intraday_risk": snapshot.intraday_risk,
-            "breakout_probability": snapshot.breakout_probability,
-            "mean_reversion_probability": snapshot.mean_reversion_probability,
-            "overall_confidence": snapshot.overall_confidence,
-        }
 
     def get_stats(self) -> dict:
         return {
