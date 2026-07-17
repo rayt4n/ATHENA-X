@@ -1,0 +1,11 @@
+id: iv_rank
+name: "IV Rank"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 60
+inputs: ['chain', 'iv_history']
+outputs: ['iv_rank']
+dependencies: []
+enabled: true
+description: "IV rank (0-100)"
+author: "ATHENA-X"

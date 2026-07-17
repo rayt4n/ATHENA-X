@@ -1,0 +1,11 @@
+id: oi_walls
+name: "OI Walls"
+version: "1.0.0"
+category: open_interest
+refresh_interval_seconds: 10
+inputs: ['oi_by_strike']
+outputs: ['call_walls', 'put_walls']
+dependencies: []
+enabled: true
+description: "Major OI walls"
+author: "ATHENA-X"

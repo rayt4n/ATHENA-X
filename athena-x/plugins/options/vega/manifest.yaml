@@ -1,0 +1,11 @@
+id: vega
+name: "Vega"
+version: "1.0.0"
+category: greeks
+refresh_interval_seconds: 1
+inputs: ['chain']
+outputs: ['vega_per_strike']
+dependencies: []
+enabled: true
+description: "Option vega"
+author: "ATHENA-X"

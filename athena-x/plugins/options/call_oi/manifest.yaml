@@ -1,0 +1,11 @@
+id: call_oi
+name: "Call Open Interest"
+version: "1.0.0"
+category: open_interest
+refresh_interval_seconds: 5
+inputs: ['oi_by_strike']
+outputs: ['call_oi_total']
+dependencies: []
+enabled: true
+description: "Total call OI"
+author: "ATHENA-X"

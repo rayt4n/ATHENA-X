@@ -1,0 +1,22 @@
+[project]
+name = "athena-x-engine-options-plugin-engine"
+version = "0.1.0"
+description = "Options Plugin Manager - reuses Stage 7 plugin engine for options metrics"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-engine-plugin-engine",
+    "athena-x-plugin-options-base",
+    "athena-x-runtime-logger",
+    "athena-x-runtime-event-envelope",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_engine_options_plugin_engine"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

@@ -1,0 +1,11 @@
+id: negative_gamma_zone
+name: "Negative Gamma Zone"
+version: "1.0.0"
+category: dealer
+refresh_interval_seconds: 10
+inputs: ['chain', 'greeks']
+outputs: ['negative_zone']
+dependencies: ['gex']
+enabled: true
+description: "Negative gamma price zone"
+author: "ATHENA-X"

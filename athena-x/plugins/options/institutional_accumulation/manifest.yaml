@@ -1,0 +1,11 @@
+id: institutional_accumulation
+name: "Institutional Accumulation"
+version: "1.0.0"
+category: dark_pool
+refresh_interval_seconds: 10
+inputs: ['dark_pool_prints']
+outputs: ['accumulation_signal']
+dependencies: []
+enabled: true
+description: "Institutional accumulation detection"
+author: "ATHENA-X"

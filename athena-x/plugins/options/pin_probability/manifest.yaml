@@ -1,0 +1,11 @@
+id: pin_probability
+name: "Pin Probability"
+version: "1.0.0"
+category: probability
+refresh_interval_seconds: 60
+inputs: ['chain', 'oi_by_strike']
+outputs: ['pin_risk']
+dependencies: []
+enabled: true
+description: "Pin risk probability"
+author: "ATHENA-X"

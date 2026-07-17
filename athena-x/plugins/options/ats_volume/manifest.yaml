@@ -1,0 +1,11 @@
+id: ats_volume
+name: "ATS Volume"
+version: "1.0.0"
+category: dark_pool
+refresh_interval_seconds: 5
+inputs: ['dark_pool_prints']
+outputs: ['ats_volume']
+dependencies: []
+enabled: true
+description: "ATS volume summary"
+author: "ATHENA-X"

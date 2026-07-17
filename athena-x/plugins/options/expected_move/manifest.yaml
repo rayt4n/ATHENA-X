@@ -1,0 +1,11 @@
+id: expected_move
+name: "Expected Move"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 60
+inputs: ['chain']
+outputs: ['expected_move_1d', 'expected_move_1w']
+dependencies: []
+enabled: true
+description: "Expected price move"
+author: "ATHENA-X"

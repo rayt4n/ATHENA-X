@@ -1,0 +1,11 @@
+id: block_trades
+name: "Block Trades"
+version: "1.0.0"
+category: flow
+refresh_interval_seconds: 1
+inputs: ['option_flow']
+outputs: ['blocks']
+dependencies: []
+enabled: true
+description: "Block trade detection"
+author: "ATHENA-X"

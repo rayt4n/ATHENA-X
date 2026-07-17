@@ -1,0 +1,11 @@
+id: hidden_liquidity
+name: "Hidden Liquidity"
+version: "1.0.0"
+category: dark_pool
+refresh_interval_seconds: 5
+inputs: ['dark_pool_prints']
+outputs: ['hidden_liq']
+dependencies: []
+enabled: true
+description: "Hidden liquidity estimate"
+author: "ATHENA-X"

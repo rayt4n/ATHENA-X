@@ -1,0 +1,11 @@
+id: 0dte_positioning
+name: "0DTE Positioning"
+version: "1.0.0"
+category: 0dte
+refresh_interval_seconds: 5
+inputs: ['chain', 'oi_by_strike']
+outputs: ['positioning']
+dependencies: []
+enabled: true
+description: "0DTE positioning summary"
+author: "ATHENA-X"

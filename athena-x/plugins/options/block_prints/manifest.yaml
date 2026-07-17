@@ -1,0 +1,11 @@
+id: block_prints
+name: "Block Prints"
+version: "1.0.0"
+category: dark_pool
+refresh_interval_seconds: 1
+inputs: ['dark_pool_prints']
+outputs: ['block_prints']
+dependencies: []
+enabled: true
+description: "Large block prints"
+author: "ATHENA-X"

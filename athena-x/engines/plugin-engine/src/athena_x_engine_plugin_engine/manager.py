@@ -95,6 +95,9 @@ class PluginManager:
                           error=str(e))
 
         log.info("plugins_discovered", count=count)
+        # Rebuild dependency graph + scheduler after discovery
+        self._dependency_resolver = DependencyResolver(self._registry)
+        self._scheduler.rebuild()
         return count
 
     def load(self, plugin_id: str) -> Any:

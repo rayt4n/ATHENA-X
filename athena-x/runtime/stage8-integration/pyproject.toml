@@ -1,0 +1,23 @@
+[project]
+name = "athena-x-runtime-stage8-integration"
+version = "0.1.0"
+description = "Stage 8 integration - Options Intelligence Platform acceptance tests"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-engine-options-plugin-engine",
+    "athena-x-agent-options-intelligence",
+    "athena-x-runtime-event-bus",
+    "pytest>=8.3.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_runtime_stage8_integration"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

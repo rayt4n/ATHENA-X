@@ -1,0 +1,11 @@
+id: large_orders
+name: "Large Orders"
+version: "1.0.0"
+category: flow
+refresh_interval_seconds: 1
+inputs: ['option_flow']
+outputs: ['large_orders']
+dependencies: []
+enabled: true
+description: "Large order detection"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: 0dte_closing_positioning
+name: "0DTE Closing Positioning"
+version: "1.0.0"
+category: 0dte
+refresh_interval_seconds: 1
+inputs: ['chain', 'oi_by_strike']
+outputs: ['closing_positioning']
+dependencies: []
+enabled: true
+description: "0DTE closing positioning"
+author: "ATHENA-X"

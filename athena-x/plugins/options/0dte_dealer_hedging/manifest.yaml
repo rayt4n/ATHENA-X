@@ -1,0 +1,11 @@
+id: 0dte_dealer_hedging
+name: "0DTE Dealer Hedging"
+version: "1.0.0"
+category: 0dte
+refresh_interval_seconds: 5
+inputs: ['chain', 'greeks']
+outputs: ['dealer_hedge_0dte']
+dependencies: ['gex']
+enabled: true
+description: "0DTE dealer hedge direction"
+author: "ATHENA-X"

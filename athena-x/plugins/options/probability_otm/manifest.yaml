@@ -1,0 +1,11 @@
+id: probability_otm
+name: "Probability OTM"
+version: "1.0.0"
+category: probability
+refresh_interval_seconds: 60
+inputs: ['chain']
+outputs: ['potm_per_strike']
+dependencies: []
+enabled: true
+description: "Probability OTM"
+author: "ATHENA-X"

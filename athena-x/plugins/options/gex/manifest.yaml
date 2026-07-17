@@ -1,0 +1,11 @@
+id: gex
+name: "Gamma Exposure"
+version: "1.0.0"
+category: dealer
+refresh_interval_seconds: 10
+inputs: ['chain', 'greeks']
+outputs: ['gex']
+dependencies: ['gamma']
+enabled: true
+description: "Total gamma exposure"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: iv
+name: "Implied Volatility"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 1
+inputs: ['chain']
+outputs: ['iv_atm']
+dependencies: []
+enabled: true
+description: "ATM implied volatility"
+author: "ATHENA-X"

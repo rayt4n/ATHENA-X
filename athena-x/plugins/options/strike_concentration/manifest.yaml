@@ -1,0 +1,11 @@
+id: strike_concentration
+name: "Strike Concentration"
+version: "1.0.0"
+category: open_interest
+refresh_interval_seconds: 10
+inputs: ['oi_by_strike']
+outputs: ['concentrations']
+dependencies: []
+enabled: true
+description: "OI concentration by strike"
+author: "ATHENA-X"

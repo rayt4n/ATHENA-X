@@ -1,0 +1,11 @@
+id: sweep_orders
+name: "Sweep Orders"
+version: "1.0.0"
+category: flow
+refresh_interval_seconds: 1
+inputs: ['option_flow']
+outputs: ['sweeps']
+dependencies: []
+enabled: true
+description: "Sweep order detection"
+author: "ATHENA-X"

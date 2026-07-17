@@ -1,0 +1,11 @@
+id: option_flow
+name: "Option Flow"
+version: "1.0.0"
+category: flow
+refresh_interval_seconds: 1
+inputs: ['option_flow']
+outputs: ['flow_summary']
+dependencies: []
+enabled: true
+description: "Real-time option flow"
+author: "ATHENA-X"

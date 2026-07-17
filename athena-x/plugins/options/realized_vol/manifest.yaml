@@ -1,0 +1,11 @@
+id: realized_vol
+name: "Realized Volatility"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 5
+inputs: ['OHLCV']
+outputs: ['rv_1d', 'rv_5d']
+dependencies: []
+enabled: true
+description: "Realized volatility"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: gamma_flip
+name: "Gamma Flip"
+version: "1.0.0"
+category: dealer
+refresh_interval_seconds: 10
+inputs: ['chain', 'greeks']
+outputs: ['gamma_flip_level']
+dependencies: ['gex']
+enabled: true
+description: "Gamma flip price level"
+author: "ATHENA-X"

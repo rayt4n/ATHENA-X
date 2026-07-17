@@ -1,0 +1,11 @@
+id: iv_crush_probability
+name: "IV Crush Probability"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 10
+inputs: ['chain', 'iv_history']
+outputs: ['crush_probability']
+dependencies: []
+enabled: true
+description: "Probability of IV crush"
+author: "ATHENA-X"

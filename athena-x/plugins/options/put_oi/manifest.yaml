@@ -1,0 +1,11 @@
+id: put_oi
+name: "Put Open Interest"
+version: "1.0.0"
+category: open_interest
+refresh_interval_seconds: 5
+inputs: ['oi_by_strike']
+outputs: ['put_oi_total']
+dependencies: []
+enabled: true
+description: "Total put OI"
+author: "ATHENA-X"

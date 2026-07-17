@@ -1,0 +1,11 @@
+id: gamma_acceleration
+name: "Gamma Acceleration"
+version: "1.0.0"
+category: 0dte
+refresh_interval_seconds: 5
+inputs: ['chain', 'greeks']
+outputs: ['gamma_accel']
+dependencies: ['gamma']
+enabled: true
+description: "Gamma acceleration near expiry"
+author: "ATHENA-X"

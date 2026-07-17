@@ -1,0 +1,11 @@
+id: vanna
+name: "Vanna"
+version: "1.0.0"
+category: greeks
+refresh_interval_seconds: 5
+inputs: ['chain']
+outputs: ['vanna_per_strike']
+dependencies: []
+enabled: true
+description: "Vanna"
+author: "ATHENA-X"

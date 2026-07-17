@@ -1,0 +1,11 @@
+id: dealer_hedging_pressure
+name: "Dealer Hedging Pressure"
+version: "1.0.0"
+category: dealer
+refresh_interval_seconds: 5
+inputs: ['chain', 'greeks']
+outputs: ['hedging_pressure']
+dependencies: ['gex']
+enabled: true
+description: "Dealer hedging direction"
+author: "ATHENA-X"

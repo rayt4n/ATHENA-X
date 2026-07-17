@@ -1,0 +1,11 @@
+id: color
+name: "Color"
+version: "1.0.0"
+category: greeks
+refresh_interval_seconds: 10
+inputs: ['chain']
+outputs: ['color_per_strike']
+dependencies: []
+enabled: true
+description: "Color (gamma decay)"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: gamma
+name: "Gamma"
+version: "1.0.0"
+category: greeks
+refresh_interval_seconds: 1
+inputs: ['chain']
+outputs: ['gamma_per_strike']
+dependencies: []
+enabled: true
+description: "Option gamma"
+author: "ATHENA-X"

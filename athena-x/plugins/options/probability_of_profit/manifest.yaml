@@ -1,0 +1,11 @@
+id: probability_of_profit
+name: "Probability of Profit"
+version: "1.0.0"
+category: probability
+refresh_interval_seconds: 60
+inputs: ['chain']
+outputs: ['pop']
+dependencies: []
+enabled: true
+description: "Probability of profit"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: dealer_gamma
+name: "Dealer Gamma"
+version: "1.0.0"
+category: dealer
+refresh_interval_seconds: 5
+inputs: ['chain', 'greeks']
+outputs: ['dealer_gamma']
+dependencies: ['gamma']
+enabled: true
+description: "Dealer net gamma"
+author: "ATHENA-X"

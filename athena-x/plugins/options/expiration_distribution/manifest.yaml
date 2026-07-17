@@ -1,0 +1,11 @@
+id: expiration_distribution
+name: "Expiration Distribution"
+version: "1.0.0"
+category: probability
+refresh_interval_seconds: 60
+inputs: ['chain']
+outputs: ['price_distribution']
+dependencies: []
+enabled: true
+description: "Expiration price distribution"
+author: "ATHENA-X"

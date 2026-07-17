@@ -1,0 +1,11 @@
+id: oi_buildup
+name: "OI Build-up"
+version: "1.0.0"
+category: open_interest
+refresh_interval_seconds: 10
+inputs: ['oi_by_strike']
+outputs: ['buildup_strikes']
+dependencies: []
+enabled: true
+description: "OI build-up detection"
+author: "ATHENA-X"

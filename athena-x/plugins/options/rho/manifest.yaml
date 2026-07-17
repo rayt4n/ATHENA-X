@@ -1,0 +1,11 @@
+id: rho
+name: "Rho"
+version: "1.0.0"
+category: greeks
+refresh_interval_seconds: 5
+inputs: ['chain']
+outputs: ['rho_per_strike']
+dependencies: []
+enabled: true
+description: "Option rho"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: smart_money_detection
+name: "Smart Money Detection"
+version: "1.0.0"
+category: flow
+refresh_interval_seconds: 5
+inputs: ['option_flow']
+outputs: ['smart_money_signals']
+dependencies: []
+enabled: true
+description: "Smart money footprint"
+author: "ATHENA-X"

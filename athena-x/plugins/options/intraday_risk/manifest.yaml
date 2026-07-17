@@ -1,0 +1,11 @@
+id: intraday_risk
+name: "0DTE Intraday Risk"
+version: "1.0.0"
+category: 0dte
+refresh_interval_seconds: 5
+inputs: ['chain', 'greeks']
+outputs: ['intraday_risk']
+dependencies: ['gex', 'gamma_flip']
+enabled: true
+description: "0DTE intraday risk assessment"
+author: "ATHENA-X"

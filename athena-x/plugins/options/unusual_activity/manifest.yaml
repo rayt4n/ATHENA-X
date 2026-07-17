@@ -1,0 +1,11 @@
+id: unusual_activity
+name: "Unusual Activity"
+version: "1.0.0"
+category: flow
+refresh_interval_seconds: 1
+inputs: ['option_flow', 'oi_by_strike']
+outputs: ['unusual_signals']
+dependencies: []
+enabled: true
+description: "Unusual options activity"
+author: "ATHENA-X"

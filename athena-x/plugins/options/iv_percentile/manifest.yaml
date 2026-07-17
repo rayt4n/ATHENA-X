@@ -1,0 +1,11 @@
+id: iv_percentile
+name: "IV Percentile"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 60
+inputs: ['chain', 'iv_history']
+outputs: ['iv_percentile']
+dependencies: []
+enabled: true
+description: "IV percentile"
+author: "ATHENA-X"

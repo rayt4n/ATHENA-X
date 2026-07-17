@@ -1,0 +1,11 @@
+id: vol_smile
+name: "Volatility Smile"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 10
+inputs: ['chain']
+outputs: ['smile_skew']
+dependencies: []
+enabled: true
+description: "IV smile analysis"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: speed
+name: "Speed"
+version: "1.0.0"
+category: greeks
+refresh_interval_seconds: 10
+inputs: ['chain']
+outputs: ['speed_per_strike']
+dependencies: []
+enabled: true
+description: "Speed (3rd order)"
+author: "ATHENA-X"

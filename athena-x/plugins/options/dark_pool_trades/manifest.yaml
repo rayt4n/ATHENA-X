@@ -1,0 +1,11 @@
+id: dark_pool_trades
+name: "Dark Pool Trades"
+version: "1.0.0"
+category: dark_pool
+refresh_interval_seconds: 1
+inputs: ['dark_pool_prints']
+outputs: ['dp_trades']
+dependencies: []
+enabled: true
+description: "Dark pool trade prints"
+author: "ATHENA-X"

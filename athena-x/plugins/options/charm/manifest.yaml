@@ -1,0 +1,11 @@
+id: charm
+name: "Charm"
+version: "1.0.0"
+category: greeks
+refresh_interval_seconds: 5
+inputs: ['chain']
+outputs: ['charm_per_strike']
+dependencies: []
+enabled: true
+description: "Delta decay (charm)"
+author: "ATHENA-X"

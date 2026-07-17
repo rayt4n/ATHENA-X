@@ -1,0 +1,11 @@
+id: historical_vol
+name: "Historical Volatility"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 60
+inputs: ['OHLCV']
+outputs: ['hv_20', 'hv_50']
+dependencies: []
+enabled: true
+description: "Historical volatility"
+author: "ATHENA-X"

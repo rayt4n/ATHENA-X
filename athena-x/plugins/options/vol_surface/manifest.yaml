@@ -1,0 +1,11 @@
+id: vol_surface
+name: "Volatility Surface"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 10
+inputs: ['chain']
+outputs: ['surface']
+dependencies: []
+enabled: true
+description: "3D IV surface"
+author: "ATHENA-X"

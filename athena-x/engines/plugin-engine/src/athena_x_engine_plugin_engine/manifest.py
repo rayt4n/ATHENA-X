@@ -10,6 +10,8 @@ import yaml
 
 
 class PluginCategory(str, Enum):
+    """Plugin categories — covers both TA indicators and options metrics."""
+    # TA indicator categories
     TREND = "trend"
     MOMENTUM = "momentum"
     VOLUME = "volume"
@@ -18,6 +20,14 @@ class PluginCategory(str, Enum):
     PATTERN = "pattern"
     LIQUIDITY = "liquidity"
     PROJECTION = "projection"
+    # Options metric categories (Stage 8)
+    GREEKS = "greeks"
+    DEALER = "dealer"
+    FLOW = "flow"
+    OPEN_INTEREST = "open_interest"
+    ZERO_DTE = "0dte"
+    DARK_POOL = "dark_pool"
+    PROBABILITY = "probability"
 
 
 class PluginLayer(str, Enum):

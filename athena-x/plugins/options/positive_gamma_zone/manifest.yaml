@@ -1,0 +1,11 @@
+id: positive_gamma_zone
+name: "Positive Gamma Zone"
+version: "1.0.0"
+category: dealer
+refresh_interval_seconds: 10
+inputs: ['chain', 'greeks']
+outputs: ['positive_zone']
+dependencies: ['gex']
+enabled: true
+description: "Positive gamma price zone"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: theta
+name: "Theta"
+version: "1.0.0"
+category: greeks
+refresh_interval_seconds: 1
+inputs: ['chain']
+outputs: ['theta_per_strike']
+dependencies: []
+enabled: true
+description: "Option theta"
+author: "ATHENA-X"

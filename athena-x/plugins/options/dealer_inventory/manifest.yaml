@@ -1,0 +1,11 @@
+id: dealer_inventory
+name: "Dealer Inventory"
+version: "1.0.0"
+category: dealer
+refresh_interval_seconds: 10
+inputs: ['chain']
+outputs: ['inventory']
+dependencies: []
+enabled: true
+description: "Dealer inventory estimate"
+author: "ATHENA-X"

@@ -1,0 +1,11 @@
+id: term_structure
+name: "Term Structure"
+version: "1.0.0"
+category: volatility
+refresh_interval_seconds: 60
+inputs: ['chain']
+outputs: ['term_structure']
+dependencies: []
+enabled: true
+description: "IV term structure"
+author: "ATHENA-X"

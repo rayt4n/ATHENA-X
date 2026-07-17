@@ -1,0 +1,11 @@
+id: probability_itm
+name: "Probability ITM"
+version: "1.0.0"
+category: probability
+refresh_interval_seconds: 60
+inputs: ['chain']
+outputs: ['pitm_per_strike']
+dependencies: []
+enabled: true
+description: "Probability ITM"
+author: "ATHENA-X"

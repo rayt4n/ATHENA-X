@@ -1,0 +1,11 @@
+id: dealer_delta
+name: "Dealer Delta"
+version: "1.0.0"
+category: dealer
+refresh_interval_seconds: 5
+inputs: ['chain', 'greeks']
+outputs: ['dealer_delta']
+dependencies: ['delta']
+enabled: true
+description: "Dealer net delta"
+author: "ATHENA-X"

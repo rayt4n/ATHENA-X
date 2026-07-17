@@ -1,0 +1,11 @@
+id: whale_activity
+name: "Whale Activity"
+version: "1.0.0"
+category: flow
+refresh_interval_seconds: 5
+inputs: ['option_flow']
+outputs: ['whale_trades']
+dependencies: []
+enabled: true
+description: "Whale trade detection"
+author: "ATHENA-X"
