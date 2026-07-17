@@ -4,8 +4,8 @@ import { Activity, Layers, ArrowRightLeft } from "lucide-react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
 import { StatusDot } from "../status-dot";
-import { fmtMs, fmtAge, fmtCompact } from "@/lib/dashboard/format";
-import type { ProviderStatus } from "@/lib/dashboard/types";
+import { fmtMs, fmtAge, fmtCompact } from "@/modules/engineering-console/lib/format";
+import type { ProviderStatus } from "@/modules/engineering-console/lib/types";
 
 const CATEGORY_LABELS: Record<ProviderStatus["category"], string> = {
   market_data: "Market Data",

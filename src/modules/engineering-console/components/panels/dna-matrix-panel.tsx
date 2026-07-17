@@ -6,9 +6,9 @@ import { useState } from "react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
 import { StatusDot } from "../status-dot";
-import { fmtAge, fmtNum, fmtPct, fmtTime } from "@/lib/dashboard/format";
-import { DNA_COLORS } from "@/lib/dashboard/colors";
-import type { DNABlock } from "@/lib/dashboard/types";
+import { fmtAge, fmtNum, fmtPct, fmtTime } from "@/modules/engineering-console/lib/format";
+import { DNA_COLORS } from "@/modules/engineering-console/lib/colors";
+import type { DNABlock } from "@/modules/engineering-console/lib/types";
 
 const DNA_ACCENT: Record<DNABlock["id"], string> = {
   technical: DNA_COLORS.technical,

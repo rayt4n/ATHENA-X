@@ -4,9 +4,9 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, Tooltip, ReferenceL
 import { Gauge, TrendingUp, Target } from "lucide-react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
-import { fmtTime, fmtNum, fmtPct } from "@/lib/dashboard/format";
-import { STATUS_COLORS } from "@/lib/dashboard/colors";
-import type { DashboardTelemetry } from "@/lib/dashboard/types";
+import { fmtTime, fmtNum, fmtPct } from "@/modules/engineering-console/lib/format";
+import { STATUS_COLORS } from "@/modules/engineering-console/lib/colors";
+import type { DashboardTelemetry } from "@/modules/engineering-console/lib/types";
 
 export function ForecastPanel({ t }: { t: DashboardTelemetry }) {
   const { summary, recent } = t.forecast;

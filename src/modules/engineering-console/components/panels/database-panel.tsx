@@ -4,8 +4,8 @@ import { Database, Lock } from "lucide-react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
 import { StatusDot } from "../status-dot";
-import { fmtMs, fmtCompact } from "@/lib/dashboard/format";
-import type { DatabaseSchemaMetrics } from "@/lib/dashboard/types";
+import { fmtMs, fmtCompact } from "@/modules/engineering-console/lib/format";
+import type { DatabaseSchemaMetrics } from "@/modules/engineering-console/lib/types";
 
 export function DatabasePanel({ schemas }: { schemas: DatabaseSchemaMetrics[] }) {
   const maxP95 = Math.max(...schemas.map((s) => s.writeP95));

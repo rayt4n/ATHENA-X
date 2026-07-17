@@ -4,8 +4,8 @@ import { Layers, CheckCircle2, AlertTriangle } from "lucide-react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
 import { StatusDot } from "../status-dot";
-import { fmtAge } from "@/lib/dashboard/format";
-import type { OptionsAccuracyCheck } from "@/lib/dashboard/types";
+import { fmtAge } from "@/modules/engineering-console/lib/format";
+import type { OptionsAccuracyCheck } from "@/modules/engineering-console/lib/types";
 
 const CHECK_LABELS: Record<OptionsAccuracyCheck["check"], string> = {
   iv_surface_smoothness: "IV Surface Smoothness",

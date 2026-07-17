@@ -3,8 +3,8 @@
 import { ShieldCheck, ArrowUpRight, ArrowDownRight, Minus } from "lucide-react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
-import { fmtTime, fmtPrice, fmtPct } from "@/lib/dashboard/format";
-import type { TradeDNADecision } from "@/lib/dashboard/types";
+import { fmtTime, fmtPrice, fmtPct } from "@/modules/engineering-console/lib/format";
+import type { TradeDNADecision } from "@/modules/engineering-console/lib/types";
 
 const STATUS_COLORS: Record<TradeDNADecision["status"], string> = {
   evaluating: "#22d3ee",

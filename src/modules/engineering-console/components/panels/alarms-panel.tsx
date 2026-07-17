@@ -3,8 +3,8 @@
 import { Bell, CheckCircle2, AlertTriangle, AlertOctagon } from "lucide-react";
 import { Panel } from "../panel";
 import { StatusDot } from "../status-dot";
-import { fmtAge } from "@/lib/dashboard/format";
-import type { Alarm } from "@/lib/dashboard/types";
+import { fmtAge } from "@/modules/engineering-console/lib/format";
+import type { Alarm } from "@/modules/engineering-console/lib/types";
 
 const SEVERITY_ICON: Record<Alarm["severity"], React.ReactNode> = {
   critical: <AlertOctagon className="h-3.5 w-3.5" style={{ color: "#f87171" }} />,

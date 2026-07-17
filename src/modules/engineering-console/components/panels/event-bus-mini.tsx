@@ -1,9 +1,9 @@
 "use client";
 
 import { ResponsiveContainer, LineChart, Line, YAxis, Tooltip, ReferenceLine } from "recharts";
-import { fmtMs, fmtCompact } from "@/lib/dashboard/format";
-import { STATUS_COLORS, DNA_COLORS } from "@/lib/dashboard/colors";
-import type { EventBusMetrics, DNABlock } from "@/lib/dashboard/types";
+import { fmtMs, fmtCompact } from "@/modules/engineering-console/lib/format";
+import { STATUS_COLORS, DNA_COLORS } from "@/modules/engineering-console/lib/colors";
+import type { EventBusMetrics, DNABlock } from "@/modules/engineering-console/lib/types";
 
 export function EventBusMiniChart({ eventBus }: { eventBus: EventBusMetrics }) {
   return (

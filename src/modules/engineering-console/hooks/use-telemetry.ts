@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { advanceTelemetry, getTelemetry, resetTelemetry } from "@/lib/dashboard/mock-engine";
-import type { DashboardTelemetry } from "@/lib/dashboard/types";
+import { advanceTelemetry, getTelemetry, resetTelemetry } from "@/modules/engineering-console/lib/mock-engine";
+import type { DashboardTelemetry } from "@/modules/engineering-console/lib/types";
 
 /**
  * Subscribes a component to the live telemetry stream.

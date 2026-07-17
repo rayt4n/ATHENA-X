@@ -4,8 +4,8 @@ import { Activity, Radio, Cpu, Database, Layers, ShieldCheck, Beaker, Bell, Gaug
 import { Panel, PanelGrid } from "../panel";
 import { Stat, StatRow } from "../stat";
 import { StatusDot } from "../status-dot";
-import { fmtMs, fmtAge, fmtPct, fmtCompact, fmtNum } from "@/lib/dashboard/format";
-import type { DashboardTelemetry } from "@/lib/dashboard/types";
+import { fmtMs, fmtAge, fmtPct, fmtCompact, fmtNum } from "@/modules/engineering-console/lib/format";
+import type { DashboardTelemetry } from "@/modules/engineering-console/lib/types";
 import { DNAMiniSparklines, EventBusMiniChart } from "./event-bus-mini";
 
 interface Props {

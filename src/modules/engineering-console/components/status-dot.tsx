@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { healthColor } from "@/lib/dashboard/format";
+import { healthColor } from "@/modules/engineering-console/lib/format";
 
 interface StatusDotProps {
   state: string;

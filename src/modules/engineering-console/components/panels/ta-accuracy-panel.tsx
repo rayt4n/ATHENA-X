@@ -4,8 +4,8 @@ import { Layers, CheckCircle2, AlertTriangle } from "lucide-react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
 import { StatusDot } from "../status-dot";
-import { fmtAge, fmtPct } from "@/lib/dashboard/format";
-import type { TechnicalIndicatorCheck } from "@/lib/dashboard/types";
+import { fmtAge, fmtPct } from "@/modules/engineering-console/lib/format";
+import type { TechnicalIndicatorCheck } from "@/modules/engineering-console/lib/types";
 
 export function TAAccuracyPanel({ checks }: { checks: TechnicalIndicatorCheck[] }) {
   const healthy = checks.filter((c) => c.state === "healthy").length;

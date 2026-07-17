@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { Activity, Radio, Cpu, Database, Layers, Gauge, ShieldCheck, Beaker, Bell, RotateCcw } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StatusDot } from "./status-dot";
-import { fmtClock, fmtAge } from "@/lib/dashboard/format";
-import type { SystemSummary } from "@/lib/dashboard/types";
+import { fmtClock, fmtAge } from "@/modules/engineering-console/lib/format";
+import type { SystemSummary } from "@/modules/engineering-console/lib/types";
 
 interface ShellProps {
   system: SystemSummary;
@@ -69,7 +69,7 @@ export function DashboardShell({ system, onReset, activeSection, onSectionChange
     `${(uptimeSec / 86400).toFixed(1)}d`;
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-background text-foreground cockpit-grid">
+    <div className="flex h-[calc(100vh-29px)] w-full overflow-hidden bg-background text-foreground cockpit-grid">
       {/* Nav rail */}
       <aside className="hidden md:flex w-[220px] shrink-0 flex-col border-r border-border/60 bg-sidebar/40 backdrop-blur-md">
         <div className="flex items-center gap-2 px-4 py-4 border-b border-border/60">

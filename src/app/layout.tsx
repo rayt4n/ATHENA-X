@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ATHENA-X · Validation Cockpit",
-  description: "Internal engineering cockpit for validating the ATHENA-X quantitative intelligence platform before user-facing dashboards.",
-  keywords: ["ATHENA-X", "validation", "quantitative", "trading", "intelligence", "dashboard"],
+  title: "ATHENA-X · Trader Terminal",
+  description: "Institutional intelligence terminal for SPY / ES / SPX 0DTE trading.",
+  keywords: ["ATHENA-X", "trading", "0DTE", "SPY", "ES", "SPX", "intelligence", "dashboard"],
   authors: [{ name: "ATHENA-X Team" }],
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
       >

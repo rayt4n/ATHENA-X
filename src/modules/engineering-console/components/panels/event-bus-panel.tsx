@@ -4,9 +4,9 @@ import { ResponsiveContainer, AreaChart, Area, LineChart, Line, XAxis, YAxis, To
 import { Activity, Zap, Database as DbIcon, Layers } from "lucide-react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
-import { fmtMs, fmtCompact, fmtTime } from "@/lib/dashboard/format";
-import { STATUS_COLORS } from "@/lib/dashboard/colors";
-import type { EventBusMetrics } from "@/lib/dashboard/types";
+import { fmtMs, fmtCompact, fmtTime } from "@/modules/engineering-console/lib/format";
+import { STATUS_COLORS } from "@/modules/engineering-console/lib/colors";
+import type { EventBusMetrics } from "@/modules/engineering-console/lib/types";
 
 export function EventBusPanel({ eventBus }: { eventBus: EventBusMetrics }) {
   const backlogPct = eventBus.backlog / eventBus.backlogLimit;

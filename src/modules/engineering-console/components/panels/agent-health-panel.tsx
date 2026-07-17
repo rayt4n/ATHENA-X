@@ -5,8 +5,8 @@ import { useMemo, useState } from "react";
 import { Panel, PanelGrid } from "../panel";
 import { Stat } from "../stat";
 import { StatusDot } from "../status-dot";
-import { fmtAge, fmtCompact } from "@/lib/dashboard/format";
-import type { AgentState } from "@/lib/dashboard/types";
+import { fmtAge, fmtCompact } from "@/modules/engineering-console/lib/format";
+import type { AgentState } from "@/modules/engineering-console/lib/types";
 
 const CATEGORY_LABELS: Record<AgentState["category"], string> = {
   validation: "Validation",

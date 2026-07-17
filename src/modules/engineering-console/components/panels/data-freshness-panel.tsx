@@ -3,8 +3,8 @@
 import { Radio, AlertTriangle } from "lucide-react";
 import { Panel } from "../panel";
 import { StatusDot } from "../status-dot";
-import { fmtAge } from "@/lib/dashboard/format";
-import type { DataFreshnessEntry } from "@/lib/dashboard/types";
+import { fmtAge } from "@/modules/engineering-console/lib/format";
+import type { DataFreshnessEntry } from "@/modules/engineering-console/lib/types";
 
 export function DataFreshnessPanel({ entries }: { entries: DataFreshnessEntry[] }) {
   const stale = entries.filter((e) => e.state !== "healthy");
