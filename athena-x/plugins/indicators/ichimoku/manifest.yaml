@@ -1,0 +1,13 @@
+id: ichimoku
+name: "Ichimoku"
+version: "1.0.0"
+category: trend
+layer: "2"
+timeframes: ['1W', '1D', '4H', '1H']
+inputs: ['OHLCV']
+outputs: ['tenkan', 'kijun', 'senkou_a', 'senkou_b', 'chikou']
+dependencies: []
+refresh_interval_seconds: 15
+enabled: true
+description: "Ichimoku Cloud"
+author: "ATHENA-X"

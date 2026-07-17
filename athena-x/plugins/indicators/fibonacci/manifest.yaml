@@ -1,0 +1,13 @@
+id: fibonacci
+name: "Fibonacci"
+version: "1.0.0"
+category: projection
+layer: "2"
+timeframes: ['1W', '1D', '4H', '1H']
+inputs: ['OHLCV']
+outputs: ['levels']
+dependencies: []
+refresh_interval_seconds: 30
+enabled: true
+description: "Fibonacci Retracement Levels"
+author: "ATHENA-X"
