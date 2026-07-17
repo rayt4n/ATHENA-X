@@ -224,7 +224,7 @@ class TradeDNA:
         return {
             "timestamp": self.timestamp.isoformat(),
             "symbol": self.symbol,
-            "trade_status": self.trade_status.value,
+            "trade_status": self.trade_status.value if hasattr(self.trade_status, 'value') else str(self.trade_status),
             "trade_type": self.trade_type,
             "entry_quality": self.entry_quality.score,
             "alignment_score": round(self.alignment_score, 4),
