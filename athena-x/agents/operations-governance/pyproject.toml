@@ -1,0 +1,21 @@
+[project]
+name = "athena-x-agent-operations-governance"
+version = "0.1.0"
+description = "Operations DNA Agent + System Readiness Score (Stage 13)"
+requires-python = ">=3.11"
+dependencies = [
+    "athena-x-engine-governance-engine",
+    "athena-x-runtime-event-envelope",
+    "athena-x-runtime-logger",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/athena_x_agent_operations_governance"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
