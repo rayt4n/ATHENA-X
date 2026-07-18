@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Activity, Radio, Cpu, Database, Layers, Gauge, ShieldCheck, Beaker, Bell, RotateCcw, Award, FileText, Wrench } from "lucide-react";
+import { Activity, Radio, Cpu, Database, Layers, Gauge, ShieldCheck, Beaker, Bell, RotateCcw, Award, FileText, Wrench, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StatusDot } from "./status-dot";
 import { fmtClock, fmtAge } from "@/modules/engineering-console/lib/format";
@@ -71,6 +71,13 @@ const NAV_GROUPS: { id: string; label: string; items: { id: string; label: strin
     label: "Stage 15.5",
     items: [
       { id: "ops", label: "Platform Hardening", icon: <Wrench className="h-3.5 w-3.5" /> },
+    ],
+  },
+  {
+    id: "stage156",
+    label: "Stage 15.6",
+    items: [
+      { id: "perf-cert", label: "Performance Cert", icon: <Target className="h-3.5 w-3.5" /> },
     ],
   },
 ];

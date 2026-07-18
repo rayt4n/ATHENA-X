@@ -18,6 +18,7 @@ import { AlarmsPanel } from "@/modules/engineering-console/components/panels/ala
 import { CertificationRouterPanel } from "@/modules/engineering-console/components/panels/cert-router-panel";
 import { ReportEnginePanel } from "@/modules/engineering-console/components/panels/report-engine-panel";
 import { OpsRouterPanel } from "@/modules/engineering-console/components/panels/ops-router-panel";
+import { PerfRouterPanel } from "@/modules/engineering-console/components/panels/perf-router-panel";
 import { runFullCertification } from "@/modules/engineering-console/lib/certification-engine";
 
 /**
@@ -87,6 +88,7 @@ export default function EngineeringConsolePage() {
       )}
       {section === "report-engine" && <ReportEnginePanel />}
       {section === "ops" && <OpsRouterPanel />}
+      {section === "perf-cert" && <PerfRouterPanel />}
     </DashboardShell>
   );
 }
