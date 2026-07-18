@@ -11,9 +11,14 @@ import { OpsFailurePanel } from "./ops/ops-failure-panel";
 import { OpsConfigPanel } from "./ops/ops-config-panel";
 import { OpsPluginsPanel } from "./ops/ops-plugins-panel";
 import { OpsReadinessPanel } from "./ops/ops-readiness-panel";
+import { OpsStartupPanel } from "./ops/ops-startup-panel";
+import { OpsShutdownPanel } from "./ops/ops-shutdown-panel";
+import { OpsDependencyPanel } from "./ops/ops-dependency-panel";
+import { OpsMemoryPanel } from "./ops/ops-memory-panel";
+import { OpsRootCausePanel } from "./ops/ops-rootcause-panel";
 
 /**
- * Ops Router Panel — manages navigation between the 9 Stage 15.5
+ * Ops Router Panel — manages navigation between the 13 Stage 15.5
  * subsystem panels. The overview is the default view; clicking any
  * subsystem card drills into its detail panel.
  */
@@ -30,6 +35,11 @@ export function OpsRouterPanel() {
   if (drillTarget === "failure") return <OpsFailurePanel scenarios={ops.failureScenarios} onBack={back} />;
   if (drillTarget === "config") return <OpsConfigPanel configs={ops.configs} onBack={back} />;
   if (drillTarget === "plugins") return <OpsPluginsPanel plugins={ops.plugins} onBack={back} />;
+  if (drillTarget === "startup") return <OpsStartupPanel startup={ops.startup} onBack={back} />;
+  if (drillTarget === "shutdown") return <OpsShutdownPanel shutdown={ops.shutdown} onBack={back} />;
+  if (drillTarget === "dependencies") return <OpsDependencyPanel dependencies={ops.dependencies} onBack={back} />;
+  if (drillTarget === "memory") return <OpsMemoryPanel memory={ops.memory} onBack={back} />;
+  if (drillTarget === "rootcause") return <OpsRootCausePanel rootCause={ops.rootCause} onBack={back} />;
   if (drillTarget === "readiness") return <OpsReadinessPanel readiness={ops.readiness} onBack={back} />;
 
   return <OpsOverviewPanel ops={ops} onReset={reset} onDrill={setDrillTarget} />;

@@ -225,6 +225,185 @@ export interface OperationalReadinessReport {
   mttrMinutes: number;
 }
 
+// ---------- 10. Startup Diagnostics ----------
+export interface StartupPhase {
+  id: string;
+  name: string;
+  /** Order in the boot sequence */
+  order: number;
+  startedAt: number;
+  completedAt: number;
+  durationMs: number;
+  status: "pass" | "warn" | "fail" | "skipped";
+  dependencies: string[];
+  checks: { id: string; label: string; passed: boolean; detail?: string }[];
+}
+
+export interface StartupDiagnostics {
+  bootId: string;
+  bootStartedAt: number;
+  bootCompletedAt: number;
+  totalDurationMs: number;
+  phases: StartupPhase[];
+  /** Whether the system is currently booting, running, or shutting down */
+  state: "booting" | "running" | "shutting_down" | "stopped";
+  /** Services that reported ready */
+  servicesReady: number;
+  servicesTotal: number;
+  /** Configuration loaded successfully */
+  configLoaded: boolean;
+  /** Database migrations applied */
+  migrationsApplied: number;
+  /** Plugins loaded */
+  pluginsLoaded: number;
+}
+
+// ---------- 11. Graceful Shutdown ----------
+export interface ShutdownPhase {
+  id: string;
+  name: string;
+  order: number;
+  startedAt: number;
+  completedAt: number;
+  durationMs: number;
+  status: "pass" | "warn" | "fail" | "skipped";
+  /** Items drained/closed/flushed */
+  itemsProcessed: number;
+  detail: string;
+}
+
+export interface GracefulShutdown {
+  /** Last shutdown event (most recent) */
+  lastShutdownAt: number;
+  lastShutdownDurationMs: number;
+  lastShutdownStatus: "clean" | "forced" | "timeout";
+  phases: ShutdownPhase[];
+  /** Drain timeout configured (ms) */
+  drainTimeoutMs: number;
+  /** Whether shutdown hooks are registered */
+  hooksRegistered: boolean;
+  /** In-flight events at shutdown */
+  eventsDrained: number;
+  /** WebSocket connections closed gracefully */
+  wsConnectionsClosed: number;
+  /** Database connections closed */
+  dbConnectionsClosed: number;
+}
+
+// ---------- 12. Dependency Impact ----------
+export interface DependencyNode {
+  id: string;
+  name: string;
+  type: "service" | "database" | "queue" | "provider" | "agent" | "external";
+  status: "healthy" | "degraded" | "down";
+  /** Number of services that depend on this node */
+  dependents: number;
+  /** If this node fails, how many services are impacted */
+  blastRadius: number;
+  /** Whether a failover path exists */
+  hasFailover: boolean;
+  /** Average latency contribution (ms) */
+  latencyMs: number;
+}
+
+export interface DependencyEdge {
+  from: string;
+  to: string;
+  /** Whether this is a hard (blocking) or soft (optional) dependency */
+  strength: "hard" | "soft";
+}
+
+export interface DependencyImpact {
+  nodes: DependencyNode[];
+  edges: DependencyEdge[];
+  /** Critical path through the dependency graph */
+  criticalPath: string[];
+  /** Single points of failure (no failover) */
+  singlePointsOfFailure: string[];
+  /** Maximum blast radius if any single node fails */
+  maxBlastRadius: number;
+  /** Overall dependency health score 0..1 */
+  healthScore: number;
+}
+
+// ---------- 13. Memory Leak Monitoring ----------
+export interface MemorySnapshot {
+  agentId: string;
+  agentName: string;
+  heapUsedMb: number;
+  heapTotalMb: number;
+  /** Heap growth rate (MB/hour) — negative = shrinking, positive = growing */
+  growthRateMbPerHour: number;
+  /** GC pressure (collections per minute) */
+  gcPressure: number;
+  /** Whether a leak is suspected */
+  leakSuspected: boolean;
+  /** Trend over the last hour */
+  trend: "stable" | "growing" | "shrinking";
+  /** Time since last major GC */
+  lastGcMs: number;
+}
+
+export interface MemoryLeakMonitoring {
+  snapshots: MemorySnapshot[];
+  /** Total heap usage across all agents */
+  totalHeapMb: number;
+  /** Heap limit (MB) */
+  heapLimitMb: number;
+  /** Agents with suspected leaks */
+  leakSuspectCount: number;
+  /** Average GC pressure across all agents */
+  avgGcPressure: number;
+  /** Heap usage % of limit */
+  heapUtilization: number;
+  /** Whether auto-restart on leak is enabled */
+  autoRestartEnabled: boolean;
+}
+
+// ---------- 14. Automatic Root-Cause Analysis ----------
+export interface Incident {
+  id: string;
+  title: string;
+  severity: "low" | "medium" | "high" | "critical";
+  startedAt: number;
+  detectedAt: number;
+  resolvedAt?: number;
+  durationMs?: number;
+  status: "investigating" | "identified" | "resolved" | "false_positive";
+  /** AI-identified root cause */
+  rootCause: string;
+  /** Confidence in the root cause (0..1) */
+  confidence: number;
+  /** Causal chain — ordered list of events that led to the incident */
+  causalChain: { time: number; event: string; service: string }[];
+  /** Services impacted */
+  impactedServices: string[];
+  /** Related alerts/logs */
+  relatedAlerts: string[];
+  /** Recommended remediation */
+  remediation: string[];
+  /** Whether auto-remediation was applied */
+  autoRemediated: boolean;
+}
+
+export interface RootCauseAnalysis {
+  incidents: Incident[];
+  /** Active incidents (not resolved) */
+  activeCount: number;
+  /** Incidents in the last 24h */
+  last24hCount: number;
+  /** Mean time to detect (seconds) */
+  mttdSeconds: number;
+  /** Mean time to identify root cause (seconds) */
+  mttiSeconds: number;
+  /** Mean time to resolve (minutes) */
+  mttrMinutes: number;
+  /** Auto-remediation success rate */
+  autoRemediationRate: number;
+  /** AI model confidence average */
+  avgConfidence: number;
+}
+
 // ---------- Top-level ops telemetry ----------
 export interface OpsTelemetry {
   timestamp: number;
@@ -236,5 +415,10 @@ export interface OpsTelemetry {
   failureScenarios: FailureScenario[];
   configs: ConfigFile[];
   plugins: PluginRecord[];
+  startup: StartupDiagnostics;
+  shutdown: GracefulShutdown;
+  dependencies: DependencyImpact;
+  memory: MemoryLeakMonitoring;
+  rootCause: RootCauseAnalysis;
   readiness: OperationalReadinessReport;
 }

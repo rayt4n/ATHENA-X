@@ -1,6 +1,6 @@
 "use client";
 
-import { Activity, Radio, Database, Beaker, ShieldCheck, Zap, FileText, Layers, Award, RotateCcw } from "lucide-react";
+import { Activity, Radio, Database, Beaker, ShieldCheck, Zap, FileText, Layers, Award, RotateCcw, Power, GitBranch, Cpu, Brain } from "lucide-react";
 import { Panel, PanelGrid } from "../../panel";
 import { Stat } from "../../stat";
 import { ScoreRing, StatusBadge } from "../../cert/cert-primitives";
@@ -22,6 +22,11 @@ const SUBSYSTEM_ICONS: Record<string, React.ReactNode> = {
   failure: <Zap className="h-3.5 w-3.5" />,
   config: <ShieldCheck className="h-3.5 w-3.5" />,
   plugins: <Beaker className="h-3.5 w-3.5" />,
+  startup: <Power className="h-3.5 w-3.5" />,
+  shutdown: <Power className="h-3.5 w-3.5" />,
+  dependencies: <GitBranch className="h-3.5 w-3.5" />,
+  memory: <Cpu className="h-3.5 w-3.5" />,
+  rootcause: <Brain className="h-3.5 w-3.5" />,
 };
 
 export function OpsOverviewPanel({ ops, onReset, onDrill }: Props) {
@@ -110,10 +115,16 @@ export function OpsOverviewPanel({ ops, onReset, onDrill }: Props) {
           <Stat label="Degraded" value={ops.healthChecks.filter((h) => h.status === "degraded").length} intent="warning" />
           <Stat label="Plugins Verified" value={ops.plugins.filter((p) => p.integrity === "verified").length} unit={`/ ${ops.plugins.length}`} intent="healthy" />
           <Stat label="Configs Valid" value={ops.configs.filter((c) => c.status === "valid").length} unit={`/ ${ops.configs.length}`} intent="healthy" />
+          <Stat label="Boot Phases" value={ops.startup.phases.filter((p) => p.status === "pass").length} unit={`/ ${ops.startup.phases.length}`} intent="healthy" />
+          <Stat label="Shutdown" value={ops.shutdown.lastShutdownStatus} intent={ops.shutdown.lastShutdownStatus === "clean" ? "healthy" : "warning"} />
+          <Stat label="Dependencies" value={ops.dependencies.nodes.filter((n) => n.status === "healthy").length} unit={`/ ${ops.dependencies.nodes.length}`} intent="healthy" />
+          <Stat label="Leak Suspects" value={ops.memory.leakSuspectCount} intent={ops.memory.leakSuspectCount === 0 ? "healthy" : "critical"} />
+          <Stat label="Active Incidents" value={ops.rootCause.activeCount} intent={ops.rootCause.activeCount === 0 ? "healthy" : "critical"} />
+          <Stat label="AI Confidence" value={`${(ops.rootCause.avgConfidence * 100).toFixed(0)}%`} intent="info" />
         </div>
       </Panel>
 
-      {/* 9 subsystem cards */}
+      {/* 13 subsystem cards */}
       <Panel
         title="Operational Subsystems"
         subtitle="Click any subsystem to drill into detailed checks"
