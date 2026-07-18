@@ -16,6 +16,7 @@ import { DatabasePanel } from "@/modules/engineering-console/components/panels/d
 import { DNAMatrixPanel } from "@/modules/engineering-console/components/panels/dna-matrix-panel";
 import { AlarmsPanel } from "@/modules/engineering-console/components/panels/alarms-panel";
 import { CertificationRouterPanel } from "@/modules/engineering-console/components/panels/cert-router-panel";
+import { ReportEnginePanel } from "@/modules/engineering-console/components/panels/report-engine-panel";
 import { runFullCertification } from "@/modules/engineering-console/lib/certification-engine";
 
 /**
@@ -83,6 +84,7 @@ export default function EngineeringConsolePage() {
           isGeneratingPdf={isGeneratingPdf}
         />
       )}
+      {section === "report-engine" && <ReportEnginePanel />}
     </DashboardShell>
   );
 }
