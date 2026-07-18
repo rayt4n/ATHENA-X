@@ -78,6 +78,7 @@ const NAV_GROUPS: { id: string; label: string; items: { id: string; label: strin
     label: "Stage 15.6",
     items: [
       { id: "perf-cert", label: "Performance Cert", icon: <Target className="h-3.5 w-3.5" /> },
+      { id: "production-review", label: "Production Review", icon: <Award className="h-3.5 w-3.5" /> },
     ],
   },
 ];

@@ -19,6 +19,7 @@ import { CertificationRouterPanel } from "@/modules/engineering-console/componen
 import { ReportEnginePanel } from "@/modules/engineering-console/components/panels/report-engine-panel";
 import { OpsRouterPanel } from "@/modules/engineering-console/components/panels/ops-router-panel";
 import { PerfRouterPanel } from "@/modules/engineering-console/components/panels/perf-router-panel";
+import { ProductionReviewPanel } from "@/modules/engineering-console/components/panels/production-review-panel";
 import { runFullCertification } from "@/modules/engineering-console/lib/certification-engine";
 
 /**
@@ -89,6 +90,7 @@ export default function EngineeringConsolePage() {
       {section === "report-engine" && <ReportEnginePanel />}
       {section === "ops" && <OpsRouterPanel />}
       {section === "perf-cert" && <PerfRouterPanel />}
+      {section === "production-review" && <ProductionReviewPanel />}
     </DashboardShell>
   );
 }
