@@ -1,17 +1,18 @@
 /**
- * System Load Validator — validates that ATHENA-X can run continuously
- * against Yahoo Finance without triggering rate limits or IP blocks.
+ * System Load Validator — institutional-grade validation framework.
  *
- * This is NOT testing the adapter. It's testing whether the request
- * pattern of the full monitoring system is sustainable.
- *
- * 3-Tier Certification:
- *   Functional:     Adapter + Normalizer + Indicators (already PASSED)
- *   Operational:    Dashboard + Monitoring + Scheduler + Cache + Request behavior
- *   Production:     24h burn-in, no throttling, no bans, stable latency
+ * 3-Tier Certification (institutional standard):
+ *   Tier 1 — Functional:     Adapter + Normalizer + Indicators
+ *   Tier 2 — Operational:    8-hour market session (success ≥ 98%, no corruption, latency < 500ms, candle continuity ≥ 99.9%)
+ *   Tier 3 — Production:     30-day observation (uptime ≥ 99.5%, failover verified, MTTR within target, stable memory)
  */
 
-import type { DataCategory, ProviderCertification } from "./types";
+import type { DataCategory } from "./types";
+import { shouldExpectData, getSessionStatus } from "./market-sessions";
+import { classifyFailure, createEmptyFailureCounts, getCertRelevantFailures, type FailureTypeCounts } from "./failure-classifier";
+import { checkDataIntegrity, checkCandleContinuity } from "./data-integrity";
+import { validateIndicators } from "./indicator-integrity";
+import { calculateHealthScore, createEmptyStabilityMetrics, type HealthScore, type StabilityMetrics } from "./health-scoring";
 
 // ---------- Load Test Configuration ----------
 export interface LoadTestConfig {
@@ -36,8 +37,8 @@ export interface LoadTestMetrics {
   totalSuccesses: number;
   totalFailures: number;
   successRate: number;          // 0..1
-  http429Count: number;         // rate limited
-  http403Count: number;         // forbidden / IP blocked
+  http429Count: number;
+  http403Count: number;
   http5xxCount: number;
   connectionResets: number;
   emptyPayloads: number;
@@ -55,6 +56,15 @@ export interface LoadTestMetrics {
   startedAt: number;
   elapsedMs: number;
   isRunning: boolean;
+  // New fields
+  failureTypeCounts: FailureTypeCounts;
+  certRelevantFailures: number;
+  expectedEmptyCount: number;
+  dataIntegrityResults: { symbol: string; valid: boolean; invalidBars: number; totalBars: number; errors: string[] }[];
+  candleContinuityResults: { symbol: string; continuityRate: number; missingCandles: number; unexpectedGaps: number }[];
+  indicatorIntegrityResults: { symbol: string; allValid: boolean; nanCount: number; infinityCount: number }[];
+  healthScore: HealthScore | null;
+  stabilityMetrics: StabilityMetrics;
 }
 
 // ---------- Certification Thresholds ----------
@@ -65,23 +75,32 @@ export const CERTIFICATION_THRESHOLDS = {
     indicatorsProduceValidValues: true,
   },
   operational: {
-    successRate: 0.95,           // ≥ 95%
-    http429Threshold: 5,         // ≤ 5 rate limits in test period
-    http403Threshold: 0,         // 0 IP blocks
-    emptyPayloadThreshold: 10,   // ≤ 10 empty payloads
-    avgLatencyTarget: 500,       // < 500ms average
-    cacheHitRateTarget: 0.30,    // ≥ 30% cache hits
-    duplicateThreshold: 5,       // ≤ 5 duplicate responses
+    // Tier 2: 8-hour market session
+    successRate: 0.98,            // ≥ 98%
+    http429Threshold: 3,          // ≤ 3 rate limits
+    http403Threshold: 0,          // 0 IP blocks
+    emptyPayloadThreshold: 5,     // ≤ 5 unexpected empty payloads
+    avgLatencyTarget: 500,        // < 500ms
+    cacheHitRateTarget: 0.20,     // ≥ 20% cache hits
+    candleContinuityTarget: 0.999,// ≥ 99.9% continuity
+    indicatorFailures: 0,         // 0 indicator failures
+    dataIntegrityFailures: 0,     // 0 data integrity failures
+    minDurationHours: 8,          // 8-hour session
   },
   production: {
-    successRate: 0.99,           // ≥ 99%
-    http429Threshold: 0,         // 0 rate limits
-    http403Threshold: 0,         // 0 IP blocks
-    sustainedIpBlocks: 0,        // 0 sustained blocks
-    memoryGrowthMb: 100,         // < 100MB memory growth
-    avgLatencyTarget: 300,       // < 300ms average
-    noDuplicateData: true,       // no duplicate or out-of-order data
-    minDurationHours: 24,        // must run 24 hours
+    // Tier 3: 30-day observation
+    successRate: 0.995,           // ≥ 99.5%
+    http429Threshold: 0,          // 0 rate limits
+    http403Threshold: 0,          // 0 IP blocks
+    sustainedIpBlocks: 0,
+    memoryGrowthMb: 100,          // < 100MB
+    avgLatencyTarget: 300,        // < 300ms
+    noDuplicateData: true,
+    minDurationHours: 720,        // 30 days
+    mtbfTarget: 168,              // MTBF > 1 week
+    mttrTarget: 5,                // MTTR < 5 minutes
+    failoverVerified: true,       // failover tested
+    candleContinuityTarget: 0.999,
   },
 } as const;
 
@@ -156,6 +175,15 @@ function createEmptyMetrics(): LoadTestMetrics {
     startedAt: 0,
     elapsedMs: 0,
     isRunning: false,
+    // New fields
+    failureTypeCounts: createEmptyFailureCounts(),
+    certRelevantFailures: 0,
+    expectedEmptyCount: 0,
+    dataIntegrityResults: [],
+    candleContinuityResults: [],
+    indicatorIntegrityResults: [],
+    healthScore: null,
+    stabilityMetrics: createEmptyStabilityMetrics(),
   };
 }
 
@@ -202,9 +230,12 @@ export function startLoadTest(config: LoadTestConfig): { started: boolean; messa
 // ---------- Execute Single Load Request ----------
 async function executeLoadRequest(symbol: string, category: DataCategory, providerId: string): Promise<void> {
   if (!loadTestState) return;
-
   const m = loadTestState.metrics;
   m.totalRequests++;
+
+  // Market session awareness — check if data is expected
+  const expectation = shouldExpectData(symbol, "1m");
+  const marketOpen = expectation.expected;
 
   const startTime = Date.now();
   try {
@@ -220,11 +251,12 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
 
     if (!res.ok) {
       m.totalFailures++;
-      const status = res.status.toString();
+      const classification = classifyFailure(res.status, null, false, marketOpen);
+      m.failureTypeCounts[classification.type]++;
       if (res.status === 429) m.http429Count++;
       if (res.status === 403) m.http403Count++;
       if (res.status >= 500) m.http5xxCount++;
-      m.errorHistory.push({ t: Date.now(), status, symbol, message: `HTTP ${res.status}` });
+      m.errorHistory.push({ t: Date.now(), status: res.status.toString(), symbol, message: classification.description });
       if (m.errorHistory.length > 200) m.errorHistory.shift();
       return;
     }
@@ -233,20 +265,60 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
 
     if (data.connected && data.validCount > 0) {
       m.totalSuccesses++;
+      m.failureTypeCounts.valid_response++;
       if (data.fromCache) m.cacheHits++;
+
+      // Data integrity check
+      const normalized = data.normalized || [];
+      if (normalized.length > 0) {
+        const integrity = checkDataIntegrity(normalized);
+        m.dataIntegrityResults.push({
+          symbol, valid: integrity.valid, invalidBars: integrity.invalidBars,
+          totalBars: integrity.totalBars, errors: integrity.errors.slice(0, 5),
+        });
+        if (m.dataIntegrityResults.length > 50) m.dataIntegrityResults.shift();
+
+        if (!integrity.valid) {
+          m.failureTypeCounts.invalid_ohlc++;
+        }
+
+        // Candle continuity
+        const continuity = checkCandleContinuity(normalized, 60000); // 1 min interval
+        m.candleContinuityResults.push({
+          symbol, continuityRate: continuity.continuityRate,
+          missingCandles: continuity.missingCandles, unexpectedGaps: continuity.unexpectedGaps,
+        });
+        if (m.candleContinuityResults.length > 50) m.candleContinuityResults.shift();
+
+        // Indicator integrity
+        const indicators = validateIndicators(normalized);
+        m.indicatorIntegrityResults.push({
+          symbol, allValid: indicators.allValid,
+          nanCount: indicators.nanCount, infinityCount: indicators.infinityCount,
+        });
+        if (m.indicatorIntegrityResults.length > 50) m.indicatorIntegrityResults.shift();
+      }
     } else {
-      m.totalFailures++;
-      m.emptyPayloads++;
-      m.errorHistory.push({ t: Date.now(), status: "empty", symbol, message: "Empty payload or no valid bars" });
+      // Empty payload — classify based on market session
+      const classification = classifyFailure(null, null, true, marketOpen);
+      m.failureTypeCounts[classification.type]++;
+      if (classification.countsAgainstCert) {
+        m.totalFailures++;
+        m.emptyPayloads++;
+      } else {
+        m.expectedEmptyCount++;
+        // Don't count expected empty as a failure
+      }
+      m.errorHistory.push({ t: Date.now(), status: "empty", symbol, message: classification.description });
       if (m.errorHistory.length > 200) m.errorHistory.shift();
     }
   } catch (err) {
     m.totalFailures++;
+    const errorMsg = err instanceof Error ? err.message : "Connection error";
+    const classification = classifyFailure(null, errorMsg, false, marketOpen);
+    m.failureTypeCounts[classification.type]++;
     m.connectionResets++;
-    m.errorHistory.push({
-      t: Date.now(), status: "error", symbol,
-      message: err instanceof Error ? err.message : "Connection error",
-    });
+    m.errorHistory.push({ t: Date.now(), status: "error", symbol, message: classification.description });
     if (m.errorHistory.length > 200) m.errorHistory.shift();
   }
 }
@@ -258,6 +330,9 @@ function updateDerivedMetrics(): void {
 
   m.successRate = m.totalRequests > 0 ? m.totalSuccesses / m.totalRequests : 0;
   m.cacheHitRate = m.totalRequests > 0 ? m.cacheHits / m.totalRequests : 0;
+
+  // Cert-relevant failures (excludes expected_empty)
+  m.certRelevantFailures = getCertRelevantFailures(m.failureTypeCounts);
 
   const latencies = m.latencyHistory.map((l) => l.ms);
   if (latencies.length > 0) {
@@ -271,6 +346,22 @@ function updateDerivedMetrics(): void {
   const elapsedMin = m.elapsedMs / 60_000;
   m.requestsPerMinute = elapsedMin > 0 ? m.totalRequests / elapsedMin : 0;
   m.requestsPerHour = m.requestsPerMinute * 60;
+
+  // Calculate health score
+  const symbolsSupported = m.dataIntegrityResults.length;
+  m.healthScore = calculateHealthScore({
+    successRate: m.successRate,
+    avgLatencyMs: m.avgLatencyMs,
+    totalBars: m.dataIntegrityResults.reduce((s, r) => s + r.totalBars, 0),
+    invalidBars: m.dataIntegrityResults.reduce((s, r) => s + r.invalidBars, 0),
+    totalRequests: m.totalRequests,
+    totalFailures: m.certRelevantFailures,
+    symbolsSupported,
+    symbolsRequested: loadTestState.config.symbols.length,
+  });
+
+  // Update stability metrics
+  m.stabilityMetrics.observationHours = m.elapsedMs / 3_600_000;
 }
 
 // ---------- Stop Load Test ----------
@@ -323,26 +414,38 @@ export function evaluateCertification(metrics: LoadTestMetrics | null, durationH
   let operationalThresholdsMet = false;
 
   if (metrics && metrics.totalRequests > 0) {
+    // Use cert-relevant success rate (excludes expected empty)
+    const certSuccessRate = metrics.totalRequests > 0
+      ? (metrics.totalRequests - metrics.certRelevantFailures) / metrics.totalRequests
+      : 0;
+    const indicatorFailures = metrics.indicatorIntegrityResults.filter(r => !r.allValid).length;
+    const integrityFailures = metrics.dataIntegrityResults.filter(r => !r.valid).length;
+    const avgContinuity = metrics.candleContinuityResults.length > 0
+      ? metrics.candleContinuityResults.reduce((s, r) => s + r.continuityRate, 0) / metrics.candleContinuityResults.length
+      : 1;
+
     const opChecks = {
-      successRate: metrics.successRate >= t.operational.successRate,
+      successRate: certSuccessRate >= t.operational.successRate,
       http429: metrics.http429Count <= t.operational.http429Threshold,
       http403: metrics.http403Count <= t.operational.http403Threshold,
       emptyPayloads: metrics.emptyPayloads <= t.operational.emptyPayloadThreshold,
       avgLatency: metrics.avgLatencyMs <= t.operational.avgLatencyTarget,
       cacheHitRate: metrics.cacheHitRate >= t.operational.cacheHitRateTarget,
-      duplicates: metrics.duplicateResponses <= t.operational.duplicateThreshold,
+      candleContinuity: avgContinuity >= t.operational.candleContinuityTarget,
+      indicatorFailures: indicatorFailures <= t.operational.indicatorFailures,
+      dataIntegrity: integrityFailures <= t.operational.dataIntegrityFailures,
     };
     operationalThresholdsMet = Object.values(opChecks).every(Boolean);
     operationalStatus = operationalThresholdsMet ? "pass" : "fail";
     const failed = Object.entries(opChecks).filter(([, v]) => !v).map(([k]) => k);
     operationalDetail = operationalThresholdsMet
-      ? "All operational thresholds met"
-      : `Failed thresholds: ${failed.join(", ")}`;
+      ? "All operational thresholds met (8h session standard)"
+      : `Failed: ${failed.join(", ")}`;
   }
 
   // Production
   let productionStatus: "pass" | "fail" | "pending" = "pending";
-  let productionDetail = "24-hour burn-in not yet completed";
+  let productionDetail = "30-day observation period not yet completed";
   let productionThresholdsMet = false;
 
   if (metrics && durationHours >= t.production.minDurationHours) {
