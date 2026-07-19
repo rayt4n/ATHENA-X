@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATHENA-X · Trading Workspace</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #0a0e1a; color: #e2e8f0; min-height: 100vh; font-size: 12px; }
+  /* Top Bar */
+  .top-bar { background: linear-gradient(180deg, #1a1f2e 0%, #0f1419 100%); border-bottom: 1px solid #2a3142; padding: 8px 16px; display: flex; align-items: center; gap: 8px; }
+  .brand { font-size: 14px; font-weight: 700; color: #c9962b; margin-right: 16px; letter-spacing: 1px; }
+  .instruments { display: flex; gap: 4px; flex: 1; }
+  .instrument { padding: 6px 12px; background: #1a1f2e; border: 1px solid #2a3142; border-radius: 4px; cursor: pointer; transition: all 0.15s; min-width: 80px; }
+  .instrument:hover { background: #2a3142; border-color: #c9962b; }
+  .instrument.active { background: #2a3142; border-color: #c9962b; }
+  .instrument .sym { font-size: 11px; font-weight: 600; color: #e2e8f0; }
+  .instrument .price { font-size: 10px; color: #94a3b8; font-family: monospace; }
+  .instrument .chg { font-size: 9px; font-weight: 600; }
+  .chg.up { color: #10b981; } .chg.down { color: #ef4444; } .chg.flat { color: #94a3b8; }
+  .live-status { display: flex; gap: 12px; align-items: center; padding-left: 16px; border-left: 1px solid #2a3142; }
+  .status-pill { padding: 4px 10px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+  .status-pill.ok { background: #064e3b; color: #6ee7b7; }
+  .status-pill.warn { background: #78350f; color: #fcd34d; }
+  .status-pill.error { background: #7f1d1d; color: #fca5a5; }
+  /* Main Grid */
+  .main-grid { display: grid; grid-template-columns: 280px 1fr 300px; grid-template-rows: 1fr 220px; gap: 8px; padding: 8px; height: calc(100vh - 60px); }
+  .left-panel { grid-row: 1 / 3; background: #0f1419; border: 1px solid #1e2433; border-radius: 6px; overflow-y: auto; }
+  .center-panel { background: #0f1419; border: 1px solid #1e2433; border-radius: 6px; display: flex; flex-direction: column; }
+  .right-panel { grid-row: 1 / 3; background: #0f1419; border: 1px solid #1e2433; border-radius: 6px; overflow-y: auto; }
+  .bottom-panel { grid-column: 2 / 3; background: #0f1419; border: 1px solid #1e2433; border-radius: 6px; overflow-y: auto; }
+  /* Panel headers */
+  .panel-header { padding: 10px 14px; border-bottom: 1px solid #1e2433; font-size: 11px; font-weight: 700; color: #c9962b; text-transform: uppercase; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+  .panel-header .actions { display: flex; gap: 4px; }
+  .panel-header button { background: #1a1f2e; border: 1px solid #2a3142; color: #94a3b8; padding: 3px 8px; border-radius: 3px; font-size: 10px; cursor: pointer; }
+  .panel-header button:hover { background: #2a3142; color: #e2e8f0; }
+  .panel-header button.active { background: #c9962b; color: #0a0e1a; border-color: #c9962b; }
+  /* Left panel widgets */
+  .widget { padding: 10px 14px; border-bottom: 1px solid #1e2433; }
+  .widget:last-child { border-bottom: none; }
+  .widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .widget-title { font-size: 11px; font-weight: 600; color: #e2e8f0; }
+  .widget-badge { font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 700; text-transform: uppercase; }
+  .badge-VERIFIED { background: #064e3b; color: #6ee7b7; }
+  .badge-PROVISIONAL { background: #78350f; color: #fcd34d; }
+  .badge-NEEDS-IMPROVEMENT { background: #7f1d1d; color: #fca5a5; }
+  .badge-PLANNED { background: #1e3a8a; color: #93c5fd; }
+  .badge-CERTIFIED { background: #064e3b; color: #6ee7b7; }
+  .widget-content { font-size: 11px; color: #cbd5e1; line-height: 1.5; }
+  .widget-content .value { font-size: 16px; font-weight: 700; color: #e2e8f0; font-family: monospace; }
+  .widget-content .sub { font-size: 10px; color: #94a3b8; }
+  /* Chart */
+  .chart-toolbar { padding: 6px 12px; border-bottom: 1px solid #1e2433; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .tf-btn { background: #1a1f2e; border: 1px solid #2a3142; color: #94a3b8; padding: 3px 8px; border-radius: 3px; font-size: 10px; cursor: pointer; }
+  .tf-btn.active { background: #c9962b; color: #0a0e1a; border-color: #c9962b; }
+  .overlay-toggles { display: flex; gap: 4px; flex-wrap: wrap; margin-left: 8px; }
+  .overlay-toggle { background: #1a1f2e; border: 1px solid #2a3142; color: #94a3b8; padding: 3px 6px; border-radius: 3px; font-size: 9px; cursor: pointer; }
+  .overlay-toggle.on { background: #1e3a8a; color: #93c5fd; border-color: #3b82f6; }
+  .chart-container { flex: 1; position: relative; overflow: hidden; }
+  .chart-svg { width: 100%; height: 100%; display: block; }
+  /* Right panel widgets */
+  .inst-widget { padding: 10px 14px; border-bottom: 1px solid #1e2433; }
+  .inst-widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+  .inst-widget-title { font-size: 11px; font-weight: 600; color: #e2e8f0; }
+  .inst-widget-value { font-size: 14px; font-weight: 700; color: #e2e8f0; font-family: monospace; }
+  .inst-widget-sub { font-size: 10px; color: #94a3b8; }
+  /* Bottom panel — Evidence */
+  .evidence-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; padding: 12px; }
+  .evidence-section h4 { font-size: 10px; color: #c9962b; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
+  .evidence-item { padding: 6px 8px; background: #1a1f2e; border-radius: 4px; margin-bottom: 4px; border-left: 3px solid #3b82f6; }
+  .evidence-item.primary { border-left-color: #10b981; }
+  .evidence-item.supporting { border-left-color: #3b82f6; }
+  .evidence-item.contextual { border-left-color: #94a3b8; }
+  .evidence-item.conflict { border-left-color: #ef4444; }
+  .evidence-item .agent { font-size: 10px; font-weight: 600; color: #e2e8f0; font-family: monospace; }
+  .evidence-item .reason { font-size: 10px; color: #94a3b8; }
+  .evidence-item .conf { font-size: 9px; color: #c9962b; font-weight: 600; }
+  /* Modal */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 100; display: none; align-items: center; justify-content: center; }
+  .modal-overlay.active { display: flex; }
+  .modal { background: #0f1419; border: 1px solid #2a3142; border-radius: 8px; max-width: 90vw; max-height: 85vh; overflow: hidden; display: flex; flex-direction: column; }
+  .modal-header { padding: 14px 20px; border-bottom: 1px solid #1e2433; display: flex; justify-content: space-between; align-items: center; }
+  .modal-header h2 { font-size: 16px; color: #c9962b; }
+  .modal-header button { background: #1a1f2e; border: 1px solid #2a3142; color: #94a3b8; padding: 4px 10px; border-radius: 4px; cursor: pointer; }
+  .modal-body { padding: 20px; overflow-y: auto; flex: 1; }
+  /* Report modal */
+  .report-section { margin-bottom: 16px; padding: 12px; background: #1a1f2e; border-radius: 6px; border-left: 3px solid #c9962b; }
+  .report-section h3 { font-size: 12px; color: #c9962b; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .report-section .source { font-size: 9px; color: #64748b; font-family: monospace; margin-bottom: 6px; }
+  .report-section p { font-size: 11px; color: #cbd5e1; line-height: 1.6; }
+  /* AI Panel */
+  .ai-bar { display: flex; height: 24px; border-radius: 4px; overflow: hidden; margin-bottom: 8px; }
+  .ai-bar .bull { background: #064e3b; }
+  .ai-bar .neutral { background: #78350f; }
+  .ai-bar .bear { background: #7f1d1d; }
+  .ai-bar .label { color: white; font-size: 10px; font-weight: 700; padding: 4px 8px; display: flex; align-items: center; }
+  /* Plugin status */
+  .plugin-status { display: inline-flex; align-items: center; gap: 4px; }
+  .plugin-status .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .dot.ok { background: #10b981; } .dot.warn { background: #f59e0b; } .dot.error { background: #ef4444; }
+  /* Loading */
+  .loading { text-align: center; padding: 20px; color: #94a3b8; font-size: 11px; }
+  /* Tabs in bottom panel */
+  .bottom-tabs { display: flex; gap: 2px; padding: 0 12px; border-bottom: 1px solid #1e2433; }
+  .bottom-tab { padding: 8px 14px; font-size: 10px; color: #94a3b8; cursor: pointer; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: 0.5px; }
+  .bottom-tab.active { color: #c9962b; border-bottom-color: #c9962b; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="brand">ATHENA-X</div>
+  <div class="instruments" id="instruments"></div>
+  <div class="live-status" id="live-status">
+    <span class="status-pill ok" id="market-session">REGULAR</span>
+    <span class="status-pill ok">Conn: OK</span>
+    <span class="status-pill ok">Yahoo: OK</span>
+  </div>
+</div>
+
+<!-- MAIN GRID -->
+<div class="main-grid">
+  <!-- LEFT PANEL — Market Overview -->
+  <div class="left-panel">
+    <div class="panel-header">Market Overview</div>
+    <div id="market-overview"></div>
+  </div>
+
+  <!-- CENTER — Chart -->
+  <div class="center-panel">
+    <div class="chart-toolbar">
+      <span style="font-size:11px;color:#94a3b8;margin-right:4px">TF:</span>
+      <button class="tf-btn" data-tf="1m">1m</button>
+      <button class="tf-btn" data-tf="5m">5m</button>
+      <button class="tf-btn active" data-tf="15m">15m</button>
+      <button class="tf-btn" data-tf="30m">30m</button>
+      <button class="tf-btn" data-tf="1H">1H</button>
+      <button class="tf-btn" data-tf="4H">4H</button>
+      <button class="tf-btn" data-tf="1D">1D</button>
+      <button class="tf-btn" data-tf="1W">1W</button>
+      <button class="tf-btn" data-tf="1M">1M</button>
+      <span style="font-size:11px;color:#94a3b8;margin-left:12px;margin-right:4px">Overlays:</span>
+      <div class="overlay-toggles" id="overlay-toggles"></div>
+    </div>
+    <div class="chart-container">
+      <svg class="chart-svg" id="chart"></svg>
+    </div>
+    <div style="padding:6px 12px;border-top:1px solid #1e2433;display:flex;gap:12px;font-size:10px;color:#94a3b8" id="chart-status">
+      <span>Symbol: <strong style="color:#e2e8f0" id="chart-symbol">SPY</strong></span>
+      <span>Last: <strong style="color:#e2e8f0" id="chart-last">—</strong></span>
+      <span>Agents: <strong style="color:#e2e8f0" id="chart-agents">—</strong></span>
+      <span>Latency: <strong style="color:#e2e8f0" id="chart-latency">—</strong></span>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL — Institutional Intelligence -->
+  <div class="right-panel">
+    <div class="panel-header">Institutional Intelligence</div>
+    <div id="institutional"></div>
+  </div>
+
+  <!-- BOTTOM PANEL — Evidence Engine -->
+  <div class="bottom-panel">
+    <div class="bottom-tabs">
+      <div class="bottom-tab active" data-tab="evidence">Evidence Engine</div>
+      <div class="bottom-tab" data-tab="ai">AI Forecast</div>
+      <div class="bottom-tab" data-tab="report">Report</div>
+      <div class="bottom-tab" data-tab="plugins">Plugin Status</div>
+    </div>
+    <div id="bottom-content" style="padding:12px;overflow-y:auto;height:calc(100% - 35px)"></div>
+  </div>
+</div>
+
+<script>
+const API = 'http://localhost:8010';
+let currentSymbol = 'SPY';
+let currentTF = '15m';
+let chartData = null;
+let overlays = {};
+let activeOverlays = new Set(['ta.ema', 'ta.bollinger', 'ta.vwap', 'ta.volume_profile']);
+
+const OVERLAY_LIST = [
+  { id: 'ta.ema', name: 'EMA' }, { id: 'ta.sma', name: 'SMA' }, { id: 'ta.vwap', name: 'VWAP' },
+  { id: 'ta.rsi', name: 'RSI' }, { id: 'ta.macd', name: 'MACD' }, { id: 'ta.adx', name: 'ADX' },
+  { id: 'ta.atr', name: 'ATR' }, { id: 'ta.bollinger', name: 'BOLL' },
+  { id: 'ta.volume_profile', name: 'VOL' }, { id: 'ta.support_resistance', name: 'S/R' },
+  { id: 'ta.swing', name: 'SWING' }, { id: 'ta.trend', name: 'TREND' },
+  { id: 'ta.wyckoff', name: 'WYCK' }, { id: 'ta.chan_theory', name: 'CHAN' },
+  { id: 'ta.elliott_wave', name: 'ELLI' }, { id: 'ta.smart_money', name: 'SM' },
+  { id: 'ta.volume_price', name: 'VP' },
+];
+
+async function api(path) {
+  const res = await fetch(`${API}${path}`);
+  if (!res.ok) throw new Error(`${res.status}: ${await res.text()}`);
+  return res.json();
+}
+
+// ─── Top bar ─────────────────────────────────────────────────────────
+async function loadInstruments() {
+  const data = await api('/trading/instruments');
+  const el = document.getElementById('instruments');
+  el.innerHTML = data.instruments.map(i => {
+    const chg = (Math.random() - 0.4) * 2;
+    const cls = chg > 0.1 ? 'up' : chg < -0.1 ? 'down' : 'flat';
+    const price = (450 + Math.random() * 50).toFixed(2);
+    return `<div class="instrument ${i.symbol === currentSymbol ? 'active' : ''}" onclick="selectInstrument('${i.symbol}')">
+      <div class="sym">${i.name}</div>
+      <div class="price">${price}</div>
+      <div class="chg ${cls}">${chg > 0 ? '+' : ''}${chg.toFixed(2)}%</div>
+    </div>`;
+  }).join('');
+  // Live status
+  document.getElementById('market-session').textContent = data.live_status.market_session;
+}
+
+function selectInstrument(sym) {
+  currentSymbol = sym;
+  document.querySelectorAll('.instrument').forEach(el => el.classList.remove('active'));
+  loadChart();
+}
+
+// ─── Left panel ──────────────────────────────────────────────────────
+async function loadMarketOverview() {
+  const data = await api('/trading/market-overview');
+  const el = document.getElementById('market-overview');
+  el.innerHTML = data.widgets.map(w => {
+    const d = w.data || {};
+    let content = '';
+    if (w.id === 'market_regime') content = `<div class="value">${d.regime || '—'}</div><div class="sub">confidence ${(d.confidence * 100).toFixed(0)}%</div>`;
+    else if (w.id === 'trend_day') content = `<div class="value">${d.is_trend_day ? 'YES' : 'NO'}</div><div class="sub">${d.direction || ''}</div>`;
+    else if (w.id === 'range_day') content = `<div class="value">${d.is_range_day ? 'YES' : 'NO'}</div><div class="sub">ADX ${d.adx || '—'}</div>`;
+    else if (w.id === 'reversal_day') content = `<div class="value">${d.phase || '—'}</div><div class="sub">risk: ${d.reversal_risk || '—'}</div>`;
+    else if (w.id === 'gap_analysis') content = `<div class="value">${d.gap_pct > 0 ? '+' : ''}${d.gap_pct}%</div><div class="sub">${d.gap_dir} gap</div>`;
+    else if (w.id === 'market_breadth') content = `<div class="value">${d.ratio || '—'}</div><div class="sub">${d.advancers}↑ / ${d.decliners}↓</div>`;
+    else if (w.id === 'sector_rotation') content = `<div class="value">${d.leading || '—'}</div><div class="sub">lagging: ${d.lagging || '—'}</div>`;
+    else if (w.id === 'fear_greed') content = `<div class="value">${d.value || '—'}</div><div class="sub">${d.classification || ''}</div>`;
+    else if (w.id === 'economic_calendar') content = `<div class="sub">${d.next_event || 'No events'}</div>`;
+    else if (w.id === 'breaking_news') content = `<div class="sub">${d.headline || '—'}</div><div class="sub">sentiment: ${d.sentiment || '—'}</div>`;
+    return `<div class="widget">
+      <div class="widget-header">
+        <span class="widget-title">${w.name}</span>
+        <span class="widget-badge badge-${w.status}">${w.status}</span>
+      </div>
+      <div class="widget-content">${content}</div>
+      <div class="sub" style="margin-top:4px;font-size:9px">plugin: ${w.plugin}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── Center chart ────────────────────────────────────────────────────
+async function loadChart() {
+  document.getElementById('chart-symbol').textContent = currentSymbol;
+  document.getElementById('chart-status').children[3].innerHTML = 'Latency: <strong style="color:#e2e8f0">loading…</strong>';
+  const t0 = performance.now();
+  const data = await api(`/trading/chart/${currentSymbol}?timeframe=${currentTF}`);
+  const t1 = performance.now();
+  chartData = data;
+  overlays = data.overlays || {};
+  document.getElementById('chart-last').textContent = data.bars[data.bars.length - 1].close;
+  document.getElementById('chart-agents').textContent = Object.keys(overlays).length;
+  document.getElementById('chart-latency').textContent = `${(t1 - t0).toFixed(0)}ms`;
+  renderChart();
+  renderOverlayToggles();
+}
+
+function renderOverlayToggles() {
+  const el = document.getElementById('overlay-toggles');
+  el.innerHTML = OVERLAY_LIST.map(o => {
+    const has = overlays[o.id] !== undefined;
+    const on = activeOverlays.has(o.id);
+    return `<button class="overlay-toggle ${on && has ? 'on' : ''}" onclick="toggleOverlay('${o.id}')" ${!has ? 'disabled style="opacity:0.4"' : ''}>${o.name}</button>`;
+  }).join('');
+}
+
+function toggleOverlay(id) {
+  if (activeOverlays.has(id)) activeOverlays.delete(id);
+  else activeOverlays.add(id);
+  renderChart();
+  renderOverlayToggles();
+}
+
+function renderChart() {
+  if (!chartData) return;
+  const svg = document.getElementById('chart');
+  const w = svg.clientWidth || 800;
+  const h = svg.clientHeight || 400;
+  const bars = chartData.bars;
+  const padding = { top: 10, right: 60, bottom: 30, left: 10 };
+  const chartW = w - padding.left - padding.right;
+  const chartH = h - padding.top - padding.bottom;
+
+  const prices = bars.flatMap(b => [b.high, b.low]);
+  const minP = Math.min(...prices);
+  const maxP = Math.max(...prices);
+  const range = maxP - minP || 1;
+  const yScale = (p) => padding.top + chartH - ((p - minP) / range) * chartH;
+  const xScale = (i) => padding.left + (i / bars.length) * chartW;
+  const barW = (chartW / bars.length) * 0.7;
+
+  let svgContent = '';
+
+  // Grid lines
+  for (let i = 0; i <= 4; i++) {
+    const y = padding.top + (chartH / 4) * i;
+    const price = maxP - (range / 4) * i;
+    svgContent += `<line x1="${padding.left}" y1="${y}" x2="${w - padding.right}" y2="${y}" stroke="#1e2433" stroke-width="0.5"/>`;
+    svgContent += `<text x="${w - padding.right + 4}" y="${y + 3}" fill="#64748b" font-size="9" font-family="monospace">${price.toFixed(2)}</text>`;
+  }
+
+  // Candles
+  bars.forEach((b, i) => {
+    const x = xScale(i);
+    const isUp = b.close >= b.open;
+    const color = isUp ? '#10b981' : '#ef4444';
+    const yHigh = yScale(b.high);
+    const yLow = yScale(b.low);
+    const yOpen = yScale(b.open);
+    const yClose = yScale(b.close);
+    const bodyTop = Math.min(yOpen, yClose);
+    const bodyH = Math.max(1, Math.abs(yClose - yOpen));
+    svgContent += `<line x1="${x + barW/2}" y1="${yHigh}" x2="${x + barW/2}" y2="${yLow}" stroke="${color}" stroke-width="1"/>`;
+    svgContent += `<rect x="${x}" y="${bodyTop}" width="${barW}" height="${bodyH}" fill="${color}" opacity="0.8"/>`;
+  });
+
+  // EMA overlay (line chart from ema_series metadata)
+  if (activeOverlays.has('ta.ema') && overlays['ta.ema']) {
+    const emaData = overlays['ta.ema'];
+    const series = emaData.metadata?.ema_series || [];
+    if (series.length > 1) {
+      const emaMin = Math.min(...series);
+      const emaMax = Math.max(...series);
+      const emaRange = emaMax - emaMin || 1;
+      const emaY = (v) => padding.top + chartH - ((v - minP) / range) * chartH;  // use price scale
+      let path = '';
+      const startIdx = bars.length - series.length;
+      series.forEach((v, i) => {
+        const x = xScale(startIdx + i) + barW/2;
+        const y = emaY(v);
+        path += (i === 0 ? `M${x},${y}` : ` L${x},${y}`);
+      });
+      svgContent += `<path d="${path}" stroke="#3b82f6" stroke-width="1.5" fill="none"/>`;
+    }
+  }
+
+  // Bollinger bands
+  if (activeOverlays.has('ta.bollinger') && overlays['ta.bollinger']) {
+    const bb = overlays['ta.bollinger'].value;
+    if (bb && bb.upper && bb.lower) {
+      const yU = yScale(bb.upper);
+      const yL = yScale(bb.lower);
+      const yM = yScale(bb.middle);
+      svgContent += `<line x1="${padding.left}" y1="${yU}" x2="${w - padding.right}" y2="${yU}" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>`;
+      svgContent += `<line x1="${padding.left}" y1="${yM}" x2="${w - padding.right}" y2="${yM}" stroke="#f59e0b" stroke-width="0.5" stroke-dasharray="2,2" opacity="0.4"/>`;
+      svgContent += `<line x1="${padding.left}" y1="${yL}" x2="${w - padding.right}" y2="${yL}" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>`;
+      svgContent += `<text x="${padding.left + 4}" y="${yU - 3}" fill="#f59e0b" font-size="9">BB Upper ${bb.upper.toFixed(2)}</text>`;
+      svgContent += `<text x="${padding.left + 4}" y="${yL + 12}" fill="#f59e0b" font-size="9">BB Lower ${bb.lower.toFixed(2)}</text>`;
+    }
+  }
+
+  // VWAP line
+  if (activeOverlays.has('ta.vwap') && overlays['ta.vwap']) {
+    const vwap = overlays['ta.vwap'].value;
+    if (vwap) {
+      const y = yScale(vwap);
+      svgContent += `<line x1="${padding.left}" y1="${y}" x2="${w - padding.right}" y2="${y}" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5,3"/>`;
+      svgContent += `<text x="${padding.left + 4}" y="${y - 3}" fill="#8b5cf6" font-size="9">VWAP ${vwap.toFixed(2)}</text>`;
+    }
+  }
+
+  // Support/Resistance lines
+  if (activeOverlays.has('ta.support_resistance') && overlays['ta.support_resistance']) {
+    const sr = overlays['ta.support_resistance'].value;
+    if (sr && sr.resistance && sr.support) {
+      const yR = yScale(sr.resistance);
+      const yS = yScale(sr.support);
+      svgContent += `<line x1="${padding.left}" y1="${yR}" x2="${w - padding.right}" y2="${yR}" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,4" opacity="0.5"/>`;
+      svgContent += `<line x1="${padding.left}" y1="${yS}" x2="${w - padding.right}" y2="${yS}" stroke="#10b981" stroke-width="1" stroke-dasharray="2,4" opacity="0.5"/>`;
+      svgContent += `<text x="${w - padding.right - 60}" y="${yR - 3}" fill="#ef4444" font-size="9">R: ${sr.resistance.toFixed(2)}</text>`;
+      svgContent += `<text x="${w - padding.right - 60}" y="${yS + 12}" fill="#10b981" font-size="9">S: ${sr.support.toFixed(2)}</text>`;
+    }
+  }
+
+  // Swing markers
+  if (activeOverlays.has('ta.swing') && overlays['ta.swing']) {
+    const sw = overlays['ta.swing'].value;
+    if (sw && sw.swing_highs) {
+      sw.swing_highs.forEach(sh => {
+        const idx = sh.index || 0;
+        const x = xScale(idx) + barW/2;
+        const y = yScale(sh.price);
+        svgContent += `<circle cx="${x}" cy="${y}" r="3" fill="#f59e0b" opacity="0.8"/>`;
+      });
+      sw.swing_lows.forEach(sl => {
+        const idx = sl.index || 0;
+        const x = xScale(idx) + barW/2;
+        const y = yScale(sl.price);
+        svgContent += `<circle cx="${x}" cy="${y}" r="3" fill="#3b82f6" opacity="0.8"/>`;
+      });
+    }
+  }
+
+  // Volume at bottom
+  if (activeOverlays.has('ta.volume_profile') && bars.length > 0) {
+    const maxVol = Math.max(...bars.map(b => b.volume));
+    const volH = 40;
+    bars.forEach((b, i) => {
+      const x = xScale(i);
+      const h = (b.volume / maxVol) * volH;
+      const color = b.close >= b.open ? '#10b981' : '#ef4444';
+      svgContent += `<rect x="${x}" y="${h - padding.bottom - volH + h}" width="${barW}" height="${h}" fill="${color}" opacity="0.3"/>`;
+    });
+  }
+
+  // Indicator readout box (top-left)
+  let readout = '';
+  for (const [id, data] of Object.entries(overlays)) {
+    if (!activeOverlays.has(id)) continue;
+    const name = OVERLAY_LIST.find(o => o.id === id)?.name || id;
+    let val = '';
+    if (data.value !== undefined) {
+      if (typeof data.value === 'number') val = data.value.toFixed(2);
+      else if (typeof data.value === 'string') val = data.value;
+      else if (typeof data.value === 'object') val = JSON.stringify(data.value).slice(0, 30);
+    }
+    readout += `<tspan x="${padding.left + 4}" dy="14" fill="#94a3b8" font-size="9" font-family="monospace">${name}: ${val}</tspan>`;
+  }
+  if (readout) {
+    svgContent += `<text x="${padding.left + 4}" y="${padding.top + 10}">${readout}</text>`;
+  }
+
+  svg.innerHTML = svgContent;
+}
+
+// ─── Right panel ─────────────────────────────────────────────────────
+async function loadInstitutional() {
+  const data = await api('/trading/institutional');
+  const el = document.getElementById('institutional');
+  el.innerHTML = data.widgets.map(w => {
+    const d = w.data || {};
+    let val = '', sub = '';
+    if (w.id === 'gamma_exposure') { val = d.gex || '—'; sub = `regime: ${d.regime || ''}`; }
+    else if (w.id === 'gamma_flip') { val = d.level || '—'; sub = `distance: ${d.distance || ''}`; }
+    else if (w.id === 'dealer_positioning') { val = d.dealer_gamma || '—'; sub = `hedge: ${d.hedge_dir || ''}`; }
+    else if (w.id === 'max_pain') { val = d.strike || '—'; sub = `distance: ${d.distance || ''}`; }
+    else if (w.id === 'option_flow') { val = d.call_put_ratio || '—'; sub = `sentiment: ${d.sentiment || ''}`; }
+    else if (w.id === 'dark_pool') { val = d.net_flow || '—'; sub = `${d.prints || 0} prints`; }
+    else if (w.id === 'short_interest') { val = `${d.si_pct}%`; sub = `DTC: ${d.days_to_cover || ''}`; }
+    else if (w.id === 'zero_dte') { val = d.positioning || '—'; sub = `IV: ${d.iv_regime || ''}`; }
+    else if (w.id === 'liquidity') { val = `${d.pools || 0} pools`; sub = `avg vol: ${d.avg_volume || ''}`; }
+    else if (w.id === 'bond') { val = d.us10y || '—'; sub = `2Y: ${d.us2y || ''}`; }
+    else if (w.id === 'dollar') { val = d.dxy || '—'; sub = `chg: ${d.change || ''}`; }
+    else if (w.id === 'asia') { val = d.nikkei || '—'; sub = `HK: ${d.hangseng || ''}`; }
+    else if (w.id === 'europe') { val = d.stoxx || '—'; sub = `DAX: ${d.dax || ''}`; }
+    else if (w.id === 'mag7') { val = d.leader || '—'; sub = `laggard: ${d.laggard || ''}`; }
+    return `<div class="inst-widget">
+      <div class="inst-widget-header">
+        <span class="inst-widget-title">${w.name}</span>
+        <span class="widget-badge badge-${w.status}">${w.status}</span>
+      </div>
+      <div class="inst-widget-value">${val}</div>
+      <div class="inst-widget-sub">${sub}</div>
+    </div>`;
+  }).join('');
+}
+
+// ─── Bottom panel ────────────────────────────────────────────────────
+let activeBottomTab = 'evidence';
+
+document.querySelectorAll('.bottom-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.bottom-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    activeBottomTab = tab.dataset.tab;
+    loadBottom();
+  });
+});
+
+async function loadBottom() {
+  const el = document.getElementById('bottom-content');
+  if (activeBottomTab === 'evidence') await loadEvidence(el);
+  else if (activeBottomTab === 'ai') await loadAI(el);
+  else if (activeBottomTab === 'report') await loadReport(el);
+  else if (activeBottomTab === 'plugins') await loadPlugins(el);
+}
+
+async function loadEvidence(el) {
+  el.innerHTML = '<div class="loading">Loading evidence…</div>';
+  // Use a demo request_id for now; in production, use the last run's request_id
+  const data = await api('/trading/evidence/demo-request');
+  el.innerHTML = `
+    <div style="margin-bottom:12px;padding:10px;background:#1a1f2e;border-radius:6px;border-left:3px solid #c9962b">
+      <div style="font-size:11px;color:#94a3b8;margin-bottom:4px">Final Conclusion</div>
+      <div style="font-size:14px;font-weight:700;color:#e2e8f0">${data.final_conclusion}</div>
+    </div>
+    <div class="evidence-grid">
+      <div class="evidence-section">
+        <h4>Primary Contributors (${data.primary_contributors.length})</h4>
+        ${data.primary_contributors.map(c => `
+          <div class="evidence-item primary">
+            <div style="display:flex;justify-content:space-between"><span class="agent">${c.agent_id}</span><span class="conf">${(c.confidence * 100).toFixed(0)}%</span></div>
+            <div class="reason">${c.reason}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="evidence-section">
+        <h4>Supporting (${data.supporting_contributors.length})</h4>
+        ${data.supporting_contributors.map(c => `
+          <div class="evidence-item supporting">
+            <div style="display:flex;justify-content:space-between"><span class="agent">${c.agent_id}</span><span class="conf">${(c.confidence * 100).toFixed(0)}%</span></div>
+            <div class="reason">${c.reason}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="evidence-section">
+        <h4>Contextual (${data.contextual_contributors.length}) + Conflicts (${data.conflicting_evidence.length})</h4>
+        ${data.contextual_contributors.map(c => `
+          <div class="evidence-item contextual">
+            <div style="display:flex;justify-content:space-between"><span class="agent">${c.agent_id}</span><span class="conf">${(c.confidence * 100).toFixed(0)}%</span></div>
+            <div class="reason">${c.reason}</div>
+          </div>
+        `).join('')}
+        ${data.conflicting_evidence.map(c => `
+          <div class="evidence-item conflict">
+            <div style="display:flex;justify-content:space-between"><span class="agent">${c.agent_id}</span><span class="conf">${(c.confidence * 100).toFixed(0)}%</span></div>
+            <div class="reason">${c.reason}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    <div style="margin-top:12px;padding:10px;background:#1a1f2e;border-radius:6px">
+      <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;text-transform:uppercase">Historical Accuracy</div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        ${Object.entries(data.historical_accuracy).map(([k, v]) => `<span style="font-size:10px;color:#cbd5e1;font-family:monospace">${k}: <strong style="color:#c9962b">${v}</strong></span>`).join('')}
+      </div>
+    </div>
+  `;
+}
+
+async function loadAI(el) {
+  el.innerHTML = '<div class="loading">Loading AI forecast…</div>';
+  const data = await api('/trading/ai-forecast');
+  const b = data.bias;
+  el.innerHTML = `
+    <div style="margin-bottom:12px">
+      <div style="font-size:11px;color:#94a3b8;margin-bottom:6px">Bull / Neutral / Bear</div>
+      <div class="ai-bar">
+        <div class="bull" style="width:${b.bull * 100}%"><span class="label">BULL ${(b.bull * 100).toFixed(0)}%</span></div>
+        <div class="neutral" style="width:${b.neutral * 100}%"><span class="label">${(b.neutral * 100).toFixed(0)}%</span></div>
+        <div class="bear" style="width:${b.bear * 100}%"><span class="label">BEAR ${(b.bear * 100).toFixed(0)}%</span></div>
+      </div>
+    </div>
+    <div class="evidence-grid">
+      <div class="evidence-section">
+        <h4>Probability Tree</h4>
+        ${Object.entries(data.probability_tree).map(([k, v]) => `
+          <div class="evidence-item primary">
+            <div style="display:flex;justify-content:space-between"><span class="agent">${k.replace('_scenario','').toUpperCase()}</span><span class="conf">${(v.probability * 100).toFixed(0)}%</span></div>
+            <div class="reason">target: ${v.target} · ${v.condition}</div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="evidence-section">
+        <h4>Expected Range</h4>
+        <div class="evidence-item supporting">
+          <div style="display:flex;justify-content:space-between"><span class="agent">Low</span><span class="conf">${data.expected_range.low}</span></div>
+        </div>
+        <div class="evidence-item supporting">
+          <div style="display:flex;justify-content:space-between"><span class="agent">Mid</span><span class="conf">${data.expected_range.mid}</span></div>
+        </div>
+        <div class="evidence-item supporting">
+          <div style="display:flex;justify-content:space-between"><span class="agent">High</span><span class="conf">${data.expected_range.high}</span></div>
+        </div>
+        <div class="evidence-item supporting"><div class="reason">confidence: ${(data.expected_range.confidence * 100).toFixed(0)}%</div></div>
+      </div>
+      <div class="evidence-section">
+        <h4>Projections</h4>
+        ${Object.entries(data.projections).map(([k, v]) => `
+          <div class="evidence-item primary">
+            <div style="display:flex;justify-content:space-between"><span class="agent">${k.toUpperCase()}</span><span class="conf">${v.direction}</span></div>
+            <div class="reason">expected: ${v.expected_change} · conf ${(v.confidence * 100).toFixed(0)}%</div>
+          </div>
+        `).join('')}
+        <div class="evidence-item contextual">
+          <div class="reason">source: ${data.source}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+async function loadReport(el) {
+  el.innerHTML = '<div class="loading">Generating report…</div>';
+  const data = await api('/trading/report');
+  el.innerHTML = `
+    <div style="margin-bottom:12px;font-size:11px;color:#94a3b8">Generated: ${data.generated_at} · Symbol: ${data.symbol}</div>
+    ${data.sections.map(s => `
+      <div class="report-section">
+        <h3>${s.title}</h3>
+        <div class="source">source: ${s.source}</div>
+        <p>${s.content}</p>
+      </div>
+    `).join('')}
+  `;
+}
+
+async function loadPlugins(el) {
+  el.innerHTML = '<div class="loading">Loading plugin status…</div>';
+  const data = await api('/trading/plugin-status');
+  el.innerHTML = `
+    <div style="margin-bottom:12px;display:flex;gap:12px">
+      <span style="font-size:11px;color:#94a3b8">Total: <strong style="color:#e2e8f0">${data.summary.total || data.plugins.length}</strong></span>
+      <span style="font-size:11px;color:#10b981">CERTIFIED: <strong>${data.summary.certified || 0}</strong></span>
+      <span style="font-size:11px;color:#f59e0b">PROVISIONAL: <strong>${data.summary.provisional || 0}</strong></span>
+      <span style="font-size:11px;color:#ef4444">NEEDS IMPROVEMENT: <strong>${data.summary.needs_improvement || 0}</strong></span>
+    </div>
+    <table style="width:100%;border-collapse:collapse">
+      <tr><th style="text-align:left;padding:6px;border-bottom:1px solid #1e2433">Plugin</th><th>Version</th><th>Exec Time</th><th>Status</th><th>Certification</th></tr>
+      ${data.plugins.map(p => `
+        <tr>
+          <td style="padding:6px;border-bottom:1px solid #1e2433;font-family:monospace;font-size:11px">${p.name}</td>
+          <td style="text-align:center;font-size:10px;color:#94a3b8">${p.version}</td>
+          <td style="text-align:center;font-size:10px;font-family:monospace">${p.exec_time_ms.toFixed(3)}ms</td>
+          <td style="text-align:center"><span class="plugin-status"><span class="dot ${p.status}"></span>${p.status}</span></td>
+          <td style="text-align:center"><span class="widget-badge badge-${p.certification}">${p.certification}</span></td>
+        </tr>
+      `).join('')}
+    </table>
+  `;
+}
+
+// ─── Timeframe buttons ───────────────────────────────────────────────
+document.querySelectorAll('.tf-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tf-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentTF = btn.dataset.tf;
+    loadChart();
+  });
+});
+
+// ─── Init ────────────────────────────────────────────────────────────
+async function init() {
+  await loadInstruments();
+  await loadMarketOverview();
+  await loadChart();
+  await loadInstitutional();
+  await loadBottom();
+}
+
+init();
+window.addEventListener('resize', () => renderChart());
+</script>
+</body>
+</html>

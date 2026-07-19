@@ -1,0 +1,6459 @@
+{
+  "stage": "17.1",
+  "generated_at_unix": 1784477358,
+  "phase1_inventory": {
+    "plugin_slots": [
+      {
+        "name": "aapl",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/aapl",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "aapl",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "amd",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/amd",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "amd",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "amzn",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/amzn",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "amzn",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "arm",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/arm",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "arm",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "asx200",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/asx200",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "asx200",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "avgo",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/avgo",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "avgo",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "bond_divergence",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/bond_divergence",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "bond_divergence",
+        "manifest_version": "1.0.0",
+        "manifest_category": "divergence",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "divergence_active",
+          "description"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "bonds_driving",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/bonds_driving",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "bonds_driving",
+        "manifest_version": "1.0.0",
+        "manifest_category": "leadership",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "leader",
+          "lagger",
+          "signal"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "breadth_weakening",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/breadth_weakening",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "breadth_weakening",
+        "manifest_version": "1.0.0",
+        "manifest_category": "divergence",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "divergence_active",
+          "description"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "btc",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/btc",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "btc",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "cac40",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/cac40",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "cac40",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "copper",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/copper",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "copper",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "cyclical_to_utilities",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/cyclical_to_utilities",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "cyclical_to_utilities",
+        "manifest_version": "1.0.0",
+        "manifest_category": "rotation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "rotation_active",
+          "from_sector",
+          "to_sector"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "dax",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/dax",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "dax",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "deflation_regime",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/deflation_regime",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "deflation_regime",
+        "manifest_version": "1.0.0",
+        "manifest_category": "regime",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "regime_active",
+          "confidence"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "dxy",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/dxy",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "dxy",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "dxy_driving",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/dxy_driving",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "dxy_driving",
+        "manifest_version": "1.0.0",
+        "manifest_category": "leadership",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "leader",
+          "lagger",
+          "signal"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "es",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/es",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "es",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "es_nq_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/es_nq_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "es_nq_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "eth",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/eth",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "eth",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "eurostoxx",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/eurostoxx",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "eurostoxx",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "eurusd",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/eurusd",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "eurusd",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "ftse",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/ftse",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "ftse",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "gold",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/gold",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "gold",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "googl",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/googl",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "googl",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "growth_to_value",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/growth_to_value",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "growth_to_value",
+        "manifest_version": "1.0.0",
+        "manifest_category": "rotation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "rotation_active",
+          "from_sector",
+          "to_sector"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "hangseng",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/hangseng",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "hangseng",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "inflation_regime",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/inflation_regime",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "inflation_regime",
+        "manifest_version": "1.0.0",
+        "manifest_category": "regime",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "regime_active",
+          "confidence"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "large_to_small",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/large_to_small",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "large_to_small",
+        "manifest_version": "1.0.0",
+        "manifest_category": "rotation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "rotation_active",
+          "from_sector",
+          "to_sector"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "liquidity_contraction",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/liquidity_contraction",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "liquidity_contraction",
+        "manifest_version": "1.0.0",
+        "manifest_category": "regime",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "regime_active",
+          "confidence"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "liquidity_expansion",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/liquidity_expansion",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "liquidity_expansion",
+        "manifest_version": "1.0.0",
+        "manifest_category": "regime",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "regime_active",
+          "confidence"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "meta",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/meta",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "meta",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "move",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/move",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "move",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "msft",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/msft",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "msft",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "mu",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/mu",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "mu",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "natgas",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/natgas",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "natgas",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "nikkei",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/nikkei",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "nikkei",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "nq",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/nq",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "nq",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "nvda",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/nvda",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "nvda",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "nvda_leading",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/nvda_leading",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "nvda_leading",
+        "manifest_version": "1.0.0",
+        "manifest_category": "divergence",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "divergence_active",
+          "description"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "nvda_leads_qqq",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/nvda_leads_qqq",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "nvda_leads_qqq",
+        "manifest_version": "1.0.0",
+        "manifest_category": "leadership",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "leader",
+          "lagger",
+          "signal"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "oil",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/oil",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "oil",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "qqq",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/qqq",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "qqq",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "qqq_leads_spy",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/qqq_leads_spy",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "qqq_leads_spy",
+        "manifest_version": "1.0.0",
+        "manifest_category": "leadership",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "leader",
+          "lagger",
+          "signal"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "qqq_nvda_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/qqq_nvda_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "qqq_nvda_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "qqq_soxx_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/qqq_soxx_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "qqq_soxx_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "risk_off",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/risk_off",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "risk_off",
+        "manifest_version": "1.0.0",
+        "manifest_category": "regime",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "regime_active",
+          "confidence"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "risk_on",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/risk_on",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "risk_on",
+        "manifest_version": "1.0.0",
+        "manifest_category": "regime",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "regime_active",
+          "confidence"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "semi_to_software",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/semi_to_software",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "semi_to_software",
+        "manifest_version": "1.0.0",
+        "manifest_category": "rotation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "rotation_active",
+          "from_sector",
+          "to_sector"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "shanghai",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/shanghai",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "shanghai",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "silver",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/silver",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "silver",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "smh",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/smh",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "smh",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "soxx",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/soxx",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "soxx",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "soxx_breakout",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/soxx_breakout",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "soxx_breakout",
+        "manifest_version": "1.0.0",
+        "manifest_category": "divergence",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "divergence_active",
+          "description"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "soxx_vs_xlk",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/soxx_vs_xlk",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "soxx_vs_xlk",
+        "manifest_version": "1.0.0",
+        "manifest_category": "leadership",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "leader",
+          "lagger",
+          "signal"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spx",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spx",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spx",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_breadth_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_breadth_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_breadth_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_dxy_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_dxy_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_dxy_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_es_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_es_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_es_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_es_divergence",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_es_divergence",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_es_divergence",
+        "manifest_version": "1.0.0",
+        "manifest_category": "divergence",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "divergence_active",
+          "description"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_gold_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_gold_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_gold_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_oil_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_oil_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_oil_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_qqq_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_qqq_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_qqq_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_soxx_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_soxx_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_soxx_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_tnx_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_tnx_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_tnx_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "spy_vix_corr",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/spy_vix_corr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "spy_vix_corr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "correlation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "returns"
+        ],
+        "manifest_outputs": [
+          "correlation",
+          "leading_symbol"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "tech_to_defensive",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/tech_to_defensive",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "tech_to_defensive",
+        "manifest_version": "1.0.0",
+        "manifest_category": "rotation",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "rotation_active",
+          "from_sector",
+          "to_sector"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "tnx",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/tnx",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "tnx",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "tsla",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/tsla",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "tsla",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "tsm",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/tsm",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "tsm",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "us2y",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/us2y",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "us2y",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "us30y",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/us30y",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "us30y",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "usdjpy",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/usdjpy",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "usdjpy",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vix",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/vix",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vix",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vix_confirming",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/vix_confirming",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vix_confirming",
+        "manifest_version": "1.0.0",
+        "manifest_category": "leadership",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "leader",
+          "lagger",
+          "signal"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vix_not_confirming",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/vix_not_confirming",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vix_not_confirming",
+        "manifest_version": "1.0.0",
+        "manifest_category": "divergence",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes",
+          "returns"
+        ],
+        "manifest_outputs": [
+          "divergence_active",
+          "description"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vvix",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/vvix",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vvix",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xlb",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xlb",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xlb",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xlc",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xlc",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xlc",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xle",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xle",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xle",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xlf",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xlf",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xlf",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xli",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xli",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xli",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xlk",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xlk",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xlk",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xlp",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xlp",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xlp",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xlre",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xlre",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xlre",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xlu",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xlu",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xlu",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xlv",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xlv",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xlv",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xly",
+        "category": "cross-market",
+        "file_location": "plugins/cross-market/xly",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xly",
+        "manifest_version": "1.0.0",
+        "manifest_category": "market_monitor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "quotes"
+        ],
+        "manifest_outputs": [
+          "status",
+          "change_pct",
+          "volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "arima",
+        "category": "forecast",
+        "file_location": "plugins/forecast/arima",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "arima",
+        "manifest_version": "1.0.0",
+        "manifest_category": "statistical",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "bilstm_attention",
+        "category": "forecast",
+        "file_location": "plugins/forecast/bilstm_attention",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "bilstm_attention",
+        "manifest_version": "1.0.0",
+        "manifest_category": "deep_learning",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "lightgbm",
+        "category": "forecast",
+        "file_location": "plugins/forecast/lightgbm",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "lightgbm",
+        "manifest_version": "1.0.0",
+        "manifest_category": "gradient_boosting",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "lstm",
+        "category": "forecast",
+        "file_location": "plugins/forecast/lstm",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "lstm",
+        "manifest_version": "1.0.0",
+        "manifest_category": "deep_learning",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "random_forest",
+        "category": "forecast",
+        "file_location": "plugins/forecast/random_forest",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "random_forest",
+        "manifest_version": "1.0.0",
+        "manifest_category": "ensemble",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "rule_based",
+        "category": "forecast",
+        "file_location": "plugins/forecast/rule_based",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "rule_based",
+        "manifest_version": "1.0.0",
+        "manifest_category": "rules",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "tabpfn",
+        "category": "forecast",
+        "file_location": "plugins/forecast/tabpfn",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "tabpfn",
+        "manifest_version": "1.0.0",
+        "manifest_category": "in_context",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "transformer",
+        "category": "forecast",
+        "file_location": "plugins/forecast/transformer",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "transformer",
+        "manifest_version": "1.0.0",
+        "manifest_category": "deep_learning",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "xgboost",
+        "category": "forecast",
+        "file_location": "plugins/forecast/xgboost",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "xgboost",
+        "manifest_version": "1.0.0",
+        "manifest_category": "gradient_boosting",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "features"
+        ],
+        "manifest_outputs": [
+          "direction",
+          "target_price",
+          "confidence",
+          "risk_estimate"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "adx",
+        "category": "indicators",
+        "file_location": "plugins/indicators/adx",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "adx",
+        "manifest_version": "1.0.0",
+        "manifest_category": "trend",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "adx",
+          "plus_di",
+          "minus_di"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "atr",
+        "category": "indicators",
+        "file_location": "plugins/indicators/atr",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "atr",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "atr14"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "bollinger",
+        "category": "indicators",
+        "file_location": "plugins/indicators/bollinger",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "bollinger",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "upper",
+          "middle",
+          "lower",
+          "percent_b"
+        ],
+        "manifest_dependencies": [
+          "sma"
+        ]
+      },
+      {
+        "name": "cci",
+        "category": "indicators",
+        "file_location": "plugins/indicators/cci",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "cci",
+        "manifest_version": "1.0.0",
+        "manifest_category": "momentum",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "cci20"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "ema",
+        "category": "indicators",
+        "file_location": "plugins/indicators/ema",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "ema",
+        "manifest_version": "1.0.0",
+        "manifest_category": "trend",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "ema20",
+          "ema50",
+          "ema200"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "fibonacci",
+        "category": "indicators",
+        "file_location": "plugins/indicators/fibonacci",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "fibonacci",
+        "manifest_version": "1.0.0",
+        "manifest_category": "projection",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "levels"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "ichimoku",
+        "category": "indicators",
+        "file_location": "plugins/indicators/ichimoku",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "ichimoku",
+        "manifest_version": "1.0.0",
+        "manifest_category": "trend",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "tenkan",
+          "kijun",
+          "senkou_a",
+          "senkou_b",
+          "chikou"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "macd",
+        "category": "indicators",
+        "file_location": "plugins/indicators/macd",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "macd",
+        "manifest_version": "1.0.0",
+        "manifest_category": "momentum",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "macd",
+          "signal",
+          "histogram"
+        ],
+        "manifest_dependencies": [
+          "ema"
+        ]
+      },
+      {
+        "name": "obv",
+        "category": "indicators",
+        "file_location": "plugins/indicators/obv",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "obv",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volume",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "obv"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "rsi",
+        "category": "indicators",
+        "file_location": "plugins/indicators/rsi",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "rsi",
+        "manifest_version": "1.0.0",
+        "manifest_category": "momentum",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "rsi14"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "sma",
+        "category": "indicators",
+        "file_location": "plugins/indicators/sma",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "sma",
+        "manifest_version": "1.0.0",
+        "manifest_category": "trend",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "sma20",
+          "sma50",
+          "sma200"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "stochastic",
+        "category": "indicators",
+        "file_location": "plugins/indicators/stochastic",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "stochastic",
+        "manifest_version": "1.0.0",
+        "manifest_category": "momentum",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "k",
+          "d"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vwap",
+        "category": "indicators",
+        "file_location": "plugins/indicators/vwap",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "vwap",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volume",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "vwap"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "williams-r",
+        "category": "indicators",
+        "file_location": "plugins/indicators/williams-r",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 35,
+        "manifest_id": "williams-r",
+        "manifest_version": "1.0.0",
+        "manifest_category": "momentum",
+        "manifest_layer": "2",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "wr14"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "alternative",
+        "category": "news",
+        "file_location": "plugins/news/alternative",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "alternative",
+        "manifest_version": "1.0.0",
+        "manifest_category": "alternative",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "breaking",
+        "category": "news",
+        "file_location": "plugins/news/breaking",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "breaking",
+        "manifest_version": "1.0.0",
+        "manifest_category": "breaking",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "earnings",
+        "category": "news",
+        "file_location": "plugins/news/earnings",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "earnings",
+        "manifest_version": "1.0.0",
+        "manifest_category": "earnings",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "economic",
+        "category": "news",
+        "file_location": "plugins/news/economic",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "economic",
+        "manifest_version": "1.0.0",
+        "manifest_category": "economic",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "energy",
+        "category": "news",
+        "file_location": "plugins/news/energy",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "energy",
+        "manifest_version": "1.0.0",
+        "manifest_category": "energy",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "fed",
+        "category": "news",
+        "file_location": "plugins/news/fed",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "fed",
+        "manifest_version": "1.0.0",
+        "manifest_category": "fed",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "geopolitical",
+        "category": "news",
+        "file_location": "plugins/news/geopolitical",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "geopolitical",
+        "manifest_version": "1.0.0",
+        "manifest_category": "geopolitical",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "regulatory",
+        "category": "news",
+        "file_location": "plugins/news/regulatory",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "regulatory",
+        "manifest_version": "1.0.0",
+        "manifest_category": "regulatory",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "semiconductor",
+        "category": "news",
+        "file_location": "plugins/news/semiconductor",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "semiconductor",
+        "manifest_version": "1.0.0",
+        "manifest_category": "semiconductor",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "treasury",
+        "category": "news",
+        "file_location": "plugins/news/treasury",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "treasury",
+        "manifest_version": "1.0.0",
+        "manifest_category": "treasury",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "raw_articles"
+        ],
+        "manifest_outputs": [
+          "classified_events",
+          "impact_assessment"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "0dte_call_flow",
+        "category": "options",
+        "file_location": "plugins/options/0dte_call_flow",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "0dte_call_flow",
+        "manifest_version": "1.0.0",
+        "manifest_category": "0dte",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow",
+          "chain"
+        ],
+        "manifest_outputs": [
+          "call_flow_0dte"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "0dte_closing_positioning",
+        "category": "options",
+        "file_location": "plugins/options/0dte_closing_positioning",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "0dte_closing_positioning",
+        "manifest_version": "1.0.0",
+        "manifest_category": "0dte",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "closing_positioning"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "0dte_dealer_hedging",
+        "category": "options",
+        "file_location": "plugins/options/0dte_dealer_hedging",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "0dte_dealer_hedging",
+        "manifest_version": "1.0.0",
+        "manifest_category": "0dte",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "dealer_hedge_0dte"
+        ],
+        "manifest_dependencies": [
+          "gex"
+        ]
+      },
+      {
+        "name": "0dte_positioning",
+        "category": "options",
+        "file_location": "plugins/options/0dte_positioning",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "0dte_positioning",
+        "manifest_version": "1.0.0",
+        "manifest_category": "0dte",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "positioning"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "0dte_put_flow",
+        "category": "options",
+        "file_location": "plugins/options/0dte_put_flow",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "0dte_put_flow",
+        "manifest_version": "1.0.0",
+        "manifest_category": "0dte",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow",
+          "chain"
+        ],
+        "manifest_outputs": [
+          "put_flow_0dte"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "ats_volume",
+        "category": "options",
+        "file_location": "plugins/options/ats_volume",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "ats_volume",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dark_pool",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "dark_pool_prints"
+        ],
+        "manifest_outputs": [
+          "ats_volume"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "block_prints",
+        "category": "options",
+        "file_location": "plugins/options/block_prints",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "block_prints",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dark_pool",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "dark_pool_prints"
+        ],
+        "manifest_outputs": [
+          "block_prints"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "block_trades",
+        "category": "options",
+        "file_location": "plugins/options/block_trades",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "block_trades",
+        "manifest_version": "1.0.0",
+        "manifest_category": "flow",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow"
+        ],
+        "manifest_outputs": [
+          "blocks"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "call_oi",
+        "category": "options",
+        "file_location": "plugins/options/call_oi",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "call_oi",
+        "manifest_version": "1.0.0",
+        "manifest_category": "open_interest",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "call_oi_total"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "charm",
+        "category": "options",
+        "file_location": "plugins/options/charm",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "charm",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "charm_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "color",
+        "category": "options",
+        "file_location": "plugins/options/color",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "color",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "color_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "dark_pool_trades",
+        "category": "options",
+        "file_location": "plugins/options/dark_pool_trades",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "dark_pool_trades",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dark_pool",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "dark_pool_prints"
+        ],
+        "manifest_outputs": [
+          "dp_trades"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "dealer_delta",
+        "category": "options",
+        "file_location": "plugins/options/dealer_delta",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "dealer_delta",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dealer",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "dealer_delta"
+        ],
+        "manifest_dependencies": [
+          "delta"
+        ]
+      },
+      {
+        "name": "dealer_gamma",
+        "category": "options",
+        "file_location": "plugins/options/dealer_gamma",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "dealer_gamma",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dealer",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "dealer_gamma"
+        ],
+        "manifest_dependencies": [
+          "gamma"
+        ]
+      },
+      {
+        "name": "dealer_hedging_pressure",
+        "category": "options",
+        "file_location": "plugins/options/dealer_hedging_pressure",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "dealer_hedging_pressure",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dealer",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "hedging_pressure"
+        ],
+        "manifest_dependencies": [
+          "gex"
+        ]
+      },
+      {
+        "name": "dealer_inventory",
+        "category": "options",
+        "file_location": "plugins/options/dealer_inventory",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "dealer_inventory",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dealer",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "inventory"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "delta",
+        "category": "options",
+        "file_location": "plugins/options/delta",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "delta",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "delta_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "expected_move",
+        "category": "options",
+        "file_location": "plugins/options/expected_move",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "expected_move",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "expected_move_1d",
+          "expected_move_1w"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "expiration_distribution",
+        "category": "options",
+        "file_location": "plugins/options/expiration_distribution",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "expiration_distribution",
+        "manifest_version": "1.0.0",
+        "manifest_category": "probability",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "price_distribution"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "gamma",
+        "category": "options",
+        "file_location": "plugins/options/gamma",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "gamma",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "gamma_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "gamma-exposure",
+        "category": "options",
+        "file_location": "plugins/options/gamma-exposure",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "gamma_acceleration",
+        "category": "options",
+        "file_location": "plugins/options/gamma_acceleration",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "gamma_acceleration",
+        "manifest_version": "1.0.0",
+        "manifest_category": "0dte",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "gamma_accel"
+        ],
+        "manifest_dependencies": [
+          "gamma"
+        ]
+      },
+      {
+        "name": "gamma_flip",
+        "category": "options",
+        "file_location": "plugins/options/gamma_flip",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "gamma_flip",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dealer",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "gamma_flip_level"
+        ],
+        "manifest_dependencies": [
+          "gex"
+        ]
+      },
+      {
+        "name": "gex",
+        "category": "options",
+        "file_location": "plugins/options/gex",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "gex",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dealer",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "gex"
+        ],
+        "manifest_dependencies": [
+          "gamma"
+        ]
+      },
+      {
+        "name": "greeks",
+        "category": "options",
+        "file_location": "plugins/options/greeks",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "hidden_liquidity",
+        "category": "options",
+        "file_location": "plugins/options/hidden_liquidity",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "hidden_liquidity",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dark_pool",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "dark_pool_prints"
+        ],
+        "manifest_outputs": [
+          "hidden_liq"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "historical_vol",
+        "category": "options",
+        "file_location": "plugins/options/historical_vol",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "historical_vol",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "hv_20",
+          "hv_50"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "institutional_accumulation",
+        "category": "options",
+        "file_location": "plugins/options/institutional_accumulation",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "institutional_accumulation",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dark_pool",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "dark_pool_prints"
+        ],
+        "manifest_outputs": [
+          "accumulation_signal"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "intraday_risk",
+        "category": "options",
+        "file_location": "plugins/options/intraday_risk",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "intraday_risk",
+        "manifest_version": "1.0.0",
+        "manifest_category": "0dte",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "intraday_risk"
+        ],
+        "manifest_dependencies": [
+          "gex",
+          "gamma_flip"
+        ]
+      },
+      {
+        "name": "iv",
+        "category": "options",
+        "file_location": "plugins/options/iv",
+        "has_manifest_yaml": true,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "iv",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "iv_atm"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "iv_crush_probability",
+        "category": "options",
+        "file_location": "plugins/options/iv_crush_probability",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "iv_crush_probability",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "iv_history"
+        ],
+        "manifest_outputs": [
+          "crush_probability"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "iv_percentile",
+        "category": "options",
+        "file_location": "plugins/options/iv_percentile",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "iv_percentile",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "iv_history"
+        ],
+        "manifest_outputs": [
+          "iv_percentile"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "iv_rank",
+        "category": "options",
+        "file_location": "plugins/options/iv_rank",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "iv_rank",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "iv_history"
+        ],
+        "manifest_outputs": [
+          "iv_rank"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "large_orders",
+        "category": "options",
+        "file_location": "plugins/options/large_orders",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "large_orders",
+        "manifest_version": "1.0.0",
+        "manifest_category": "flow",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow"
+        ],
+        "manifest_outputs": [
+          "large_orders"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "max-pain",
+        "category": "options",
+        "file_location": "plugins/options/max-pain",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "negative_gamma_zone",
+        "category": "options",
+        "file_location": "plugins/options/negative_gamma_zone",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "negative_gamma_zone",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dealer",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "negative_zone"
+        ],
+        "manifest_dependencies": [
+          "gex"
+        ]
+      },
+      {
+        "name": "oi_buildup",
+        "category": "options",
+        "file_location": "plugins/options/oi_buildup",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "oi_buildup",
+        "manifest_version": "1.0.0",
+        "manifest_category": "open_interest",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "buildup_strikes"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "oi_change",
+        "category": "options",
+        "file_location": "plugins/options/oi_change",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "oi_change",
+        "manifest_version": "1.0.0",
+        "manifest_category": "open_interest",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "oi_changes"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "oi_walls",
+        "category": "options",
+        "file_location": "plugins/options/oi_walls",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "oi_walls",
+        "manifest_version": "1.0.0",
+        "manifest_category": "open_interest",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "call_walls",
+          "put_walls"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "option_flow",
+        "category": "options",
+        "file_location": "plugins/options/option_flow",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "option_flow",
+        "manifest_version": "1.0.0",
+        "manifest_category": "flow",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow"
+        ],
+        "manifest_outputs": [
+          "flow_summary"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "pin_probability",
+        "category": "options",
+        "file_location": "plugins/options/pin_probability",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "pin_probability",
+        "manifest_version": "1.0.0",
+        "manifest_category": "probability",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "pin_risk"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "positive_gamma_zone",
+        "category": "options",
+        "file_location": "plugins/options/positive_gamma_zone",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "positive_gamma_zone",
+        "manifest_version": "1.0.0",
+        "manifest_category": "dealer",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain",
+          "greeks"
+        ],
+        "manifest_outputs": [
+          "positive_zone"
+        ],
+        "manifest_dependencies": [
+          "gex"
+        ]
+      },
+      {
+        "name": "probability_itm",
+        "category": "options",
+        "file_location": "plugins/options/probability_itm",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "probability_itm",
+        "manifest_version": "1.0.0",
+        "manifest_category": "probability",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "pitm_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "probability_of_profit",
+        "category": "options",
+        "file_location": "plugins/options/probability_of_profit",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "probability_of_profit",
+        "manifest_version": "1.0.0",
+        "manifest_category": "probability",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "pop"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "probability_otm",
+        "category": "options",
+        "file_location": "plugins/options/probability_otm",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "probability_otm",
+        "manifest_version": "1.0.0",
+        "manifest_category": "probability",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "potm_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "put_oi",
+        "category": "options",
+        "file_location": "plugins/options/put_oi",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "put_oi",
+        "manifest_version": "1.0.0",
+        "manifest_category": "open_interest",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "put_oi_total"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "realized_vol",
+        "category": "options",
+        "file_location": "plugins/options/realized_vol",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "realized_vol",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "OHLCV"
+        ],
+        "manifest_outputs": [
+          "rv_1d",
+          "rv_5d"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "rho",
+        "category": "options",
+        "file_location": "plugins/options/rho",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "rho",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "rho_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "skew",
+        "category": "options",
+        "file_location": "plugins/options/skew",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "smart_money_detection",
+        "category": "options",
+        "file_location": "plugins/options/smart_money_detection",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "smart_money_detection",
+        "manifest_version": "1.0.0",
+        "manifest_category": "flow",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow"
+        ],
+        "manifest_outputs": [
+          "smart_money_signals"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "speed",
+        "category": "options",
+        "file_location": "plugins/options/speed",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "speed",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "speed_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "strike_concentration",
+        "category": "options",
+        "file_location": "plugins/options/strike_concentration",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "strike_concentration",
+        "manifest_version": "1.0.0",
+        "manifest_category": "open_interest",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "concentrations"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "sweep_orders",
+        "category": "options",
+        "file_location": "plugins/options/sweep_orders",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "sweep_orders",
+        "manifest_version": "1.0.0",
+        "manifest_category": "flow",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow"
+        ],
+        "manifest_outputs": [
+          "sweeps"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "term_structure",
+        "category": "options",
+        "file_location": "plugins/options/term_structure",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "term_structure",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "term_structure"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "theta",
+        "category": "options",
+        "file_location": "plugins/options/theta",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "theta",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "theta_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "unusual_activity",
+        "category": "options",
+        "file_location": "plugins/options/unusual_activity",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "unusual_activity",
+        "manifest_version": "1.0.0",
+        "manifest_category": "flow",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow",
+          "oi_by_strike"
+        ],
+        "manifest_outputs": [
+          "unusual_signals"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vanna",
+        "category": "options",
+        "file_location": "plugins/options/vanna",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vanna",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "vanna_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vega",
+        "category": "options",
+        "file_location": "plugins/options/vega",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vega",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "vega_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vol_smile",
+        "category": "options",
+        "file_location": "plugins/options/vol_smile",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vol_smile",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "smile_skew"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vol_surface",
+        "category": "options",
+        "file_location": "plugins/options/vol_surface",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vol_surface",
+        "manifest_version": "1.0.0",
+        "manifest_category": "volatility",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "surface"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "volatility-surface",
+        "category": "options",
+        "file_location": "plugins/options/volatility-surface",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "vomma",
+        "category": "options",
+        "file_location": "plugins/options/vomma",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "vomma",
+        "manifest_version": "1.0.0",
+        "manifest_category": "greeks",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "chain"
+        ],
+        "manifest_outputs": [
+          "vomma_per_strike"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "whale_activity",
+        "category": "options",
+        "file_location": "plugins/options/whale_activity",
+        "has_manifest_yaml": true,
+        "has_manifest_py": false,
+        "has_src": false,
+        "has_tests": false,
+        "is_stub": true,
+        "src_lines": 0,
+        "manifest_id": "whale_activity",
+        "manifest_version": "1.0.0",
+        "manifest_category": "flow",
+        "manifest_layer": "",
+        "manifest_inputs": [
+          "option_flow"
+        ],
+        "manifest_outputs": [
+          "whale_trades"
+        ],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "candlestick",
+        "category": "patterns",
+        "file_location": "plugins/patterns/candlestick",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "chan-theory",
+        "category": "patterns",
+        "file_location": "plugins/patterns/chan-theory",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "elliott-wave",
+        "category": "patterns",
+        "file_location": "plugins/patterns/elliott-wave",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "smart-money",
+        "category": "patterns",
+        "file_location": "plugins/patterns/smart-money",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "volume-profile",
+        "category": "patterns",
+        "file_location": "plugins/patterns/volume-profile",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      },
+      {
+        "name": "wyckoff",
+        "category": "patterns",
+        "file_location": "plugins/patterns/wyckoff",
+        "has_manifest_yaml": false,
+        "has_manifest_py": true,
+        "has_src": true,
+        "has_tests": true,
+        "is_stub": true,
+        "src_lines": 30,
+        "manifest_id": "",
+        "manifest_version": "",
+        "manifest_category": "",
+        "manifest_layer": "",
+        "manifest_inputs": [],
+        "manifest_outputs": [],
+        "manifest_dependencies": []
+      }
+    ],
+    "runtime_agents": [
+      {
+        "agent_id": "ta.liquidity",
+        "class_name": "LiquidityAgent",
+        "module_path": "athena_x_ta_layer1_market_structure.liquidity",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer1_market_structure/liquidity.py",
+        "layer": 1,
+        "category": "market_structure",
+        "description": "Detects liquidity pools and voids.",
+        "inputs": [
+          "bars(50)"
+        ],
+        "outputs": [
+          "Liquidity: liquidity_pools, avg_volume"
+        ],
+        "dependencies": [],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.multi_timeframe_data",
+        "class_name": "MultiTimeframeDataAgent",
+        "module_path": "athena_x_ta_layer1_market_structure.multi_timeframe_data",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer1_market_structure/multi_timeframe_data.py",
+        "layer": 1,
+        "category": "market_structure",
+        "description": "Fetches bars across all standard timeframes.",
+        "inputs": [
+          "bars(9 TFs)"
+        ],
+        "outputs": [
+          "MTF: per-TF bars"
+        ],
+        "dependencies": [],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.support_resistance",
+        "class_name": "SupportResistanceAgent",
+        "module_path": "athena_x_ta_layer1_market_structure.support_resistance",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer1_market_structure/support_resistance.py",
+        "layer": 1,
+        "category": "market_structure",
+        "description": "Identifies key support and resistance levels.",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "SR: resistance, support"
+        ],
+        "dependencies": [],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.swing",
+        "class_name": "SwingHighLowAgent",
+        "module_path": "athena_x_ta_layer1_market_structure.swing",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer1_market_structure/swing.py",
+        "layer": 1,
+        "category": "market_structure",
+        "description": "Identifies swing high/low pivot points.",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "SwingHL: swing_highs, swing_lows"
+        ],
+        "dependencies": [],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.trend",
+        "class_name": "TrendDetectionAgent",
+        "module_path": "athena_x_ta_layer1_market_structure.trend",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer1_market_structure/trend.py",
+        "layer": 1,
+        "category": "market_structure",
+        "description": "Detects trend direction: Bullish / Bearish / Ranging.",
+        "inputs": [
+          "bars(50)"
+        ],
+        "outputs": [
+          "Trend: bullish|bearish|ranging"
+        ],
+        "dependencies": [],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.volume_profile",
+        "class_name": "VolumeProfileAgent",
+        "module_path": "athena_x_ta_layer1_market_structure.volume_profile",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer1_market_structure/volume_profile.py",
+        "layer": 1,
+        "category": "market_structure",
+        "description": "Computes POC / VAH / VAL volume distribution.",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "VolumeProfile: POC, value_area"
+        ],
+        "dependencies": [],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.adx",
+        "class_name": "ADXAgent",
+        "module_path": "athena_x_ta_layer2_indicators.adx",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer2_indicators/adx.py",
+        "layer": 2,
+        "category": "indicator",
+        "description": "",
+        "inputs": [
+          "bars(period*2)"
+        ],
+        "outputs": [
+          "ADX{period}: float 0..100"
+        ],
+        "dependencies": [
+          "layer1"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.atr",
+        "class_name": "ATRAgent",
+        "module_path": "athena_x_ta_layer2_indicators.atr",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer2_indicators/atr.py",
+        "layer": 2,
+        "category": "indicator",
+        "description": "",
+        "inputs": [
+          "bars(period+1)"
+        ],
+        "outputs": [
+          "ATR{period}: float"
+        ],
+        "dependencies": [
+          "layer1"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.bollinger",
+        "class_name": "BollingerAgent",
+        "module_path": "athena_x_ta_layer2_indicators.bollinger",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer2_indicators/bollinger.py",
+        "layer": 2,
+        "category": "indicator",
+        "description": "",
+        "inputs": [
+          "bars(period)"
+        ],
+        "outputs": [
+          "Bollinger: upper, middle, lower, percent_b"
+        ],
+        "dependencies": [
+          "layer1"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.ema",
+        "class_name": "EMAAgent",
+        "module_path": "athena_x_ta_layer2_indicators.ema",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer2_indicators/ema.py",
+        "layer": 2,
+        "category": "indicator",
+        "description": "Computes EMA for a symbol+timeframe.\n\n    Pure function. No forecasting. No buy/sell conclusions. Deterministic.\n    ",
+        "inputs": [
+          "bars(period*3)"
+        ],
+        "outputs": [
+          "EMA{period}: float"
+        ],
+        "dependencies": [
+          "layer1"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.macd",
+        "class_name": "MACDAgent",
+        "module_path": "athena_x_ta_layer2_indicators.macd",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer2_indicators/macd.py",
+        "layer": 2,
+        "category": "indicator",
+        "description": "",
+        "inputs": [
+          "bars(26+9)"
+        ],
+        "outputs": [
+          "MACD: macd, signal, histogram"
+        ],
+        "dependencies": [
+          "layer1"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.rsi",
+        "class_name": "RSIAgent",
+        "module_path": "athena_x_ta_layer2_indicators.rsi",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer2_indicators/rsi.py",
+        "layer": 2,
+        "category": "indicator",
+        "description": "",
+        "inputs": [
+          "bars(period)"
+        ],
+        "outputs": [
+          "RSI{period}: float 0..100"
+        ],
+        "dependencies": [
+          "layer1"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.sma",
+        "class_name": "SMAAgent",
+        "module_path": "athena_x_ta_layer2_indicators.sma",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer2_indicators/sma.py",
+        "layer": 2,
+        "category": "indicator",
+        "description": "",
+        "inputs": [
+          "bars(period)"
+        ],
+        "outputs": [
+          "SMA{period}: float"
+        ],
+        "dependencies": [
+          "layer1"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.vwap",
+        "class_name": "VWAPAgent",
+        "module_path": "athena_x_ta_layer2_indicators.vwap",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer2_indicators/vwap.py",
+        "layer": 2,
+        "category": "indicator",
+        "description": "",
+        "inputs": [
+          "bars(1d)"
+        ],
+        "outputs": [
+          "VWAP: float, deviation_bands"
+        ],
+        "dependencies": [
+          "layer1"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.chan_theory",
+        "class_name": "ChanTheoryAgent",
+        "module_path": "athena_x_ta_layer3_institutional.chan_theory",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer3_institutional/chan_theory.py",
+        "layer": 3,
+        "category": "institutional",
+        "description": "Chan Theory (Bi/Duan/Zhongshu) analysis",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "Chan: bi_count, zhongshu_detected"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.elliott_wave",
+        "class_name": "ElliottWaveAgent",
+        "module_path": "athena_x_ta_layer3_institutional.elliott_wave",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer3_institutional/elliott_wave.py",
+        "layer": 3,
+        "category": "institutional",
+        "description": "Elliott Wave pattern recognition",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "Elliott: current_wave (1..5|corrective)"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.entry",
+        "class_name": "EntryAgent",
+        "module_path": "athena_x_ta_layer3_institutional.entry",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer3_institutional/entry.py",
+        "layer": 3,
+        "category": "institutional",
+        "description": "High-probability entry identification",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "Entry: entry_signal (long|short|wait)"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.escape_top",
+        "class_name": "EscapeTopAgent",
+        "module_path": "athena_x_ta_layer3_institutional.escape_top",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer3_institutional/escape_top.py",
+        "layer": 3,
+        "category": "institutional",
+        "description": "Escape Top (breakout-from-consolidation top detection)",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "EscapeTop: escape_detected, consolidation_range"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.pull_up_pattern",
+        "class_name": "PullUpPatternAgent",
+        "module_path": "athena_x_ta_layer3_institutional.pull_up_pattern",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer3_institutional/pull_up_pattern.py",
+        "layer": 3,
+        "category": "institutional",
+        "description": "Pull-Up continuation pattern detection",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "PullUp: pull_up_detected, strength"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.smart_money",
+        "class_name": "SmartMoneyAgent",
+        "module_path": "athena_x_ta_layer3_institutional.smart_money",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer3_institutional/smart_money.py",
+        "layer": 3,
+        "category": "institutional",
+        "description": "Smart Money Concepts (order blocks, FVGs)",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "SmartMoney: order_blocks, fvg_detected"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.volume_price",
+        "class_name": "VolumePriceAgent",
+        "module_path": "athena_x_ta_layer3_institutional.volume_price",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer3_institutional/volume_price.py",
+        "layer": 3,
+        "category": "institutional",
+        "description": "Volume-Price Analysis (volume-price relationship)",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "VolumePrice: volume_trend, price_trend"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.wyckoff",
+        "class_name": "WyckoffAgent",
+        "module_path": "athena_x_ta_layer3_institutional.wyckoff",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer3_institutional/wyckoff.py",
+        "layer": 3,
+        "category": "institutional",
+        "description": "Detects Wyckoff accumulation/distribution phase",
+        "inputs": [
+          "bars(100)"
+        ],
+        "outputs": [
+          "Wyckoff: phase (accumulation|markup|distribution)"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.consensus",
+        "class_name": "TimeframeConsensusAgent",
+        "module_path": "athena_x_ta_layer4_consensus.consensus",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_layer4_consensus/consensus.py",
+        "layer": 4,
+        "category": "consensus",
+        "description": "Produces a synchronized multi-timeframe consensus view.\n\n    Instead of every AI looking at every timeframe independently,\n    this agent produces a single unified view.\n\n    Stage 7 rule: Downstream modules read this single consensus.\n    ",
+        "inputs": [
+          "bars(9 TFs)"
+        ],
+        "outputs": [
+          "Consensus: alignment, long_term, intraday"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2",
+          "layer3"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      },
+      {
+        "agent_id": "ta.snapshot",
+        "class_name": "TechnicalSnapshotAgent",
+        "module_path": "athena_x_ta_snapshot.agent",
+        "file_path": "/home/z/.venv/lib/python3.12/site-packages/athena_x_ta_snapshot/agent.py",
+        "layer": 5,
+        "category": "snapshot",
+        "description": "Publishes a single synchronized technical snapshot.\n\n    Stage 7 rule: Downstream components work from the same consistent view.\n    ",
+        "inputs": [
+          "all layer outputs"
+        ],
+        "outputs": [
+          "TechnicalSnapshot: aggregate DNA"
+        ],
+        "dependencies": [
+          "layer1",
+          "layer2",
+          "layer3",
+          "layer4"
+        ],
+        "compute_signature": "async compute(symbol: str, timeframe: Timeframe, repo) -> TAOutput"
+      }
+    ],
+    "providers": [
+      {
+        "name": "alphavantage",
+        "file_location": "providers/alphavantage",
+        "has_adapter": true,
+        "adapter_class": "AlphavantageAdapter",
+        "src_lines": 24,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "cnbc",
+        "file_location": "providers/cnbc",
+        "has_adapter": true,
+        "adapter_class": "CnbcAdapter",
+        "src_lines": 23,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "cnn",
+        "file_location": "providers/cnn",
+        "has_adapter": true,
+        "adapter_class": "CNNAdapter",
+        "src_lines": 120,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "databento",
+        "file_location": "providers/databento",
+        "has_adapter": true,
+        "adapter_class": "DatabentoAdapter",
+        "src_lines": 23,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "failover",
+        "file_location": "providers/failover",
+        "has_adapter": false,
+        "adapter_class": "",
+        "src_lines": 117,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "finnhub",
+        "file_location": "providers/finnhub",
+        "has_adapter": true,
+        "adapter_class": "FinnhubAdapter",
+        "src_lines": 137,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "flashalpha",
+        "file_location": "providers/flashalpha",
+        "has_adapter": true,
+        "adapter_class": "FlashalphaAdapter",
+        "src_lines": 24,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "fred",
+        "file_location": "providers/fred",
+        "has_adapter": true,
+        "adapter_class": "FredAdapter",
+        "src_lines": 24,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "polygon",
+        "file_location": "providers/polygon",
+        "has_adapter": true,
+        "adapter_class": "PolygonAdapter",
+        "src_lines": 24,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "polymarket",
+        "file_location": "providers/polymarket",
+        "has_adapter": true,
+        "adapter_class": "PolymarketAdapter",
+        "src_lines": 23,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "reuters",
+        "file_location": "providers/reuters",
+        "has_adapter": true,
+        "adapter_class": "ReutersAdapter",
+        "src_lines": 23,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "sec",
+        "file_location": "providers/sec",
+        "has_adapter": true,
+        "adapter_class": "SecAdapter",
+        "src_lines": 23,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "simulated",
+        "file_location": "providers/simulated",
+        "has_adapter": true,
+        "adapter_class": "SimulatedAdapter",
+        "src_lines": 116,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "trading-economics",
+        "file_location": "providers/trading-economics",
+        "has_adapter": true,
+        "adapter_class": "TradingEconomicsAdapter",
+        "src_lines": 23,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "wsj",
+        "file_location": "providers/wsj",
+        "has_adapter": true,
+        "adapter_class": "WsjAdapter",
+        "src_lines": 23,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "yahoo",
+        "file_location": "providers/yahoo",
+        "has_adapter": true,
+        "adapter_class": "YahooAdapter",
+        "src_lines": 170,
+        "is_stub": false,
+        "has_tests": true
+      }
+    ],
+    "engines": [
+      {
+        "name": "ai-runtime",
+        "file_location": "engines/ai-runtime",
+        "src_lines": 11,
+        "is_stub": true,
+        "has_tests": true,
+        "test_lines": 2,
+        "public_api": []
+      },
+      {
+        "name": "backtest-engine",
+        "file_location": "engines/backtest-engine",
+        "src_lines": 11,
+        "is_stub": true,
+        "has_tests": true,
+        "test_lines": 2,
+        "public_api": []
+      },
+      {
+        "name": "cross-market-plugin-engine",
+        "file_location": "engines/cross-market-plugin-engine",
+        "src_lines": 281,
+        "is_stub": false,
+        "has_tests": true,
+        "test_lines": 140,
+        "public_api": [
+          "LeadershipResult",
+          "LeadershipEngine",
+          "CorrelationMatrix",
+          "CorrelationEngine",
+          "CrossMarketPluginManager"
+        ]
+      },
+      {
+        "name": "data-engine",
+        "file_location": "engines/data-engine",
+        "src_lines": 11,
+        "is_stub": true,
+        "has_tests": true,
+        "test_lines": 2,
+        "public_api": []
+      },
+      {
+        "name": "forecast-engine",
+        "file_location": "engines/forecast-engine",
+        "src_lines": 464,
+        "is_stub": false,
+        "has_tests": true,
+        "test_lines": 206,
+        "public_api": [
+          "EnsembleConsensus",
+          "FeatureFusion",
+          "ForecastValidator",
+          "ExplainabilityEngine"
+        ]
+      },
+      {
+        "name": "governance-engine",
+        "file_location": "engines/governance-engine",
+        "src_lines": 558,
+        "is_stub": false,
+        "has_tests": true,
+        "test_lines": 176,
+        "public_api": [
+          "AuditTrail",
+          "SystemHealthSupervisor",
+          "SelfHealingEngine",
+          "SystemStatus",
+          "SubsystemHealth",
+          "AgentHealthEntry",
+          "ConfidenceArbitration",
+          "PluginGovernanceEntry",
+          "ModelGovernanceEntry",
+          "AlertEntry",
+          "AuditEntry",
+          "SelfHealingAction",
+          "SystemReadinessScore",
+          "OperationsDNA",
+          "ConfidenceArbitrationEngine"
+        ]
+      },
+      {
+        "name": "learning-engine",
+        "file_location": "engines/learning-engine",
+        "src_lines": 11,
+        "is_stub": true,
+        "has_tests": true,
+        "test_lines": 2,
+        "public_api": []
+      },
+      {
+        "name": "narrative-engine",
+        "file_location": "engines/narrative-engine",
+        "src_lines": 540,
+        "is_stub": false,
+        "has_tests": true,
+        "test_lines": 246,
+        "public_api": [
+          "EventClassifier",
+          "MarketImpactEngine",
+          "NarrativeGenerator",
+          "EventTimeline"
+        ]
+      },
+      {
+        "name": "onnx-runtime",
+        "file_location": "engines/onnx-runtime",
+        "src_lines": 11,
+        "is_stub": true,
+        "has_tests": true,
+        "test_lines": 2,
+        "public_api": []
+      },
+      {
+        "name": "options-plugin-engine",
+        "file_location": "engines/options-plugin-engine",
+        "src_lines": 174,
+        "is_stub": false,
+        "has_tests": true,
+        "test_lines": 66,
+        "public_api": [
+          "OptionsPluginManager",
+          "OptionsPluginExecutor"
+        ]
+      },
+      {
+        "name": "plugin-engine",
+        "file_location": "engines/plugin-engine",
+        "src_lines": 990,
+        "is_stub": false,
+        "has_tests": true,
+        "test_lines": 282,
+        "public_api": [
+          "DependencyGraph",
+          "DependencyResolver",
+          "PluginCategory",
+          "PluginLayer",
+          "PluginManifest",
+          "RegistryEntry",
+          "PluginRegistry",
+          "PluginConfigService",
+          "ScheduleEntry",
+          "PluginScheduler",
+          "PluginManager",
+          "ExecutionResult",
+          "PluginExecutor"
+        ]
+      },
+      {
+        "name": "report-engine",
+        "file_location": "engines/report-engine",
+        "src_lines": 11,
+        "is_stub": true,
+        "has_tests": true,
+        "test_lines": 2,
+        "public_api": []
+      },
+      {
+        "name": "trade-engine",
+        "file_location": "engines/trade-engine",
+        "src_lines": 520,
+        "is_stub": false,
+        "has_tests": true,
+        "test_lines": 218,
+        "public_api": [
+          "TimingEngine",
+          "OpportunityRankingEngine",
+          "TradeQualificationEngine",
+          "RiskEngine",
+          "TradeStatus",
+          "TimingWindow",
+          "TradeAlignment",
+          "EntryQuality",
+          "OptionTiming",
+          "RiskAssessment",
+          "TradeScenario",
+          "InstitutionalChecklist",
+          "TradeRanking",
+          "TradeReadinessMeter",
+          "TradeDNA"
+        ]
+      },
+      {
+        "name": "validation-framework",
+        "file_location": "engines/validation-framework",
+        "src_lines": 332,
+        "is_stub": false,
+        "has_tests": true,
+        "test_lines": 111,
+        "public_api": [
+          "TestOrchestrator",
+          "TestPhase",
+          "TestResult",
+          "PhaseResult",
+          "TestReport",
+          "ValidationConfig"
+        ]
+      }
+    ],
+    "validators": [
+      {
+        "name": "completeness-validator",
+        "file_location": "agents/validation/completeness-validator",
+        "src_lines": 107,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "confidence-engine",
+        "file_location": "agents/validation/confidence-engine",
+        "src_lines": 168,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "cross-provider-validator",
+        "file_location": "agents/validation/cross-provider-validator",
+        "src_lines": 120,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "division-leader",
+        "file_location": "agents/validation/division-leader",
+        "src_lines": 67,
+        "is_stub": true,
+        "has_tests": true
+      },
+      {
+        "name": "duplicate-detector",
+        "file_location": "agents/validation/duplicate-detector",
+        "src_lines": 76,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "market-calendar-validator",
+        "file_location": "agents/validation/market-calendar-validator",
+        "src_lines": 96,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "market-logic-validator",
+        "file_location": "agents/validation/market-logic-validator",
+        "src_lines": 136,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "market-state-validator",
+        "file_location": "agents/validation/market-state-validator",
+        "src_lines": 156,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "news-validator",
+        "file_location": "agents/validation/news-validator",
+        "src_lines": 0,
+        "is_stub": true,
+        "has_tests": false
+      },
+      {
+        "name": "options-validator",
+        "file_location": "agents/validation/options-validator",
+        "src_lines": 0,
+        "is_stub": true,
+        "has_tests": false
+      },
+      {
+        "name": "outlier-detector",
+        "file_location": "agents/validation/outlier-detector",
+        "src_lines": 115,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "price-validator",
+        "file_location": "agents/validation/price-validator",
+        "src_lines": 0,
+        "is_stub": true,
+        "has_tests": false
+      },
+      {
+        "name": "quarantine-manager",
+        "file_location": "agents/validation/quarantine-manager",
+        "src_lines": 118,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "schema-validator",
+        "file_location": "agents/validation/schema-validator",
+        "src_lines": 106,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "time-validator",
+        "file_location": "agents/validation/time-validator",
+        "src_lines": 0,
+        "is_stub": true,
+        "has_tests": false
+      },
+      {
+        "name": "timestamp-validator",
+        "file_location": "agents/validation/timestamp-validator",
+        "src_lines": 138,
+        "is_stub": false,
+        "has_tests": true
+      },
+      {
+        "name": "volume-validator",
+        "file_location": "agents/validation/volume-validator",
+        "src_lines": 0,
+        "is_stub": true,
+        "has_tests": false
+      }
+    ],
+    "dashboard_widgets": [
+      {
+        "name": "agent-health",
+        "file_location": "apps/nextjs-dashboard/src/modules/agent-health",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "dashboard",
+        "file_location": "apps/nextjs-dashboard/src/modules/dashboard",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "data-quality",
+        "file_location": "apps/nextjs-dashboard/src/modules/data-quality",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "live-market",
+        "file_location": "apps/nextjs-dashboard/src/modules/live-market",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "macro-intelligence",
+        "file_location": "apps/nextjs-dashboard/src/modules/macro-intelligence",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "market-intelligence",
+        "file_location": "apps/nextjs-dashboard/src/modules/market-intelligence",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "news-intelligence",
+        "file_location": "apps/nextjs-dashboard/src/modules/news-intelligence",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "options-intelligence",
+        "file_location": "apps/nextjs-dashboard/src/modules/options-intelligence",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "probability-engine",
+        "file_location": "apps/nextjs-dashboard/src/modules/probability-engine",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "report-generator",
+        "file_location": "apps/nextjs-dashboard/src/modules/report-generator",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "self-validation",
+        "file_location": "apps/nextjs-dashboard/src/modules/self-validation",
+        "has_manifest": true,
+        "has_panel_component": true
+      },
+      {
+        "name": "technical-analysis",
+        "file_location": "apps/nextjs-dashboard/src/modules/technical-analysis",
+        "has_manifest": true,
+        "has_panel_component": true
+      }
+    ],
+    "summary": {
+      "total_plugin_slots": 191,
+      "total_runtime_agents": 24,
+      "total_providers": 16,
+      "total_engines": 14,
+      "total_validators": 17,
+      "total_dashboard_widgets": 12
+    }
+  },
+  "phase2_connection_map": {
+    "pipeline_flow": [
+      {
+        "step": 1,
+        "name": "Market Data",
+        "components": [
+          "FakeMarketRepository (demo)",
+          "YahooAdapter (production)",
+          "FinnhubAdapter",
+          "CNNAdapter",
+          "SimulatedAdapter"
+        ],
+        "status": "5/16 providers functional"
+      },
+      {
+        "step": 2,
+        "name": "Provider",
+        "components": [
+          "providers/failover (router)",
+          "providers/yahoo",
+          "providers/finnhub",
+          "providers/cnn",
+          "providers/simulated"
+        ],
+        "status": "failover router implemented"
+      },
+      {
+        "step": 3,
+        "name": "Layer 1: Market Structure",
+        "components": [
+          "ta.trend",
+          "ta.swing",
+          "ta.support_resistance",
+          "ta.liquidity",
+          "ta.volume_profile",
+          "ta.multi_timeframe_data"
+        ],
+        "status": "6 agents, all VERIFIED"
+      },
+      {
+        "step": 4,
+        "name": "Layer 2: Indicators",
+        "components": [
+          "ta.ema",
+          "ta.sma",
+          "ta.vwap",
+          "ta.rsi",
+          "ta.macd",
+          "ta.adx",
+          "ta.atr",
+          "ta.bollinger"
+        ],
+        "status": "8 agents, 1 CERTIFIED (bollinger)"
+      },
+      {
+        "step": 5,
+        "name": "Layer 3: Institutional",
+        "components": [
+          "ta.wyckoff",
+          "ta.chan_theory",
+          "ta.elliott_wave",
+          "ta.smart_money",
+          "ta.volume_price",
+          "ta.escape_top",
+          "ta.entry",
+          "ta.pull_up_pattern"
+        ],
+        "status": "8 agents, all PROVISIONAL (naive implementations)"
+      },
+      {
+        "step": 6,
+        "name": "Layer 4: Consensus",
+        "components": [
+          "ta.consensus (TimeframeConsensusAgent)"
+        ],
+        "status": "1 agent, NEEDS IMPROVEMENT (requires multi-TF inputs)"
+      },
+      {
+        "step": 7,
+        "name": "Layer 5: Supervisor",
+        "components": [
+          "ta.supervisor (TechnicalSupervisor)",
+          "ta.snapshot (TechnicalSnapshotAgent)"
+        ],
+        "status": "2 agents, NEEDS IMPROVEMENT (aggregate only)"
+      },
+      {
+        "step": 8,
+        "name": "Intelligence Hubs",
+        "components": [
+          "hub.options",
+          "hub.market",
+          "hub.narrative",
+          "hub.forecast",
+          "hub.trade",
+          "hub.operations"
+        ],
+        "status": "6 hubs, all NEEDS IMPROVEMENT (require DNA inputs)"
+      },
+      {
+        "step": 9,
+        "name": "Engines",
+        "components": [
+          "engines/plugin-engine",
+          "engines/cross-market-plugin-engine",
+          "engines/forecast-engine",
+          "engines/governance-engine",
+          "engines/narrative-engine",
+          "engines/options-plugin-engine",
+          "engines/trade-engine",
+          "engines/validation-framework"
+        ],
+        "status": "8/14 engines functional"
+      },
+      {
+        "step": 10,
+        "name": "Validators",
+        "components": [
+          "11 validators in agents/validation/"
+        ],
+        "status": "11/17 functional"
+      },
+      {
+        "step": 11,
+        "name": "Workspace",
+        "components": [
+          "runtime/institutional-workspace",
+          "runtime/plugin-validation-workspace"
+        ],
+        "status": "2 workspace packages, both functional"
+      },
+      {
+        "step": 12,
+        "name": "Dashboard",
+        "components": [
+          "apps/nextjs-dashboard (12 modules, scaffolding)",
+          "Standalone HTML dashboards (Stage 16.3, 16.5)"
+        ],
+        "status": "Next.js modules are scaffolding; HTML dashboards are functional"
+      }
+    ],
+    "dead_code_count": 191,
+    "dead_code_sample": [
+      {
+        "path": "plugins/cross-market/aapl/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/amd/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/amzn/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/arm/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/asx200/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/avgo/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/bond_divergence/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/bonds_driving/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/breadth_weakening/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      },
+      {
+        "path": "plugins/cross-market/btc/",
+        "reason": "Scaffolding stub with no src/ directory \u2014 never loaded at runtime",
+        "evidence": "Runtime uses agents/technical-analysis/layer* instead"
+      }
+    ],
+    "duplicate_logic": [
+      {
+        "duplicates": [
+          "plugins/indicators/ema/",
+          "agents/technical-analysis/layer2-indicators/ema.py",
+          "agents/technical-analysis/indicator/ema-agent/"
+        ],
+        "runtime_choice": "agents/technical-analysis/layer2-indicators/ema.py (EMAAgent)",
+        "recommendation": "Delete plugins/indicators/ema/ and agents/technical-analysis/indicator/ema-agent/ \u2014 both are dead scaffolding"
+      },
+      {
+        "duplicates": [
+          "plugins/indicators/rsi/",
+          "agents/technical-analysis/layer2-indicators/rsi.py",
+          "agents/technical-analysis/indicator/rsi-agent/"
+        ],
+        "runtime_choice": "agents/technical-analysis/layer2-indicators/rsi.py (RSIAgent)",
+        "recommendation": "Delete the two scaffolding duplicates"
+      },
+      {
+        "duplicates": [
+          "plugins/patterns/wyckoff/",
+          "agents/technical-analysis/layer3-institutional/wyckoff.py",
+          "agents/technical-analysis/wyckoff/wyckoff-agent/"
+        ],
+        "runtime_choice": "agents/technical-analysis/layer3-institutional/wyckoff.py (WyckoffAgent)",
+        "recommendation": "Delete the two scaffolding duplicates"
+      },
+      {
+        "duplicates": [
+          "plugins/options/gamma-exposure/",
+          "plugins/options/gex/"
+        ],
+        "runtime_choice": "Neither \u2014 both are stubs; runtime uses hub.options",
+        "recommendation": "Delete both; consolidate into hub.options"
+      },
+      {
+        "duplicates": [
+          "plugins/options/volatility-surface/",
+          "plugins/options/vol_surface/"
+        ],
+        "runtime_choice": "Neither \u2014 both are stubs",
+        "recommendation": "Delete both; consolidate"
+      }
+    ],
+    "unused_plugins_count": 6,
+    "unused_plugins_sample": [
+      {
+        "path": "engines/ai-runtime/",
+        "reason": "Engine stub \u2014 only 11 LoC, no real implementation",
+        "evidence": "Class declared with no body"
+      },
+      {
+        "path": "engines/backtest-engine/",
+        "reason": "Engine stub \u2014 only 11 LoC, no real implementation",
+        "evidence": "Class declared with no body"
+      },
+      {
+        "path": "engines/data-engine/",
+        "reason": "Engine stub \u2014 only 11 LoC, no real implementation",
+        "evidence": "Class declared with no body"
+      },
+      {
+        "path": "engines/learning-engine/",
+        "reason": "Engine stub \u2014 only 11 LoC, no real implementation",
+        "evidence": "Class declared with no body"
+      },
+      {
+        "path": "engines/onnx-runtime/",
+        "reason": "Engine stub \u2014 only 11 LoC, no real implementation",
+        "evidence": "Class declared with no body"
+      }
+    ],
+    "broken_dependencies": [
+      {
+        "component": "PluginManager.load()",
+        "issue": "Looks for indicator.py but plugins use plugin.py",
+        "runtime_impact": "LOW \u2014 runtime uses agents/ directly, not PluginManager"
+      },
+      {
+        "component": "plugins/indicators/_base/protocol.py",
+        "issue": "Declares TechnicalIndicator Protocol with IndicatorInput/Output dataclasses, but plugins use dict",
+        "runtime_impact": "NONE \u2014 protocol is dead code"
+      },
+      {
+        "component": "hub.* (6 intelligence hubs)",
+        "issue": "compute() signature expects DNA snapshots, not bars \u2014 cannot be executed standalone",
+        "runtime_impact": "HIGH \u2014 hubs cannot be validated via standard pipeline"
+      },
+      {
+        "component": "ta.consensus, ta.supervisor, ta.snapshot",
+        "issue": "Require multi-agent inputs via event bus, not bars",
+        "runtime_impact": "MEDIUM \u2014 these are aggregation agents, not standalone"
+      },
+      {
+        "component": "12 dashboard widgets in apps/nextjs-dashboard",
+        "issue": "panelComponent is null in all manifests \u2014 scaffolding only",
+        "runtime_impact": "HIGH \u2014 no working Next.js dashboard UI"
+      }
+    ]
+  },
+  "phase3a_mapping_table": [
+    {
+      "panel": "top_bar",
+      "widget": "ES Futures",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction + price",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "SPY",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction + price",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "QQQ",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction + price",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "IWM",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction + price",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "DIA",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction + price",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "VIX",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.atr",
+      "existing_runtime_agent": "ta.atr",
+      "output": "Volatility level",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "DXY",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction + price",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "TNX",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "10Y Treasury yield",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "Gold",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction + price",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "Oil",
+      "existing_plugin": "providers/yahoo",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction + price",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "top_bar",
+      "widget": "Live Status",
+      "existing_plugin": "runtime/health-monitor",
+      "existing_api": "/validation/health",
+      "existing_runtime_agent": "n/a",
+      "output": "Market session + connection health + provider health",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Market Regime",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "Bull / Bear / Range regime",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Trend Day",
+      "existing_plugin": "ta.trend",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend day detection",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Range Day",
+      "existing_plugin": "ta.adx",
+      "existing_api": "/workspace/execute/ta.adx",
+      "existing_runtime_agent": "ta.adx",
+      "output": "ADX < 20 = range day",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Reversal Day",
+      "existing_plugin": "ta.wyckoff",
+      "existing_api": "/workspace/execute/ta.wyckoff",
+      "existing_runtime_agent": "ta.wyckoff",
+      "output": "Wyckoff phase = distribution/markdown",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Gap Analysis",
+      "existing_plugin": "ta.support_resistance",
+      "existing_api": "/workspace/execute/ta.support_resistance",
+      "existing_runtime_agent": "ta.support_resistance",
+      "output": "Gap from prior close",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Market Breadth",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "Breadth ratio",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Sector Rotation",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "Sector performance ranking",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Fear & Greed",
+      "existing_plugin": "providers/cnn",
+      "existing_api": "n/a (CNN adapter direct)",
+      "existing_runtime_agent": "cnn_adapter",
+      "output": "Fear & Greed Index 0-100",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Economic Calendar",
+      "existing_plugin": "providers/fred",
+      "existing_api": "n/a (planned, no impl)",
+      "existing_runtime_agent": "n/a",
+      "output": "Economic events calendar",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "left_panel",
+      "widget": "Breaking News",
+      "existing_plugin": "providers/cnn + hub.narrative",
+      "existing_api": "/workspace/execute/hub.narrative",
+      "existing_runtime_agent": "hub.narrative",
+      "output": "News headlines + sentiment",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Multi-timeframe Chart",
+      "existing_plugin": "providers/yahoo + ta.multi_timeframe_data",
+      "existing_api": "/workspace/execute/ta.multi_timeframe_data",
+      "existing_runtime_agent": "ta.multi_timeframe_data",
+      "output": "9 timeframes (1M,1W,1D,4H,1H,30M,15M,5M,1m)",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "EMA Overlay",
+      "existing_plugin": "ta.ema",
+      "existing_api": "/workspace/execute/ta.ema",
+      "existing_runtime_agent": "ta.ema",
+      "output": "EMA20, EMA50, EMA200",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "SMA Overlay",
+      "existing_plugin": "ta.sma",
+      "existing_api": "/workspace/execute/ta.sma",
+      "existing_runtime_agent": "ta.sma",
+      "output": "SMA20, SMA50, SMA200",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "VWAP Overlay",
+      "existing_plugin": "ta.vwap",
+      "existing_api": "/workspace/execute/ta.vwap",
+      "existing_runtime_agent": "ta.vwap",
+      "output": "VWAP + deviation bands",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "RSI Overlay",
+      "existing_plugin": "ta.rsi",
+      "existing_api": "/workspace/execute/ta.rsi",
+      "existing_runtime_agent": "ta.rsi",
+      "output": "RSI 0-100",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "MACD Overlay",
+      "existing_plugin": "ta.macd",
+      "existing_api": "/workspace/execute/ta.macd",
+      "existing_runtime_agent": "ta.macd",
+      "output": "MACD, signal, histogram",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "ADX Overlay",
+      "existing_plugin": "ta.adx",
+      "existing_api": "/workspace/execute/ta.adx",
+      "existing_runtime_agent": "ta.adx",
+      "output": "ADX 0-100",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "ATR Overlay",
+      "existing_plugin": "ta.atr",
+      "existing_api": "/workspace/execute/ta.atr",
+      "existing_runtime_agent": "ta.atr",
+      "output": "ATR volatility",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Bollinger Overlay",
+      "existing_plugin": "ta.bollinger",
+      "existing_api": "/workspace/execute/ta.bollinger",
+      "existing_runtime_agent": "ta.bollinger",
+      "output": "Upper/middle/lower bands",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Volume",
+      "existing_plugin": "ta.volume_profile",
+      "existing_api": "/workspace/execute/ta.volume_profile",
+      "existing_runtime_agent": "ta.volume_profile",
+      "output": "Volume histogram + POC",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Support Resistance",
+      "existing_plugin": "ta.support_resistance",
+      "existing_api": "/workspace/execute/ta.support_resistance",
+      "existing_runtime_agent": "ta.support_resistance",
+      "output": "S/R levels",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Swing",
+      "existing_plugin": "ta.swing",
+      "existing_api": "/workspace/execute/ta.swing",
+      "existing_runtime_agent": "ta.swing",
+      "output": "Swing highs/lows",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Trend",
+      "existing_plugin": "ta.trend",
+      "existing_api": "/workspace/execute/ta.trend",
+      "existing_runtime_agent": "ta.trend",
+      "output": "Trend direction",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Wyckoff",
+      "existing_plugin": "ta.wyckoff",
+      "existing_api": "/workspace/execute/ta.wyckoff",
+      "existing_runtime_agent": "ta.wyckoff",
+      "output": "Wyckoff phase",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Chan Theory",
+      "existing_plugin": "ta.chan_theory",
+      "existing_api": "/workspace/execute/ta.chan_theory",
+      "existing_runtime_agent": "ta.chan_theory",
+      "output": "\u4e2d\u67a2, bi count",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Elliott",
+      "existing_plugin": "ta.elliott_wave",
+      "existing_api": "/workspace/execute/ta.elliott_wave",
+      "existing_runtime_agent": "ta.elliott_wave",
+      "output": "Current wave count",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Smart Money",
+      "existing_plugin": "ta.smart_money",
+      "existing_api": "/workspace/execute/ta.smart_money",
+      "existing_runtime_agent": "ta.smart_money",
+      "output": "Order blocks, FVG",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "center",
+      "widget": "Volume Price",
+      "existing_plugin": "ta.volume_price",
+      "existing_api": "/workspace/execute/ta.volume_price",
+      "existing_runtime_agent": "ta.volume_price",
+      "output": "Volume-price trend",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Gamma Exposure",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "GEX value",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Gamma Flip",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "Gamma flip level",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Dealer Positioning",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "Dealer long/short gamma",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Max Pain",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "Max pain strike",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Option Flow",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "Call/put flow ratio",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Dark Pool",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "Dark pool prints",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Short Interest",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "Short interest %",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "0DTE",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "0DTE positioning",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Liquidity",
+      "existing_plugin": "ta.liquidity",
+      "existing_api": "/workspace/execute/ta.liquidity",
+      "existing_runtime_agent": "ta.liquidity",
+      "output": "Liquidity pools",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Bond",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "Bond market snapshot",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Dollar",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "DXY snapshot",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Asia",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "Asia session summary",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "Europe",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "Europe session summary",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "right_panel",
+      "widget": "MAG7",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "MAG7 stocks performance",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "bottom_panel",
+      "widget": "Contributing Plugins",
+      "existing_plugin": "runtime/institutional-workspace",
+      "existing_api": "/workspace/evidence/{request_id}",
+      "existing_runtime_agent": "InstitutionalWorkspace",
+      "output": "List of agents that contributed",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "bottom_panel",
+      "widget": "Evidence",
+      "existing_plugin": "runtime/institutional-workspace",
+      "existing_api": "/workspace/evidence/{request_id}",
+      "existing_runtime_agent": "InstitutionalWorkspace",
+      "output": "Per-agent output summary",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "bottom_panel",
+      "widget": "Confidence",
+      "existing_plugin": "athena_x_ta_base.TAConfidence",
+      "existing_api": "/workspace/evidence/{request_id}",
+      "existing_runtime_agent": "TAConfidence",
+      "output": "0.0-1.0 confidence score",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "bottom_panel",
+      "widget": "Weight",
+      "existing_plugin": "runtime/institutional-workspace",
+      "existing_api": "/workspace/evidence/{request_id}",
+      "existing_runtime_agent": "EvidenceReport",
+      "output": "primary/supporting/contextual weight",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "bottom_panel",
+      "widget": "Reason",
+      "existing_plugin": "runtime/institutional-workspace",
+      "existing_api": "/workspace/evidence/{request_id}",
+      "existing_runtime_agent": "EvidenceReport",
+      "output": "Why this conclusion",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "bottom_panel",
+      "widget": "Conflicting Evidence",
+      "existing_plugin": "runtime/institutional-workspace",
+      "existing_api": "/workspace/evidence/{request_id}",
+      "existing_runtime_agent": "EvidenceReport",
+      "output": "Agents that disagree",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "bottom_panel",
+      "widget": "Historical Accuracy",
+      "existing_plugin": "runtime/plugin-validation-workspace",
+      "existing_api": "/validation/certification",
+      "existing_runtime_agent": "PluginValidationWorkspace",
+      "output": "Per-agent historical accuracy %",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "ai_panel",
+      "widget": "Bull / Neutral / Bear",
+      "existing_plugin": "hub.forecast",
+      "existing_api": "/workspace/execute/hub.forecast",
+      "existing_runtime_agent": "hub.forecast",
+      "output": "Bull/neutral/bear probability",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "ai_panel",
+      "widget": "Probability Tree",
+      "existing_plugin": "hub.forecast",
+      "existing_api": "/workspace/execute/hub.forecast",
+      "existing_runtime_agent": "hub.forecast",
+      "output": "Probability tree visualization",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "ai_panel",
+      "widget": "Expected Range",
+      "existing_plugin": "hub.forecast",
+      "existing_api": "/workspace/execute/hub.forecast",
+      "existing_runtime_agent": "hub.forecast",
+      "output": "Expected price range",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "ai_panel",
+      "widget": "Expected Volatility",
+      "existing_plugin": "ta.atr",
+      "existing_api": "/workspace/execute/ta.atr",
+      "existing_runtime_agent": "ta.atr",
+      "output": "ATR-based volatility forecast",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "ai_panel",
+      "widget": "15 Minute Projection",
+      "existing_plugin": "hub.forecast",
+      "existing_api": "/workspace/execute/hub.forecast",
+      "existing_runtime_agent": "hub.forecast",
+      "output": "15m price projection",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "ai_panel",
+      "widget": "1 Hour Projection",
+      "existing_plugin": "hub.forecast",
+      "existing_api": "/workspace/execute/hub.forecast",
+      "existing_runtime_agent": "hub.forecast",
+      "output": "1H price projection",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "ai_panel",
+      "widget": "End Of Day Projection",
+      "existing_plugin": "hub.forecast",
+      "existing_api": "/workspace/execute/hub.forecast",
+      "existing_runtime_agent": "hub.forecast",
+      "output": "EOD price projection",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Market Summary",
+      "existing_plugin": "hub.market + ta.trend",
+      "existing_api": "/workspace/execute-request",
+      "existing_runtime_agent": "InstitutionalWorkspace",
+      "output": "Aggregate market summary",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Macro",
+      "existing_plugin": "hub.market",
+      "existing_api": "/workspace/execute/hub.market",
+      "existing_runtime_agent": "hub.market",
+      "output": "Macro environment",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Technical",
+      "existing_plugin": "ta.* Layer 1-3",
+      "existing_api": "/workspace/execute-request",
+      "existing_runtime_agent": "InstitutionalWorkspace",
+      "output": "Technical analysis summary",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Options",
+      "existing_plugin": "hub.options",
+      "existing_api": "/workspace/execute/hub.options",
+      "existing_runtime_agent": "hub.options",
+      "output": "Options intelligence",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Institutional Flow",
+      "existing_plugin": "hub.options + hub.market",
+      "existing_api": "/workspace/execute-request",
+      "existing_runtime_agent": "InstitutionalWorkspace",
+      "output": "Institutional flow summary",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "AI",
+      "existing_plugin": "hub.forecast",
+      "existing_api": "/workspace/execute/hub.forecast",
+      "existing_runtime_agent": "hub.forecast",
+      "output": "AI forecast summary",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Risk",
+      "existing_plugin": "hub.trade",
+      "existing_api": "/workspace/execute/hub.trade",
+      "existing_runtime_agent": "hub.trade",
+      "output": "Risk assessment",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Trade Plan",
+      "existing_plugin": "hub.trade",
+      "existing_api": "/workspace/execute/hub.trade",
+      "existing_runtime_agent": "hub.trade",
+      "output": "Trade plan with entry/stop/target",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Invalidation",
+      "existing_plugin": "hub.trade + ta.support_resistance",
+      "existing_api": "/workspace/execute/hub.trade",
+      "existing_runtime_agent": "hub.trade",
+      "output": "Invalidation levels",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "Catalysts",
+      "existing_plugin": "hub.narrative",
+      "existing_api": "/workspace/execute/hub.narrative",
+      "existing_runtime_agent": "hub.narrative",
+      "output": "Upcoming catalysts",
+      "status": "MAPPED"
+    },
+    {
+      "panel": "report",
+      "widget": "News Summary",
+      "existing_plugin": "hub.narrative",
+      "existing_api": "/workspace/execute/hub.narrative",
+      "existing_runtime_agent": "hub.narrative",
+      "output": "News summary",
+      "status": "MAPPED"
+    }
+  ],
+  "summary": {
+    "total_components": 274,
+    "total_widgets_mapped": 78,
+    "dead_code_count": 191,
+    "duplicate_logic_groups": 5,
+    "unused_engines": 6,
+    "broken_dependencies": 5
+  }
+}

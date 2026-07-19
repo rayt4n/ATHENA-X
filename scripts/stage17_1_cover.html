@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ATHENA-X Stage 17.1 Cover</title>
+<style>
+@page { size: 794px 1123px; margin: 0; }
+html, body { margin: 0; padding: 0; background: #f6f5f4; }
+.poster { position: relative; width: 794px; height: 1123px; background: #f6f5f4; font-family: 'Noto Serif SC', 'Noto Sans SC', serif; color: #1f2428; overflow: hidden; }
+.layer-bg { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.layer-bg .grid { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: linear-gradient(to right, rgba(15,20,25,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(15,20,25,0.06) 1px, transparent 1px); background-size: 50px 50px; }
+.layer-bg .corner-tl { position: absolute; top: 60px; left: 60px; width: 180px; height: 180px; border-top: 2pt solid #0f1419; border-left: 2pt solid #0f1419; }
+.layer-bg .corner-br { position: absolute; bottom: 60px; right: 60px; width: 180px; height: 180px; border-bottom: 2pt solid #0f1419; border-right: 2pt solid #0f1419; }
+.layer-bg .accent-block { position: absolute; top: 0; right: 0; width: 220px; height: 1123px; background: #0f1419; opacity: 0.97; }
+.layer-bg .accent-stripe { position: absolute; top: 0; right: 220px; width: 12px; height: 1123px; background: #c9962b; }
+.layer-bg .serial { position: absolute; bottom: 100px; right: 250px; font-family: 'DejaVu Sans Mono', monospace; font-size: 8pt; color: rgba(255,255,255,0.5); letter-spacing: 1pt; writing-mode: vertical-rl; transform: rotate(180deg); }
+.layer-struct { position: absolute; inset: 0; z-index: 2; }
+.layer-struct .div-top { position: absolute; top: 270px; left: 60px; right: 280px; height: 1pt; background: #0f1419; opacity: 0.5; }
+.layer-struct .div-bottom { position: absolute; bottom: 220px; left: 60px; right: 280px; height: 1pt; background: #0f1419; opacity: 0.5; }
+.layer-content { position: absolute; inset: 0; z-index: 3; padding: 0; }
+.kicker { position: absolute; top: 130px; left: 60px; font-family: 'Noto Sans SC', sans-serif; font-size: 11pt; font-weight: 400; letter-spacing: 4pt; color: rgba(31,36,40,0.6); text-transform: uppercase; }
+.kicker .pipe { color: #c9962b; padding: 0 6pt; }
+.doc-id { position: absolute; top: 130px; right: 250px; font-family: 'DejaVu Sans Mono', monospace; font-size: 8pt; color: rgba(255,255,255,0.6); letter-spacing: 2pt; }
+.title { position: absolute; top: 350px; left: 60px; right: 280px; font-family: 'Noto Serif SC', serif; font-size: 50pt; font-weight: 900; line-height: 1.05; color: #1f2428; letter-spacing: -1pt; }
+.title .accent { color: #c9962b; }
+.subtitle { position: absolute; top: 600px; left: 60px; right: 280px; font-family: 'Noto Sans SC', sans-serif; font-size: 15pt; font-weight: 400; color: #0f1419; line-height: 1.4; }
+.summary { position: absolute; top: 680px; left: 60px; right: 280px; font-family: 'Noto Serif SC', serif; font-size: 11pt; font-weight: 400; color: rgba(31,36,40,0.85); line-height: 1.6; }
+.meta { position: absolute; bottom: 130px; left: 60px; right: 280px; display: flex; gap: 50px; }
+.meta .block { display: flex; flex-direction: column; }
+.meta .label { font-family: 'Noto Sans SC', sans-serif; font-size: 8pt; letter-spacing: 2pt; color: rgba(31,36,40,0.5); text-transform: uppercase; margin-bottom: 4pt; }
+.meta .value { font-family: 'Noto Serif SC', serif; font-size: 12pt; font-weight: 700; color: #1f2428; }
+.footer { position: absolute; bottom: 60px; left: 60px; right: 280px; display: flex; justify-content: space-between; font-family: 'Noto Sans SC', sans-serif; font-size: 8pt; letter-spacing: 2pt; color: rgba(31,36,40,0.5); text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="layer-bg">
+    <div class="grid"></div>
+    <div class="accent-block"></div>
+    <div class="accent-stripe"></div>
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
+    <div class="serial">ATHENA-X / STAGE-17.1 / TRADING-WORKSPACE / 2026-07-19 / CONFIDENTIAL</div>
+  </div>
+  <div class="layer-struct"><div class="div-top"></div><div class="div-bottom"></div></div>
+  <div class="layer-content">
+    <div class="kicker">ATHENA-X <span class="pipe">·</span> Stage 17.1 Trading Workspace</div>
+    <div class="doc-id">DOC-17.1 / v17.1.0</div>
+    <div class="title">Trading<br/>Workspace<br/><span class="accent">Integration</span></div>
+    <div class="subtitle">78 widgets mapped to existing plugins — 280 components discovered.</div>
+    <div class="summary">Integration-only stage: no architecture redesign, no rewrites, no duplicated functionality. Every workspace widget mapped to an existing plugin, API, runtime agent, and output before coding began. Top Bar (10 instruments), Left Panel (Market Overview), Center (Professional Chart with 18 overlays), Right Panel (Institutional Intelligence), Bottom Panel (Evidence Engine + AI + Report + Plugin Status). Zero regressions — 203+ existing tests pass across 29 suites.</div>
+    <div class="meta">
+      <div class="block"><div class="label">Audit Date</div><div class="value">19 July 2026</div></div>
+      <div class="block"><div class="label">Widgets Mapped</div><div class="value">78</div></div>
+      <div class="block"><div class="label">Tests Passing</div><div class="value">203+</div></div>
+    </div>
+    <div class="footer">
+      <span>Confidential — Trading Workspace</span>
+      <span>Lead System Architect · Production Integration</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
