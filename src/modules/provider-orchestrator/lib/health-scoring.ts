@@ -40,23 +40,31 @@ export function calculateHealthScore(opts: {
     ? Math.round((1 - (opts.totalFailures / opts.totalRequests)) * 100)
     : 100;
 
-  // Coverage: supported / requested
+  // Coverage: unique symbols that returned data / symbols requested
+  // Clamp to 0-100 to prevent scores above 100
   const coverage = opts.symbolsRequested > 0
-    ? Math.round((opts.symbolsSupported / opts.symbolsRequested) * 100)
+    ? Math.min(100, Math.round((Math.min(opts.symbolsSupported, opts.symbolsRequested) / opts.symbolsRequested) * 100))
     : 100;
 
-  // Overall: weighted average
-  const overall = Math.round(
+  // Overall: weighted average — clamp to 0-100
+  const overall = Math.min(100, Math.max(0, Math.round(
     availability * 0.30 +
     latency * 0.20 +
     integrity * 0.25 +
     stability * 0.15 +
     coverage * 0.10
-  );
+  )));
 
-  const detail = `Avail ${availability} · Lat ${latency} · Integ ${integrity} · Stab ${stability} · Cov ${coverage}`;
+  // Clamp all components to 0-100
+  const clampedAvailability = Math.min(100, Math.max(0, availability));
+  const clampedLatency = Math.min(100, Math.max(0, latency));
+  const clampedIntegrity = Math.min(100, Math.max(0, integrity));
+  const clampedStability = Math.min(100, Math.max(0, stability));
+  const clampedCoverage = Math.min(100, Math.max(0, coverage));
 
-  return { overall, availability, latency, integrity, stability, coverage, detail };
+  const detail = `Avail ${clampedAvailability} · Lat ${clampedLatency} · Integ ${clampedIntegrity} · Stab ${clampedStability} · Cov ${clampedCoverage}`;
+
+  return { overall, availability: clampedAvailability, latency: clampedLatency, integrity: clampedIntegrity, stability: clampedStability, coverage: clampedCoverage, detail };
 }
 
 // ---------- Long-Term Stability Metrics ----------
