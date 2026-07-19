@@ -1,22 +1,29 @@
 import { NextRequest, NextResponse } from "next/server";
 import { startLoadTest, stopLoadTest, getLoadTestStatus, getLoadTestMetrics, evaluateCertification, DEFAULT_LOAD_CONFIG } from "@/modules/provider-orchestrator/lib/load-validator";
+import { generateEvidenceReport } from "@/modules/provider-orchestrator/lib/evidence-report";
 import type { LoadTestConfig } from "@/modules/provider-orchestrator/lib/load-validator";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/** GET /api/providers/load-test — get current load test status + metrics + certification */
-export async function GET() {
+/** GET /api/providers/load-test — get current load test status + metrics + certification + evidence report */
+export async function GET(req: NextRequest) {
   const status = getLoadTestStatus();
   const metrics = getLoadTestMetrics();
   const durationHours = metrics ? (Date.now() - metrics.startedAt) / 3_600_000 : 0;
   const certification = evaluateCertification(metrics, durationHours);
+
+  // Generate evidence report if we have metrics
+  const evidence = metrics && metrics.totalRequests > 0
+    ? generateEvidenceReport(metrics, certification, status.config?.providerId ?? "yahoo")
+    : null;
 
   return NextResponse.json({
     isRunning: status.isRunning,
     config: status.config,
     metrics,
     certification,
+    evidence,
   });
 }
 

@@ -60,6 +60,10 @@ export interface LoadTestMetrics {
   failureTypeCounts: FailureTypeCounts;
   certRelevantFailures: number;
   expectedEmptyCount: number;
+  uniqueSymbolsCovered: number;        // unique symbols that returned data
+  uniqueSymbolsRequested: number;      // total unique symbols requested
+  requestSuccessCount: number;         // total successful requests
+  requestTotalCount: number;           // total requests
   dataIntegrityResults: { symbol: string; valid: boolean; invalidBars: number; totalBars: number; errors: string[] }[];
   candleContinuityResults: { symbol: string; continuityRate: number; missingCandles: number; unexpectedGaps: number }[];
   indicatorIntegrityResults: { symbol: string; allValid: boolean; nanCount: number; infinityCount: number }[];
@@ -192,6 +196,10 @@ function createEmptyMetrics(): LoadTestMetrics {
     failureTypeCounts: createEmptyFailureCounts(),
     certRelevantFailures: 0,
     expectedEmptyCount: 0,
+    uniqueSymbolsCovered: 0,
+    uniqueSymbolsRequested: 0,
+    requestSuccessCount: 0,
+    requestTotalCount: 0,
     dataIntegrityResults: [],
     candleContinuityResults: [],
     indicatorIntegrityResults: [],
@@ -303,8 +311,8 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
         });
         if (m.candleContinuityResults.length > 50) m.candleContinuityResults.shift();
 
-        // Indicator integrity — uses warm-up aware validation
-        const indicators = validateIndicators(normalized);
+        // Indicator integrity — uses warm-up aware validation + capability-driven VWAP
+        const indicators = validateIndicators(normalized, symbol);
         m.indicatorIntegrityResults.push({
           symbol, allValid: indicators.allValid,
           nanCount: indicators.nanCount, infinityCount: indicators.infinityCount,
@@ -362,6 +370,11 @@ function updateDerivedMetrics(): void {
 
   // Calculate health score — count UNIQUE symbols that returned data, not total integrity checks
   const uniqueSymbolsWithData = new Set(m.dataIntegrityResults.map(r => r.symbol)).size;
+  m.uniqueSymbolsCovered = uniqueSymbolsWithData;
+  m.uniqueSymbolsRequested = loadTestState.config.symbols.length;
+  m.requestSuccessCount = m.totalSuccesses;
+  m.requestTotalCount = m.totalRequests;
+
   m.healthScore = calculateHealthScore({
     successRate: m.successRate,
     avgLatencyMs: m.avgLatencyMs,

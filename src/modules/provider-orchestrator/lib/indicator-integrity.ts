@@ -9,9 +9,14 @@
  *   READY     — indicator has enough data and produced valid values
  *   NOT_READY — indicator needs more data for warm-up (does NOT count as failure)
  *   INVALID   — indicator produced NaN, Infinity, or out-of-range values (counts as failure)
+ *
+ * VWAP is capability-driven: only instruments that are expected to trade
+ * (equity, ETF, future, commodity) require VWAP validation. Indices (^VIX, ^GSPC)
+ * and currencies have no volume and are exempt.
  */
 
 import type { MarketData } from "./types";
+import { getSymbolCapability } from "./market-sessions";
 
 export type IndicatorState = "ready" | "not_ready" | "invalid";
 
@@ -49,7 +54,7 @@ const WARMUP_PERIODS: Record<string, number> = {
   "EMA Jump": 3,
 };
 
-export function validateIndicators(data: MarketData[]): IndicatorIntegrityResult {
+export function validateIndicators(data: MarketData[], symbol?: string): IndicatorIntegrityResult {
   const checks: IndicatorCheck[] = [];
   let nanCount = 0;
   let infinityCount = 0;
@@ -158,11 +163,23 @@ export function validateIndicators(data: MarketData[]): IndicatorIntegrityResult
     notReadyCount++;
   }
 
-  // VWAP — allows 0 for zero-volume instruments (indices like VIX)
+  // VWAP — capability-driven: only validate for instruments that actually trade
+  // Indices (^VIX, ^GSPC, ^DJI) and currencies have no volume — VWAP is exempt
+  const symbolCap = symbol ? getSymbolCapability(symbol) : null;
+  const isVolumeInstrument = symbolCap ? symbolCap.assetClass !== "index" && symbolCap.assetClass !== "forex" : true;
+
   const totalPV = closes.reduce((s, c, i) => s + c * volumes[i], 0);
   const totalV = volumes.reduce((s, v) => s + v, 0);
   const vwap = totalV > 0 ? totalPV / totalV : 0;
-  checks.push(check("VWAP", vwap, (v) => v > 0 || (v === 0 && totalV === 0), "VWAP must be positive (or 0 if no volume)"));
+
+  if (isVolumeInstrument) {
+    // Equity/ETF/Future/Commodity: VWAP must be positive (or 0 if no volume)
+    checks.push(check("VWAP", vwap, (v) => v > 0 || (v === 0 && totalV === 0), "VWAP must be positive (or 0 if no volume)"));
+  } else {
+    // Index/Currency: VWAP is not applicable — mark as READY without validation
+    checks.push({ name: "VWAP", value: 0, state: "ready" });
+    readyCount++;
+  }
 
   // Bollinger Bands (needs 20 bars)
   if (closes.length >= 20) {
