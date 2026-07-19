@@ -252,7 +252,7 @@ async function loadMarketOverview() {
 // ─── Center chart ────────────────────────────────────────────────────
 async function loadChart() {
   document.getElementById('chart-symbol').textContent = currentSymbol;
-  document.getElementById('chart-status').children[3].innerHTML = 'Latency: <strong style="color:#e2e8f0">loading…</strong>';
+  document.getElementById('chart-latency').textContent = 'loading…';
   const t0 = performance.now();
   const data = await api(`/trading/chart/${currentSymbol}?timeframe=${currentTF}`);
   const t1 = performance.now();
@@ -407,9 +407,10 @@ function renderChart() {
     const volH = 40;
     bars.forEach((b, i) => {
       const x = xScale(i);
-      const h = (b.volume / maxVol) * volH;
+      const barHeight = (b.volume / maxVol) * volH;
       const color = b.close >= b.open ? '#10b981' : '#ef4444';
-      svgContent += `<rect x="${x}" y="${h - padding.bottom - volH + h}" width="${barW}" height="${h}" fill="${color}" opacity="0.3"/>`;
+      const y = padding.top + chartH - barHeight;
+      svgContent += `<rect x="${x}" y="${y}" width="${barW}" height="${barHeight}" fill="${color}" opacity="0.3"/>`;
     });
   }
 
