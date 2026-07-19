@@ -20,7 +20,7 @@ import { YahooProvider } from "./providers/yahoo";
 import type { RequestLogEntry, ComparisonEntry, ComparisonResult } from "./types";
 
 // ---------- Provider adapter registry ----------
-const adapters = new Map<string, BaseProvider>();
+export const adapters = new Map<string, BaseProvider>();
 
 /** Register a provider adapter (called at module init) */
 export function registerAdapter(adapter: BaseProvider): void {
@@ -28,7 +28,7 @@ export function registerAdapter(adapter: BaseProvider): void {
 }
 
 /** Get a registered adapter */
-function getAdapter(providerId: string): BaseProvider | null {
+export function getAdapter(providerId: string): BaseProvider | null {
   return adapters.get(providerId) ?? null;
 }
 
