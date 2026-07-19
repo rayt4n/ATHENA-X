@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Activity, FileText, GitCompare, Radio, Database, CheckCircle2, AlertTriangle, Search } from "lucide-react";
+import { Activity, FileText, GitCompare, Radio, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useProviders } from "../hooks/use-providers";
 import { ProviderSettings } from "./provider-settings";
 import { ProviderDiagnostics } from "./provider-diagnostics";
 import { RequestLog } from "./request-log";
 import { DataComparison } from "./data-comparison";
+import { LoadValidation } from "./load-validation";
 
-type Tab = "settings" | "diagnostics" | "request-log" | "comparison";
+type Tab = "settings" | "diagnostics" | "request-log" | "comparison" | "load-test";
 
 export function ProviderOrchestratorUI() {
   const [tab, setTab] = useState<Tab>("settings");
@@ -19,6 +20,7 @@ export function ProviderOrchestratorUI() {
     { id: "diagnostics", label: "Diagnostics", icon: <Activity className="h-3.5 w-3.5" /> },
     { id: "request-log", label: "Request Log", icon: <FileText className="h-3.5 w-3.5" /> },
     { id: "comparison", label: "Data Comparison", icon: <GitCompare className="h-3.5 w-3.5" /> },
+    { id: "load-test", label: "Load Validation", icon: <Zap className="h-3.5 w-3.5" /> },
   ];
 
   return (
@@ -56,6 +58,7 @@ export function ProviderOrchestratorUI() {
         {tab === "diagnostics" && <ProviderDiagnostics />}
         {tab === "request-log" && <RequestLog />}
         {tab === "comparison" && <DataComparison />}
+        {tab === "load-test" && <LoadValidation />}
       </main>
     </div>
   );
