@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ATHENA-X Stage 16.3 Cover</title>
+<style>
+@page { size: 794px 1123px; margin: 0; }
+html, body { margin: 0; padding: 0; background: #f6f5f4; }
+.poster {
+  position: relative;
+  width: 794px;
+  height: 1123px;
+  background: #f6f5f4;
+  font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+  color: #1f2428;
+  overflow: hidden;
+}
+.layer-bg { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+.layer-bg .grid {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    linear-gradient(to right, rgba(30,58,95,0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30,58,95,0.06) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+.layer-bg .corner-tl {
+  position: absolute; top: 60px; left: 60px;
+  width: 180px; height: 180px;
+  border-top: 2pt solid #1e3a5f;
+  border-left: 2pt solid #1e3a5f;
+}
+.layer-bg .corner-br {
+  position: absolute; bottom: 60px; right: 60px;
+  width: 180px; height: 180px;
+  border-bottom: 2pt solid #1e3a5f;
+  border-right: 2pt solid #1e3a5f;
+}
+.layer-bg .accent-block {
+  position: absolute; top: 0; right: 0;
+  width: 220px; height: 1123px;
+  background: #1e3a5f;
+  opacity: 0.95;
+}
+.layer-bg .accent-stripe {
+  position: absolute; top: 0; right: 220px;
+  width: 12px; height: 1123px;
+  background: #1d6fa5;
+}
+.layer-bg .serial {
+  position: absolute; bottom: 100px; right: 250px;
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 8pt; color: rgba(255,255,255,0.5);
+  letter-spacing: 1pt;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.layer-struct { position: absolute; inset: 0; z-index: 2; }
+.layer-struct .div-top {
+  position: absolute; top: 270px; left: 60px; right: 280px;
+  height: 1pt; background: #1e3a5f; opacity: 0.5;
+}
+.layer-struct .div-bottom {
+  position: absolute; bottom: 220px; left: 60px; right: 280px;
+  height: 1pt; background: #1e3a5f; opacity: 0.5;
+}
+.layer-content { position: absolute; inset: 0; z-index: 3; padding: 0; }
+.kicker {
+  position: absolute; top: 130px; left: 60px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 11pt; font-weight: 400;
+  letter-spacing: 4pt; color: rgba(31,36,40,0.6);
+  text-transform: uppercase;
+}
+.kicker .pipe { color: #1d6fa5; padding: 0 6pt; }
+.doc-id {
+  position: absolute; top: 130px; right: 250px;
+  font-family: 'DejaVu Sans Mono', monospace;
+  font-size: 8pt; color: rgba(255,255,255,0.6);
+  letter-spacing: 2pt;
+}
+.title {
+  position: absolute; top: 350px; left: 60px; right: 280px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 50pt; font-weight: 900;
+  line-height: 1.05; color: #1f2428;
+  letter-spacing: -1pt;
+}
+.title .accent { color: #1d6fa5; }
+.subtitle {
+  position: absolute; top: 600px; left: 60px; right: 280px;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 15pt; font-weight: 400;
+  color: #1e3a5f; line-height: 1.4;
+}
+.summary {
+  position: absolute; top: 680px; left: 60px; right: 280px;
+  font-family: 'Noto Serif SC', serif;
+  font-size: 11pt; font-weight: 400;
+  color: rgba(31,36,40,0.85); line-height: 1.6;
+}
+.meta {
+  position: absolute; bottom: 130px; left: 60px; right: 280px;
+  display: flex; gap: 50px;
+}
+.meta .block { display: flex; flex-direction: column; }
+.meta .label {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 8pt; letter-spacing: 2pt;
+  color: rgba(31,36,40,0.5); text-transform: uppercase;
+  margin-bottom: 4pt;
+}
+.meta .value {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12pt; font-weight: 700;
+  color: #1f2428;
+}
+.footer {
+  position: absolute; bottom: 60px; left: 60px; right: 280px;
+  display: flex; justify-content: space-between;
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 8pt; letter-spacing: 2pt;
+  color: rgba(31,36,40,0.5);
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="layer-bg">
+    <div class="grid"></div>
+    <div class="accent-block"></div>
+    <div class="accent-stripe"></div>
+    <div class="corner-tl"></div>
+    <div class="corner-br"></div>
+    <div class="serial">ATHENA-X / STAGE-16.3 / INSTITUTIONAL-WORKSPACE / 2026-07-19 / CONFIDENTIAL</div>
+  </div>
+  <div class="layer-struct">
+    <div class="div-top"></div>
+    <div class="div-bottom"></div>
+  </div>
+  <div class="layer-content">
+    <div class="kicker">ATHENA-X <span class="pipe">·</span> Stage 16.3 Institutional Workspace</div>
+    <div class="doc-id">DOC-16.3 / v0.1.0-rc1</div>
+    <div class="title">Institutional<br/>Workspace<br/><span class="accent">Integration</span></div>
+    <div class="subtitle">Exposing the verified runtime as a unified workspace — 30 agents, 331 tests pass.</div>
+    <div class="summary">Builds the final Institutional Analysis Workspace by integrating the verified runtime only. Auto-discovers every TA Layer 1–5 agent + intelligence hub, registers them through an adapter layer that preserves the plugins/ directory, traces every analysis request from data provider through Layer 1–5 to the final conclusion, and generates evidence reports mapping each conclusion to its contributing agents. No verified agent rewritten or duplicated. No regressions.</div>
+    <div class="meta">
+      <div class="block"><div class="label">Audit Date</div><div class="value">19 July 2026</div></div>
+      <div class="block"><div class="label">Tests Passing</div><div class="value">331 / 331</div></div>
+      <div class="block"><div class="label">Agents Discovered</div><div class="value">30</div></div>
+    </div>
+    <div class="footer">
+      <span>Confidential — Workspace Integration</span>
+      <span>Principal Architect · QA · Technical Lead</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

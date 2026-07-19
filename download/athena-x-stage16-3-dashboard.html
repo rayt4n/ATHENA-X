@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATHENA-X · Institutional Workspace · Stage 16.3</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+  }
+  header {
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header h1 { font-size: 24px; font-weight: 700; color: #f1f5f9; }
+  header p { font-size: 13px; color: #94a3b8; margin-top: 4px; }
+  .controls { display: flex; gap: 12px; align-items: center; }
+  input, select, button {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #f1f5f9;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+  }
+  button { cursor: pointer; }
+  button.primary { background: #3b82f6; color: white; border: none; padding: 10px 20px; font-weight: 600; }
+  button.success { background: #10b981; color: white; border: none; padding: 12px 24px; font-weight: 600; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  nav {
+    background: #1e293b;
+    border-bottom: 1px solid #334155;
+    padding: 0 32px;
+    display: flex;
+    gap: 4px;
+  }
+  nav button {
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 12px 20px;
+    font-size: 13px;
+    text-transform: capitalize;
+    border-radius: 0;
+  }
+  nav button.active {
+    background: #0f172a;
+    color: #f1f5f9;
+    border-bottom: 2px solid #3b82f6;
+  }
+
+  .error-banner {
+    background: #7f1d1d;
+    color: #fee2e2;
+    padding: 12px 32px;
+    font-size: 13px;
+    border-bottom: 1px solid #991b1b;
+  }
+
+  main { padding: 24px 32px; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .summary-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .summary-card .label {
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .summary-card .value { font-size: 28px; font-weight: 700; }
+
+  .layer-section { margin-bottom: 24px; }
+  .layer-header {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .layer-bar { width: 4px; height: 16px; border-radius: 2px; }
+
+  .agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .agent-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .agent-card:hover { border-color: #3b82f6; }
+  .agent-card.selected { background: #1e3a8a; border-color: #3b82f6; }
+  .agent-card .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .agent-card .badge {
+    font-size: 11px; font-weight: 600; color: white;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .agent-card .category { font-size: 10px; color: #64748b; font-family: monospace; }
+  .agent-card .name { font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 4px; }
+  .agent-card .id { font-size: 11px; color: #94a3b8; font-family: monospace; }
+
+  .panel {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .panel h3 { font-size: 16px; color: #f1f5f9; margin-bottom: 8px; }
+  .panel h4 { font-size: 13px; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; }
+
+  pre {
+    background: #0f172a;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: #cbd5e1;
+    overflow: auto;
+    font-family: monospace;
+    max-height: 300px;
+  }
+
+  .trace-row {
+    display: grid;
+    grid-template-columns: 140px 50px 1fr 70px;
+    gap: 12px;
+    align-items: center;
+    font-size: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid #334155;
+  }
+  .trace-row:last-child { border-bottom: none; }
+  .trace-row .agent { font-family: monospace; color: #cbd5e1; }
+  .trace-row .layer { font-weight: 600; }
+  .trace-row .summary { color: #94a3b8; font-family: monospace; font-size: 11px; }
+  .trace-row .conf { text-align: right; font-family: monospace; font-weight: 600; }
+
+  .conclusion-box {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+    border: 1px solid #3b82f6;
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .conclusion-box .label {
+    font-size: 11px; color: #93c5fd; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 8px;
+  }
+  .conclusion-box .value { font-size: 24px; font-weight: 700; color: white; margin-bottom: 12px; }
+  .conclusion-box .meta { display: flex; gap: 24px; font-size: 13px; }
+  .conclusion-box .meta .key { color: #93c5fd; }
+
+  .pipeline-layer { margin-bottom: 16px; }
+  .pipeline-layer .label {
+    font-size: 11px; font-weight: 600;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pipeline-agents {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-left: 12px;
+  }
+  .pipeline-agent {
+    background: #0f172a;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-family: monospace;
+    color: #cbd5e1;
+  }
+  .pipeline-agent .duration { color: #64748b; margin-left: 6px; }
+  .pipeline-agent .conf { margin-left: 6px; font-weight: 600; }
+
+  .evidence-section { margin-bottom: 12px; }
+  .evidence-section .title {
+    font-size: 11px; font-weight: 600; margin-bottom: 6px;
+  }
+
+  details {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 20px;
+  }
+  details summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: #94a3b8;
+    text-transform: uppercase;
+  }
+
+  .history-row {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .history-row .head {
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: 1fr 100px 80px 100px 100px;
+    gap: 12px;
+    align-items: center;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .empty {
+    padding: 40px;
+    text-align: center;
+    color: #64748b;
+  }
+  .loading { text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>ATHENA-X · Institutional Workspace</h1>
+    <p id="header-sub">Stage 16.3 — Verified runtime integration · Loading…</p>
+  </div>
+  <div class="controls">
+    <input id="symbol" value="SPY" placeholder="Symbol" style="width:100px">
+    <select id="timeframe">
+      <option value="1m">1m</option>
+      <option value="5m">5m</option>
+      <option value="15m" selected>15m</option>
+      <option value="30m">30m</option>
+      <option value="1H">1H</option>
+      <option value="4H">4H</option>
+      <option value="1D">1D</option>
+      <option value="1W">1W</option>
+    </select>
+    <button onclick="loadComponents()">Refresh</button>
+  </div>
+</header>
+
+<nav>
+  <button id="tab-components" class="active" onclick="switchTab('components')">Components</button>
+  <button id="tab-execute" onclick="switchTab('execute')">Standalone Execution</button>
+  <button id="tab-pipeline" onclick="switchTab('pipeline')">Full Pipeline Trace</button>
+  <button id="tab-history" onclick="switchTab('history')">History</button>
+</nav>
+
+<div id="error-banner" class="error-banner" style="display:none"></div>
+
+<main id="main">
+  <div class="loading">Loading…</div>
+</main>
+
+<script>
+const API_BASE = 'http://localhost:8000';
+let components = [];
+let summary = null;
+let selectedAgent = null;
+let activeTab = 'components';
+let loading = false;
+
+const LAYER_COLORS = {
+  '1': '#3b82f6', '2': '#10b981', '3': '#f59e0b',
+  '4': '#8b5cf6', '5': '#ef4444', 'hub': '#ec4899',
+};
+const LAYER_LABELS = {
+  '1': 'Layer 1 · Market Structure',
+  '2': 'Layer 2 · Indicators',
+  '3': 'Layer 3 · Institutional',
+  '4': 'Layer 4 · Consensus',
+  '5': 'Layer 5 · Supervisor',
+  'hub': 'Intelligence Hubs',
+};
+
+function layerColor(l) { return LAYER_COLORS[String(l)] || '#6b7280'; }
+function confidenceColor(c) {
+  if (c === null || c === undefined) return '#6b7280';
+  if (c >= 0.95) return '#10b981';
+  if (c >= 0.8) return '#3b82f6';
+  if (c >= 0.6) return '#f59e0b';
+  return '#ef4444';
+}
+
+async function api(path, init) {
+  const res = await fetch(`${API_BASE}${path}`, {
+    headers: { 'Content-Type': 'application/json' },
+    ...init,
+  });
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`${res.status}: ${text}`);
+  }
+  return res.json();
+}
+
+function showError(msg) {
+  const el = document.getElementById('error-banner');
+  el.textContent = '⚠ ' + msg;
+  el.style.display = 'block';
+}
+function clearError() {
+  document.getElementById('error-banner').style.display = 'none';
+}
+function setLoading(b) {
+  loading = b;
+}
+
+async function loadComponents() {
+  setLoading(true);
+  clearError();
+  try {
+    const [compRes, sumRes] = await Promise.all([
+      api('/workspace/components'),
+      api('/workspace/summary'),
+    ]);
+    components = compRes.components;
+    summary = sumRes;
+    document.getElementById('header-sub').textContent =
+      `Stage 16.3 — Verified runtime integration · ${components.length} agents discovered`;
+    renderTab();
+  } catch (e) {
+    showError(e.message);
+    document.getElementById('main').innerHTML =
+      `<div class="empty">Cannot connect to workspace server at ${API_BASE}. ` +
+      `Start it with: <code>python3 /home/z/my-project/scripts/stage16_3_workspace_server.py</code></div>`;
+  } finally {
+    setLoading(false);
+  }
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  ['components', 'execute', 'pipeline', 'history'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+  });
+  if (tab === 'history') loadHistory();
+  else renderTab();
+}
+
+function renderTab() {
+  if (loading) {
+    document.getElementById('main').innerHTML = '<div class="loading">Loading…</div>';
+    return;
+  }
+  if (activeTab === 'components') renderComponents();
+  else if (activeTab === 'execute') renderExecute();
+  else if (activeTab === 'pipeline') renderPipeline();
+  else if (activeTab === 'history') renderHistory();
+}
+
+function renderComponents() {
+  const byLayer = {};
+  components.forEach(c => {
+    const k = String(c.layer);
+    if (!byLayer[k]) byLayer[k] = [];
+    byLayer[k].push(c);
+  });
+
+  let html = `
+    <div class="summary-grid">
+      <div class="summary-card"><div class="label">Total Agents</div><div class="value" style="color:#3b82f6">${components.length}</div></div>
+      <div class="summary-card"><div class="label">TA Layers</div><div class="value" style="color:#10b981">${Object.keys(byLayer).filter(k => k !== 'hub').length}</div></div>
+      <div class="summary-card"><div class="label">Intelligence Hubs</div><div class="value" style="color:#ec4899">${byLayer.hub?.length || 0}</div></div>
+      <div class="summary-card"><div class="label">Categories</div><div class="value" style="color:#f59e0b">${Object.keys(summary?.by_category || {}).length}</div></div>
+    </div>
+  `;
+
+  ['1', '2', '3', '4', '5', 'hub'].forEach(layer => {
+    const agents = byLayer[layer] || [];
+    if (agents.length === 0) return;
+    const color = layerColor(layer);
+    html += `
+      <div class="layer-section">
+        <div class="layer-header" style="color:${color}">
+          <span class="layer-bar" style="background:${color}"></span>
+          ${LAYER_LABELS[layer] || `Layer ${layer}`} (${agents.length})
+        </div>
+        <div class="agent-grid">
+          ${agents.map(a => `
+            <div class="agent-card ${selectedAgent?.agent_id === a.agent_id ? 'selected' : ''}"
+                 onclick="selectAgent('${a.agent_id}')">
+              <div class="top">
+                <span class="badge" style="background:${layerColor(a.layer)}">L${a.layer}</span>
+                <span class="category">${a.category}</span>
+              </div>
+              <div class="name">${a.name}</div>
+              <div class="id">${a.agent_id}</div>
+              <div style="margin-top:8px;font-size:10px;color:#64748b">${a.outputs.length} output${a.outputs.length !== 1 ? 's' : ''}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  });
+
+  document.getElementById('main').innerHTML = html;
+}
+
+function selectAgent(id) {
+  selectedAgent = components.find(c => c.agent_id === id);
+  renderExecute();
+  switchTab('execute');
+}
+
+function renderExecute() {
+  const symbol = document.getElementById('symbol').value;
+  const tf = document.getElementById('timeframe').value;
+  let html = `
+    <div style="display:grid;grid-template-columns:320px 1fr;gap:24px">
+      <div>
+        <h4 style="font-size:14px;font-weight:600;color:#94a3b8;margin-bottom:12px;text-transform:uppercase">Select Agent</h4>
+        <div style="display:flex;flex-direction:column;gap:4px;max-height:70vh;overflow-y:auto">
+          ${components.map(a => `
+            <button onclick="selectAgent('${a.agent_id}')" style="
+              background:${selectedAgent?.agent_id === a.agent_id ? '#1e3a8a' : '#1e293b'};
+              color:#e2e8f0;border:1px solid #334155;padding:10px 14px;border-radius:6px;
+              font-size:12px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;
+            ">
+              <span style="width:8px;height:8px;border-radius:50%;background:${layerColor(a.layer)};flex-shrink:0"></span>
+              <span style="font-family:monospace">${a.agent_id}</span>
+            </button>
+          `).join('')}
+        </div>
+      </div>
+      <div id="execute-detail">
+        ${selectedAgent ? `
+          <div class="panel">
+            <h3>${selectedAgent.name}
+              <span style="margin-left:12px;font-size:11px;padding:2px 8px;background:${layerColor(selectedAgent.layer)};border-radius:4px;color:white;font-weight:600">
+                L${selectedAgent.layer} · ${selectedAgent.category}
+              </span>
+            </h3>
+            <p style="font-size:13px;color:#94a3b8;margin:0 0 16px 0">${selectedAgent.description || '(no description)'}</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:12px">
+              <div>
+                <div style="color:#64748b;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Inputs</div>
+                ${selectedAgent.inputs.map(i => `<div style="color:#cbd5e1;font-family:monospace">${i}</div>`).join('')}
+              </div>
+              <div>
+                <div style="color:#64748b;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Outputs</div>
+                ${selectedAgent.outputs.map(o => `<div style="color:#cbd5e1;font-family:monospace">${o}</div>`).join('')}
+              </div>
+            </div>
+            <button class="primary" onclick="executeAgent('${selectedAgent.agent_id}')" style="margin-top:16px">
+              ▶ Execute ${selectedAgent.agent_id} on ${symbol} ${tf}
+            </button>
+          </div>
+          <div id="execute-result"></div>
+        ` : '<div class="empty">Select an agent to execute</div>'}
+      </div>
+    </div>
+  `;
+  document.getElementById('main').innerHTML = html;
+}
+
+async function executeAgent(id) {
+  const symbol = document.getElementById('symbol').value;
+  const tf = document.getElementById('timeframe').value;
+  document.getElementById('execute-result').innerHTML = '<div class="loading">Executing…</div>';
+  clearError();
+  try {
+    const result = await api(`/workspace/execute/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({ symbol, timeframe: tf }),
+    });
+    renderExecuteResult(result);
+  } catch (e) {
+    showError(e.message);
+    document.getElementById('execute-result').innerHTML = '<div class="empty">Execution failed</div>';
+  }
+}
+
+function renderExecuteResult(result) {
+  const trace = result.trace;
+  const evidence = result.evidence;
+  let html = `
+    <div class="panel">
+      <h4>Output</h4>
+      <pre>${JSON.stringify(result.output, null, 2)}</pre>
+    </div>
+    <div class="panel">
+      <h4>Trace (${trace.total_duration_ms.toFixed(2)} ms)</h4>
+      ${trace.events.map(ev => `
+        <div class="trace-row">
+          <span class="agent">${ev.agent_id}</span>
+          <span class="layer" style="color:${layerColor(ev.layer)}">L${ev.layer}</span>
+          <span class="summary">${ev.output_summary}</span>
+          <span class="conf" style="color:${confidenceColor(ev.confidence)}">${ev.confidence !== null ? (ev.confidence * 100).toFixed(0) + '%' : '—'}</span>
+        </div>
+      `).join('')}
+    </div>
+    <div class="panel">
+      <h4>Evidence Report</h4>
+      <div style="font-size:12px;color:#cbd5e1;margin-bottom:8px"><strong>Final conclusion:</strong> ${evidence.final_conclusion || '(none)'}</div>
+      <div style="font-size:12px;color:#cbd5e1"><strong>Contributors:</strong> ${evidence.total_agents_executed} agents · ${evidence.total_duration_ms.toFixed(2)} ms</div>
+    </div>
+  `;
+  document.getElementById('execute-result').innerHTML = html;
+}
+
+function renderPipeline() {
+  let html = `
+    <div class="panel" style="display:flex;justify-content:space-between;align-items:center">
+      <div>
+        <h3 style="margin:0">Full Pipeline Trace</h3>
+        <p style="margin:4px 0 0 0;font-size:13px;color:#94a3b8">Executes Layer 1 → 2 → 3 → 4 → 5 in sequence with full tracing</p>
+      </div>
+      <button class="success" onclick="executePipeline()">▶ Run Full Pipeline</button>
+    </div>
+    <div id="pipeline-result"></div>
+  `;
+  document.getElementById('main').innerHTML = html;
+}
+
+async function executePipeline() {
+  const symbol = document.getElementById('symbol').value;
+  const tf = document.getElementById('timeframe').value;
+  document.getElementById('pipeline-result').innerHTML = '<div class="loading">Executing pipeline…</div>';
+  clearError();
+  try {
+    const result = await api('/workspace/execute-request', {
+      method: 'POST',
+      body: JSON.stringify({ symbol, timeframe: tf, data_provider: 'demo' }),
+    });
+    renderPipelineResult(result);
+  } catch (e) {
+    showError(e.message);
+    document.getElementById('pipeline-result').innerHTML = '<div class="empty">Pipeline failed</div>';
+  }
+}
+
+function renderPipelineResult(result) {
+  const trace = result.trace;
+  const evidence = result.evidence;
+  const outputs = result.all_outputs || {};
+  const eventsByLayer = {};
+  trace.events.forEach(ev => {
+    const k = String(ev.layer);
+    if (!eventsByLayer[k]) eventsByLayer[k] = [];
+    eventsByLayer[k].push(ev);
+  });
+
+  let html = `
+    <div class="conclusion-box">
+      <div class="label">Final Conclusion</div>
+      <div class="value">${trace.final_conclusion || '(no conclusion)'}</div>
+      <div class="meta">
+        <div><span class="key">Total duration:</span> <strong>${trace.total_duration_ms.toFixed(2)} ms</strong></div>
+        <div><span class="key">Agents executed:</span> <strong>${trace.events.length}</strong></div>
+        <div><span class="key">Contributors:</span> <strong>${trace.contributor_chain.length}</strong></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h4>Layer-by-Layer Flow</h4>
+      ${['1', '2', '3', '4', '5'].map(layer => {
+        const events = eventsByLayer[layer] || [];
+        if (events.length === 0) return '';
+        return `
+          <div class="pipeline-layer">
+            <div class="label" style="color:${layerColor(layer)}">
+              <span class="layer-bar" style="background:${layerColor(layer)}"></span>
+              ${LAYER_LABELS[layer]} · ${events.length} agent${events.length !== 1 ? 's' : ''}
+            </div>
+            <div class="pipeline-agents">
+              ${events.map(ev => `
+                <div class="pipeline-agent" style="border:1px solid ${layerColor(layer)}40">
+                  <span style="color:${layerColor(layer)}">${ev.agent_id}</span>
+                  <span class="duration">${ev.duration_ms.toFixed(1)}ms</span>
+                  ${ev.confidence !== null ? `<span class="conf" style="color:${confidenceColor(ev.confidence)}">${(ev.confidence * 100).toFixed(0)}%</span>` : ''}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+
+    <div class="panel">
+      <h4>Evidence · Contributors to Final Conclusion</h4>
+      ${renderEvidenceSection('Primary', evidence.primary_contributors, '#3b82f6')}
+      ${renderEvidenceSection('Supporting', evidence.supporting_contributors, '#10b981')}
+      ${renderEvidenceSection('Contextual', evidence.contextual_contributors, '#94a3b8')}
+      ${evidence.failed_agents.length > 0 ? renderEvidenceSection('Failed', evidence.failed_agents, '#ef4444') : ''}
+    </div>
+
+    <details>
+      <summary>All Agent Outputs (${Object.keys(outputs).length})</summary>
+      <pre style="margin-top:12px">${JSON.stringify(outputs, null, 2)}</pre>
+    </details>
+  `;
+  document.getElementById('pipeline-result').innerHTML = html;
+}
+
+function renderEvidenceSection(title, contributors, color) {
+  if (!contributors || contributors.length === 0) return '';
+  return `
+    <div class="evidence-section">
+      <div class="title" style="color:${color}">${title} (${contributors.length})</div>
+      ${contributors.map(c => `
+        <div class="trace-row">
+          <span class="agent">${c.agent_id}</span>
+          <span class="layer" style="color:${layerColor(c.layer)}">L${c.layer}</span>
+          <span class="summary">${c.output_summary}</span>
+          <span class="conf" style="color:${confidenceColor(c.confidence)}">${c.confidence !== null ? (c.confidence * 100).toFixed(0) + '%' : '—'}</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+async function loadHistory() {
+  document.getElementById('main').innerHTML = '<div class="loading">Loading history…</div>';
+  clearError();
+  try {
+    const res = await api('/workspace/history');
+    renderHistory(res.history);
+  } catch (e) {
+    showError(e.message);
+  }
+}
+
+function renderHistory(history) {
+  if (history.length === 0) {
+    document.getElementById('main').innerHTML = '<div class="empty">No requests yet. Execute an agent or run the pipeline to see history.</div>';
+    return;
+  }
+  let html = `<h4 style="font-size:14px;font-weight:600;color:#94a3b8;margin-bottom:12px;text-transform:uppercase">Recent Requests (${history.length})</h4>`;
+  history.forEach(rec => {
+    html += `
+      <div class="history-row">
+        <div class="head" onclick="this.parentElement.classList.toggle('expanded')">
+          <span style="font-family:monospace;color:#cbd5e1">
+            ${rec.symbol} · ${rec.timeframe}
+            <span style="color:#64748b;margin-left:12px">${rec.final_conclusion}</span>
+          </span>
+          <span style="color:${rec.success ? '#10b981' : '#ef4444'};font-family:monospace">${rec.success ? '✓ success' : '✗ failed'}</span>
+          <span style="color:#94a3b8;text-align:center">${rec.events.length} events</span>
+          <span style="color:#94a3b8;text-align:right;font-family:monospace">${rec.total_duration_ms.toFixed(1)} ms</span>
+          <span style="color:#64748b;text-align:right;font-size:11px">${new Date(rec.started_at).toLocaleTimeString()}</span>
+        </div>
+        <div style="border-top:1px solid #334155;padding:12px 16px;background:#0f172a;display:none">
+          ${rec.events.map(ev => `
+            <div class="trace-row">
+              <span class="agent">${ev.agent_id}</span>
+              <span class="layer" style="color:${layerColor(ev.layer)}">L${ev.layer}</span>
+              <span class="summary">${ev.output_summary}</span>
+              <span class="conf" style="color:${confidenceColor(ev.confidence)}">${ev.confidence !== null ? (ev.confidence * 100).toFixed(0) + '%' : '—'}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  });
+  document.getElementById('main').innerHTML = html;
+}
+
+// Initial load
+loadComponents();
+</script>
+</body>
+</html>
