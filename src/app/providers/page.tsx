@@ -1,13 +1,11 @@
 "use client";
 
-import { ProviderSettings } from "@/modules/provider-orchestrator/components/provider-settings";
+import { ProviderOrchestratorUI } from "@/modules/provider-orchestrator/components/provider-orchestrator-ui";
 
 /**
  * Provider Settings page — Stage 16A.
- *
- * This is NOT the trader terminal (/) or the engineering console (/engineering-console).
- * It's a standalone settings page for the Provider Orchestrator.
+ * Tabbed UI: Settings | Diagnostics | Request Log | Data Comparison
  */
 export default function ProvidersPage() {
-  return <ProviderSettings />;
+  return <ProviderOrchestratorUI />;
 }

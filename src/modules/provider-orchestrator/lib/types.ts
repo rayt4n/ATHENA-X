@@ -100,6 +100,36 @@ export interface HealthSnapshot {
   totalFailures: number;
 }
 
+// ---------- Request Log ----------
+export interface RequestLogEntry {
+  id: string;
+  timestamp: number;
+  provider: string;
+  symbol: string;
+  category: DataCategory;
+  status: "success" | "failed" | "cache" | "timeout";
+  latencyMs: number;
+  statusCode?: number;
+  errorMessage?: string;
+  fromCache: boolean;
+}
+
+// ---------- Data Comparison ----------
+export interface ComparisonEntry {
+  symbol: string;
+  timestamp: number;
+  provider: string;
+  price: number;
+  qualityScore: number;
+}
+
+export interface ComparisonResult {
+  symbol: string;
+  entries: ComparisonEntry[];
+  maxDifference: number;
+  maxTimestampDeltaMs: number;
+}
+
 // ---------- Orchestrator State ----------
 export interface OrchestratorState {
   mode: ProviderMode;
@@ -128,6 +158,16 @@ export interface DataResponse {
   responseTimeMs: number;
 }
 
+// ---------- Provider Certification ----------
+export interface ProviderCertification {
+  adapterVersion: string;        // e.g. "1.0.0"
+  providerVersion: string;       // provider's API version
+  reliability: number;           // 0..1 — historical reliability score
+  lastTested: number;            // epoch ms of last successful test
+  certified: boolean;            // has this adapter passed certification?
+  testResults: { endpoint: DataCategory; passed: boolean; detail: string }[];
+}
+
 // ---------- Provider Adapter Interface ----------
 export interface ProviderAdapter {
   id: string;
@@ -138,6 +178,7 @@ export interface ProviderAdapter {
   supportedEndpoints: SupportedEndpoint[];
   qualityScore: number;
   isBuiltin: boolean;
+  certification: ProviderCertification;
 
   /** Test connectivity — returns true if provider is reachable */
   testConnection(apiKey: string | null): Promise<boolean>;
