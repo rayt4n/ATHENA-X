@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { startLoadTest, stopLoadTest, getLoadTestStatus, getLoadTestMetrics, evaluateCertification, DEFAULT_LOAD_CONFIG } from "@/modules/provider-orchestrator/lib/load-validator";
 import { generateEvidenceReport } from "@/modules/provider-orchestrator/lib/evidence-report";
+import { getAllSymbolCertifications } from "@/modules/provider-orchestrator/lib/symbol-certification";
 import type { LoadTestConfig } from "@/modules/provider-orchestrator/lib/load-validator";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-/** GET /api/providers/load-test — get current load test status + metrics + certification + evidence report */
+/** GET /api/providers/load-test — get current load test status + metrics + certification + evidence + symbol certs */
 export async function GET(req: NextRequest) {
   const status = getLoadTestStatus();
   const metrics = getLoadTestMetrics();
@@ -18,12 +19,16 @@ export async function GET(req: NextRequest) {
     ? generateEvidenceReport(metrics, certification, status.config?.providerId ?? "yahoo")
     : null;
 
+  // Get symbol-level certifications
+  const symbolCertifications = getAllSymbolCertifications();
+
   return NextResponse.json({
     isRunning: status.isRunning,
     config: status.config,
     metrics,
     certification,
     evidence,
+    symbolCertifications,
   });
 }
 

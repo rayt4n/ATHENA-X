@@ -13,6 +13,7 @@ import { classifyFailure, createEmptyFailureCounts, getCertRelevantFailures, typ
 import { checkDataIntegrity, checkCandleContinuity } from "./data-integrity";
 import { validateIndicators } from "./indicator-integrity";
 import { calculateHealthScore, createEmptyStabilityMetrics, type HealthScore, type StabilityMetrics } from "./health-scoring";
+import { recordSymbolResult, sessionTypeFromStatus, getAllSymbolCertifications } from "./symbol-certification";
 
 // ---------- Load Test Configuration ----------
 export interface LoadTestConfig {
@@ -257,6 +258,8 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
   // Market session awareness — check if data is expected
   const expectation = shouldExpectData(symbol, "1m");
   const marketOpen = expectation.expected;
+  const sessionStatus = getSessionStatus(symbol);
+  const sessionType = sessionTypeFromStatus(sessionStatus);
 
   const startTime = Date.now();
   try {
@@ -279,6 +282,14 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
       if (res.status >= 500) m.http5xxCount++;
       m.errorHistory.push({ t: Date.now(), status: res.status.toString(), symbol, message: classification.description });
       if (m.errorHistory.length > 200) m.errorHistory.shift();
+
+      // Record at symbol level
+      recordSymbolResult(providerId, symbol, "1m", sessionType, {
+        success: false, expectedEmpty: false, certRelevant: classification.countsAgainstCert,
+        barsValid: 0, barsInvalid: 0, continuityRate: 0, indicatorsValid: false,
+        latencyMs: latency, http429: res.status === 429, http403: res.status === 403,
+        error: classification.description,
+      });
       return;
     }
 
@@ -291,8 +302,15 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
 
       // Data integrity check
       const normalized = data.normalized || [];
+      let barsValid = 0;
+      let barsInvalid = 0;
+      let continuityRate = 1;
+      let indicatorsValid = true;
+
       if (normalized.length > 0) {
         const integrity = checkDataIntegrity(normalized);
+        barsValid = integrity.totalBars - integrity.invalidBars;
+        barsInvalid = integrity.invalidBars;
         m.dataIntegrityResults.push({
           symbol, valid: integrity.valid, invalidBars: integrity.invalidBars,
           totalBars: integrity.totalBars, errors: integrity.errors.slice(0, 5),
@@ -304,7 +322,8 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
         }
 
         // Candle continuity
-        const continuity = checkCandleContinuity(normalized, 60000); // 1 min interval
+        const continuity = checkCandleContinuity(normalized, 60000);
+        continuityRate = continuity.continuityRate;
         m.candleContinuityResults.push({
           symbol, continuityRate: continuity.continuityRate,
           missingCandles: continuity.missingCandles, unexpectedGaps: continuity.unexpectedGaps,
@@ -313,12 +332,20 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
 
         // Indicator integrity — uses warm-up aware validation + capability-driven VWAP
         const indicators = validateIndicators(normalized, symbol);
+        indicatorsValid = indicators.allValid;
         m.indicatorIntegrityResults.push({
           symbol, allValid: indicators.allValid,
           nanCount: indicators.nanCount, infinityCount: indicators.infinityCount,
         });
         if (m.indicatorIntegrityResults.length > 50) m.indicatorIntegrityResults.shift();
       }
+
+      // Record at symbol level
+      recordSymbolResult(providerId, symbol, "1m", sessionType, {
+        success: true, expectedEmpty: false, certRelevant: false,
+        barsValid, barsInvalid, continuityRate, indicatorsValid,
+        latencyMs: latency, http429: false, http403: false,
+      });
     } else {
       // Empty payload — classify based on market session
       const classification = classifyFailure(null, null, true, marketOpen);
@@ -328,10 +355,17 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
         m.emptyPayloads++;
       } else {
         m.expectedEmptyCount++;
-        // Don't count expected empty as a failure
       }
       m.errorHistory.push({ t: Date.now(), status: "empty", symbol, message: classification.description });
       if (m.errorHistory.length > 200) m.errorHistory.shift();
+
+      // Record at symbol level
+      recordSymbolResult(providerId, symbol, "1m", sessionType, {
+        success: false, expectedEmpty: !classification.countsAgainstCert, certRelevant: classification.countsAgainstCert,
+        barsValid: 0, barsInvalid: 0, continuityRate: 0, indicatorsValid: false,
+        latencyMs: latency, http429: false, http403: false,
+        error: classification.description,
+      });
     }
   } catch (err) {
     m.totalFailures++;
@@ -341,6 +375,14 @@ async function executeLoadRequest(symbol: string, category: DataCategory, provid
     m.connectionResets++;
     m.errorHistory.push({ t: Date.now(), status: "error", symbol, message: classification.description });
     if (m.errorHistory.length > 200) m.errorHistory.shift();
+
+    // Record at symbol level
+    recordSymbolResult(providerId, symbol, "1m", sessionType, {
+      success: false, expectedEmpty: false, certRelevant: classification.countsAgainstCert,
+      barsValid: 0, barsInvalid: 0, continuityRate: 0, indicatorsValid: false,
+      latencyMs: Date.now() - startTime, http429: false, http403: false,
+      error: classification.description,
+    });
   }
 }
 
