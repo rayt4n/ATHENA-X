@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATHENA-X · Plugin Validation Workspace · Stage 16.5</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+  header { background: #1e293b; border-bottom: 1px solid #334155; padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
+  header h1 { font-size: 24px; font-weight: 700; color: #f1f5f9; }
+  header p { font-size: 13px; color: #94a3b8; margin-top: 4px; }
+  .controls { display: flex; gap: 12px; align-items: center; }
+  button { background: #334155; color: #f1f5f9; border: 1px solid #475569; padding: 8px 16px; border-radius: 6px; font-size: 13px; cursor: pointer; }
+  button.primary { background: #3b82f6; color: white; border: none; padding: 10px 20px; font-weight: 600; }
+  button.success { background: #10b981; color: white; border: none; padding: 12px 24px; font-weight: 600; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  nav { background: #1e293b; border-bottom: 1px solid #334155; padding: 0 32px; display: flex; gap: 4px; }
+  nav button { background: transparent; color: #94a3b8; border: none; border-bottom: 2px solid transparent; padding: 12px 20px; font-size: 13px; cursor: pointer; }
+  nav button.active { background: #0f172a; color: #f1f5f9; border-bottom: 2px solid #c9962b; }
+  .error-banner { background: #7f1d1d; color: #fee2e2; padding: 12px 32px; font-size: 13px; }
+  main { padding: 24px 32px; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .summary-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 16px; }
+  .summary-card .label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .summary-card .value { font-size: 28px; font-weight: 700; }
+  .layer-section { margin-bottom: 24px; }
+  .layer-header { font-size: 14px; font-weight: 600; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+  .layer-bar { width: 4px; height: 16px; border-radius: 2px; }
+  .agent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .agent-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 14px; cursor: pointer; transition: border-color 0.15s; }
+  .agent-card:hover { border-color: #c9962b; }
+  .agent-card.selected { background: #422006; border-color: #c9962b; }
+  .agent-card .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .agent-card .badge { font-size: 10px; font-weight: 600; color: white; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+  .agent-card .name { font-size: 13px; font-weight: 600; color: #f1f5f9; margin-bottom: 4px; }
+  .agent-card .id { font-size: 11px; color: #94a3b8; font-family: monospace; margin-bottom: 8px; }
+  .agent-card .scores { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 8px; }
+  .agent-card .score { text-align: center; }
+  .agent-card .score-label { font-size: 9px; color: #64748b; text-transform: uppercase; }
+  .agent-card .score-value { font-size: 12px; font-weight: 700; }
+  .agent-card .cert { font-size: 10px; font-weight: 700; padding: 4px 8px; border-radius: 4px; text-align: center; margin-top: 8px; text-transform: uppercase; }
+  .panel { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+  .panel h3 { font-size: 16px; color: #f1f5f9; margin-bottom: 8px; }
+  .panel h4 { font-size: 13px; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; }
+  pre { background: #0f172a; padding: 12px; border-radius: 6px; font-size: 11px; color: #cbd5e1; overflow: auto; font-family: monospace; max-height: 300px; }
+  .pipeline-step { display: grid; grid-template-columns: 40px 1fr 200px 80px; gap: 12px; align-items: center; padding: 12px; border-bottom: 1px solid #334155; }
+  .pipeline-step:last-child { border-bottom: none; }
+  .pipeline-step .num { font-size: 18px; font-weight: 700; color: #c9962b; text-align: center; }
+  .pipeline-step .name { font-size: 14px; color: #f1f5f9; font-weight: 600; }
+  .pipeline-step .component { font-size: 11px; color: #94a3b8; font-family: monospace; }
+  .pipeline-step .status { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 4px; text-align: center; text-transform: uppercase; }
+  .loading { text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; }
+  .empty { padding: 40px; text-align: center; color: #64748b; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #334155; font-size: 12px; }
+  th { background: #1e293b; color: #94a3b8; font-weight: 600; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; }
+  td { color: #cbd5e1; }
+  td.num { text-align: right; font-family: monospace; font-weight: 600; }
+  .cert-CERTIFIED { background: #14532d; color: #86efac; }
+  .cert-PROVISIONAL { background: #78350f; color: #fcd34d; }
+  .cert-NEEDS-IMPROVEMENT { background: #7f1d1d; color: #fca5a5; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>ATHENA-X · Plugin Validation Workspace</h1>
+    <p id="header-sub">Stage 16.5 — Validating every plugin & agent · Loading…</p>
+  </div>
+  <div class="controls">
+    <button onclick="loadInventory()">Refresh Inventory</button>
+    <button class="success" onclick="validateAll()">Validate All Agents</button>
+  </div>
+</header>
+
+<nav>
+  <button id="tab-inventory" class="active" onclick="switchTab('inventory')">Inventory</button>
+  <button id="tab-agents" onclick="switchTab('agents')">Agent Cards</button>
+  <button id="tab-execute" onclick="switchTab('execute')">Execute Plugin</button>
+  <button id="tab-pipeline" onclick="switchTab('pipeline')">Complete Pipeline</button>
+  <button id="tab-certification" onclick="switchTab('certification')">Certification Table</button>
+</nav>
+
+<div id="error-banner" class="error-banner" style="display:none"></div>
+
+<main id="main">
+  <div class="loading">Loading…</div>
+</main>
+
+<script>
+const API_BASE = 'http://localhost:8001';
+let inventory = null;
+let agents = [];
+let certificationTable = [];
+let selectedAgent = null;
+let activeTab = 'inventory';
+let loading = false;
+
+const LAYER_COLORS = { '1':'#3b82f6','2':'#10b981','3':'#f59e0b','4':'#8b5cf6','5':'#ef4444','hub':'#ec4899' };
+const LAYER_LABELS = { '1':'Layer 1 · Market Structure','2':'Layer 2 · Indicators','3':'Layer 3 · Institutional','4':'Layer 4 · Consensus','5':'Layer 5 · Supervisor','hub':'Intelligence Hubs' };
+
+function layerColor(l) { return LAYER_COLORS[String(l)] || '#6b7280'; }
+function certColor(c) { return c === 'CERTIFIED' ? '#10b981' : c === 'PROVISIONAL' ? '#f59e0b' : '#ef4444'; }
+function scoreColor(s) { return s >= 80 ? '#10b981' : s >= 50 ? '#f59e0b' : '#ef4444'; }
+
+async function api(path, init) {
+  const res = await fetch(`${API_BASE}${path}`, { headers: { 'Content-Type': 'application/json' }, ...init });
+  if (!res.ok) { const t = await res.text(); throw new Error(`${res.status}: ${t}`); }
+  return res.json();
+}
+
+function showError(msg) { const el = document.getElementById('error-banner'); el.textContent = '⚠ ' + msg; el.style.display = 'block'; }
+function clearError() { document.getElementById('error-banner').style.display = 'none'; }
+
+async function loadInventory() {
+  loading = true; clearError();
+  try {
+    inventory = await api('/validation/inventory');
+    agents = await api('/validation/agents');
+    const total = inventory.summary.total_plugin_slots + inventory.summary.total_runtime_agents + inventory.summary.total_providers + inventory.summary.total_engines + inventory.summary.total_validators + inventory.summary.total_dashboard_widgets;
+    document.getElementById('header-sub').textContent = `Stage 16.5 — ${total} components discovered · ${inventory.summary.total_runtime_agents} runtime agents`;
+    renderTab();
+  } catch (e) {
+    showError(e.message);
+    document.getElementById('main').innerHTML = `<div class="empty">Cannot connect to validation server at ${API_BASE}.<br>Start it with: <code>python3 /home/z/my-project/scripts/stage16_5_validation_server.py</code></div>`;
+  } finally { loading = false; }
+}
+
+function switchTab(tab) {
+  activeTab = tab;
+  ['inventory','agents','execute','pipeline','certification'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+  });
+  if (tab === 'certification') loadCertification();
+  renderTab();
+}
+
+function renderTab() {
+  if (loading) { document.getElementById('main').innerHTML = '<div class="loading">Loading…</div>'; return; }
+  if (activeTab === 'inventory') renderInventory();
+  else if (activeTab === 'agents') renderAgents();
+  else if (activeTab === 'execute') renderExecute();
+  else if (activeTab === 'pipeline') renderPipeline();
+  else if (activeTab === 'certification') renderCertification();
+}
+
+function renderInventory() {
+  if (!inventory) { document.getElementById('main').innerHTML = '<div class="empty">No inventory loaded</div>'; return; }
+  const s = inventory.summary;
+  let html = `
+    <div class="summary-grid">
+      <div class="summary-card"><div class="label">Plugin Slots</div><div class="value" style="color:#3b82f6">${s.total_plugin_slots}</div></div>
+      <div class="summary-card"><div class="label">Runtime Agents</div><div class="value" style="color:#10b981">${s.total_runtime_agents}</div></div>
+      <div class="summary-card"><div class="label">Providers</div><div class="value" style="color:#f59e0b">${s.total_providers}</div></div>
+      <div class="summary-card"><div class="label">Engines</div><div class="value" style="color:#8b5cf6">${s.total_engines}</div></div>
+      <div class="summary-card"><div class="label">Validators</div><div class="value" style="color:#ef4444">${s.total_validators}</div></div>
+      <div class="summary-card"><div class="label">Dashboard Widgets</div><div class="value" style="color:#ec4899">${s.total_dashboard_widgets}</div></div>
+    </div>
+  `;
+  // Plugin slots by category
+  const byCat = {};
+  inventory.plugin_slots.forEach(p => { byCat[p.category] = (byCat[p.category] || 0) + 1; });
+  html += `<div class="panel"><h4>Plugin Slots by Category</h4><table><tr><th>Category</th><th class="num">Count</th></tr>`;
+  Object.entries(byCat).sort((a,b) => b[1]-a[1]).forEach(([cat, n]) => {
+    html += `<tr><td>${cat}</td><td class="num">${n}</td></tr>`;
+  });
+  html += `</table></div>`;
+  // Engines
+  html += `<div class="panel"><h4>Engines</h4><table><tr><th>Engine</th><th>Stub</th><th>Lines</th><th>Tests</th></tr>`;
+  inventory.engines.forEach(e => {
+    html += `<tr><td>${e.name}</td><td>${e.is_stub ? 'YES' : 'no'}</td><td class="num">${e.src_lines}</td><td>${e.has_tests ? 'YES' : 'no'}</td></tr>`;
+  });
+  html += `</table></div>`;
+  // Providers
+  html += `<div class="panel"><h4>Providers</h4><table><tr><th>Provider</th><th>Adapter</th><th>Stub</th><th>Lines</th></tr>`;
+  inventory.providers.forEach(p => {
+    html += `<tr><td>${p.name}</td><td>${p.adapter_class || '—'}</td><td>${p.is_stub ? 'YES' : 'no'}</td><td class="num">${p.src_lines}</td></tr>`;
+  });
+  html += `</table></div>`;
+  // Validators
+  html += `<div class="panel"><h4>Validators</h4><table><tr><th>Validator</th><th>Stub</th><th>Lines</th><th>Tests</th></tr>`;
+  inventory.validators.forEach(v => {
+    html += `<tr><td>${v.name}</td><td>${v.is_stub ? 'YES' : 'no'}</td><td class="num">${v.src_lines}</td><td>${v.has_tests ? 'YES' : 'no'}</td></tr>`;
+  });
+  html += `</table></div>`;
+  // Dashboard widgets
+  html += `<div class="panel"><h4>Dashboard Widgets</h4><table><tr><th>Widget</th><th>Manifest</th><th>Panel Component</th></tr>`;
+  inventory.dashboard_widgets.forEach(w => {
+    html += `<tr><td>${w.name}</td><td>${w.has_manifest ? 'YES' : 'no'}</td><td>${w.has_panel_component ? 'YES' : 'no'}</td></tr>`;
+  });
+  html += `</table></div>`;
+  document.getElementById('main').innerHTML = html;
+}
+
+function renderAgents() {
+  if (!agents.length) { document.getElementById('main').innerHTML = '<div class="empty">No agents</div>'; return; }
+  // Group by layer
+  const byLayer = {};
+  agents.forEach(a => { const k = String(a.layer); if (!byLayer[k]) byLayer[k] = []; byLayer[k].push(a); });
+  let html = '';
+  ['1','2','3','4','5','hub'].forEach(layer => {
+    const list = byLayer[layer] || [];
+    if (!list.length) return;
+    const color = layerColor(layer);
+    html += `<div class="layer-section"><div class="layer-header" style="color:${color}"><span class="layer-bar" style="background:${color}"></span>${LAYER_LABELS[layer] || `Layer ${layer}`} (${list.length})</div><div class="agent-grid">`;
+    list.forEach(a => {
+      const cert = certificationTable.find(c => c.agent_id === a.agent_id);
+      const certBadge = cert ? `<div class="cert cert-${cert.certification.replace(' ','-')}">${cert.certification}</div>` : '';
+      const scores = cert ? `<div class="scores">
+        <div class="score"><div class="score-label">Math</div><div class="score-value" style="color:${scoreColor(cert.math_score)}">${cert.math_score.toFixed(0)}%</div></div>
+        <div class="score"><div class="score-label">Logic</div><div class="score-value" style="color:${scoreColor(cert.logic_score)}">${cert.logic_score.toFixed(0)}%</div></div>
+        <div class="score"><div class="score-label">Runtime</div><div class="score-value" style="color:${scoreColor(cert.runtime_score)}">${cert.runtime_score.toFixed(0)}%</div></div>
+        <div class="score"><div class="score-label">Perf</div><div class="score-value" style="color:${scoreColor(cert.performance_score)}">${cert.performance_score.toFixed(0)}%</div></div>
+      </div>` : '';
+      html += `<div class="agent-card ${selectedAgent?.agent_id === a.agent_id ? 'selected' : ''}" onclick="selectAgent('${a.agent_id}')">
+        <div class="top"><span class="badge" style="background:${layerColor(a.layer)}">L${a.layer}</span><span style="font-size:10px;color:#64748b;font-family:monospace">${a.category}</span></div>
+        <div class="name">${a.name}</div>
+        <div class="id">${a.agent_id}</div>
+        ${scores}
+        ${certBadge}
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+  document.getElementById('main').innerHTML = html;
+}
+
+function selectAgent(id) {
+  selectedAgent = agents.find(a => a.agent_id === id);
+  switchTab('execute');
+}
+
+function renderExecute() {
+  if (!agents.length) { document.getElementById('main').innerHTML = '<div class="empty">No agents</div>'; return; }
+  let html = `<div style="display:grid;grid-template-columns:300px 1fr;gap:24px">
+    <div><h4 style="font-size:14px;font-weight:600;color:#94a3b8;margin-bottom:12px;text-transform:uppercase">Select Agent</h4>
+    <div style="display:flex;flex-direction:column;gap:4px;max-height:70vh;overflow-y:auto">`;
+  agents.forEach(a => {
+    html += `<button onclick="selectAgent('${a.agent_id}')" style="background:${selectedAgent?.agent_id === a.agent_id ? '#422006' : '#1e293b'};color:#e2e8f0;border:1px solid ${selectedAgent?.agent_id === a.agent_id ? '#c9962b' : '#334155'};padding:10px 14px;border-radius:6px;font-size:12px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:50%;background:${layerColor(a.layer)};flex-shrink:0"></span><span style="font-family:monospace">${a.agent_id}</span></button>`;
+  });
+  html += `</div></div><div id="execute-detail">`;
+  if (selectedAgent) {
+    html += `<div class="panel"><h3>${selectedAgent.name}<span style="margin-left:12px;font-size:11px;padding:2px 8px;background:${layerColor(selectedAgent.layer)};border-radius:4px;color:white;font-weight:600">L${selectedAgent.layer} · ${selectedAgent.category}</span></h3>
+    <p style="font-size:13px;color:#94a3b8;margin:0 0 16px 0">${selectedAgent.description || '(no description)'}</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:12px">
+      <div><div style="color:#64748b;margin-bottom:4px;text-transform:uppercase">Inputs</div>${selectedAgent.inputs.map(i => `<div style="color:#cbd5e1;font-family:monospace">${i}</div>`).join('')}</div>
+      <div><div style="color:#64748b;margin-bottom:4px;text-transform:uppercase">Outputs</div>${selectedAgent.outputs.map(o => `<div style="color:#cbd5e1;font-family:monospace">${o}</div>`).join('')}</div>
+    </div>
+    <div style="margin-top:16px;display:flex;gap:8px">
+      <button class="primary" onclick="executeAgent('${selectedAgent.agent_id}')">▶ Execute</button>
+      <button class="success" onclick="validateAgent('${selectedAgent.agent_id}')">✓ Validate</button>
+    </div></div>
+    <div id="execute-result"></div>`;
+  } else {
+    html += `<div class="empty">Select an agent to execute</div>`;
+  }
+  html += `</div></div>`;
+  document.getElementById('main').innerHTML = html;
+}
+
+async function executeAgent(id) {
+  document.getElementById('execute-result').innerHTML = '<div class="loading">Executing…</div>';
+  clearError();
+  try {
+    const result = await api(`/validation/agents/${id}/execute`, { method: 'POST', body: JSON.stringify({ bar_count: 60 }) });
+    renderExecuteResult(result);
+  } catch (e) { showError(e.message); document.getElementById('execute-result').innerHTML = '<div class="empty">Execution failed</div>'; }
+}
+
+function renderExecuteResult(result) {
+  const cv = result.cross_validation;
+  let html = `
+    <div class="panel"><h4>Raw Input</h4><pre>${JSON.stringify(result.raw_input, null, 2)}</pre></div>
+    <div class="panel"><h4>Raw Output</h4><pre>${JSON.stringify(result.raw_output, null, 2)}</pre></div>
+    <div class="panel"><h4>Normalized Output</h4><pre>${JSON.stringify(result.normalized_output, null, 2)}</pre></div>
+    <div class="panel"><h4>Cross-Validation (vs ${cv?.reference || 'N/A'})</h4>
+    ${cv ? `<table><tr><th>Field</th><th>Agent</th><th>Reference</th><th>Diff</th><th>Pass</th></tr>
+    <tr><td>value</td><td style="font-family:monospace">${cv.agent_value}</td><td style="font-family:monospace">${cv.reference_value}</td><td style="font-family:monospace">${cv.difference !== null ? cv.difference.toFixed(6) : 'N/A'}</td><td style="color:${cv.passed ? '#10b981' : '#ef4444'};font-weight:700">${cv.passed ? '✓' : '✗'}</td></tr>
+    </table><p style="font-size:12px;color:#94a3b8;margin-top:8px">${cv.message}</p>` : '<div class="empty">No reference available</div>'}
+    </div>
+    <div class="panel"><h4>Evidence</h4>
+    <table><tr><th>Execution Time</th><th>Success</th></tr>
+    <tr><td style="font-family:monospace">${result.execution_time_ms.toFixed(3)} ms</td><td style="color:${result.success ? '#10b981' : '#ef4444'};font-weight:700">${result.success ? '✓' : '✗'}</td></tr>
+    </table></div>
+  `;
+  document.getElementById('execute-result').innerHTML = html;
+}
+
+async function validateAgent(id) {
+  document.getElementById('execute-result').innerHTML = '<div class="loading">Validating… (running scenarios + cross-validation)</div>';
+  clearError();
+  try {
+    const result = await api(`/validation/agents/${id}/validate`, { method: 'POST' });
+    renderValidateResult(result);
+    // Refresh certification table
+    loadCertification(true);
+  } catch (e) { showError(e.message); document.getElementById('execute-result').innerHTML = '<div class="empty">Validation failed</div>'; }
+}
+
+function renderValidateResult(ev) {
+  let html = `
+    <div class="panel"><h4>Evidence Report — ${ev.agent_id}</h4>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px">
+      <div style="text-align:center;padding:12px;background:#0f172a;border-radius:6px"><div style="font-size:10px;color:#64748b;text-transform:uppercase">Math</div><div style="font-size:24px;font-weight:700;color:${scoreColor(ev.math_score)}">${ev.math_score.toFixed(0)}%</div></div>
+      <div style="text-align:center;padding:12px;background:#0f172a;border-radius:6px"><div style="font-size:10px;color:#64748b;text-transform:uppercase">Logic</div><div style="font-size:24px;font-weight:700;color:${scoreColor(ev.logic_score)}">${ev.logic_score.toFixed(0)}%</div></div>
+      <div style="text-align:center;padding:12px;background:#0f172a;border-radius:6px"><div style="font-size:10px;color:#64748b;text-transform:uppercase">Runtime</div><div style="font-size:24px;font-weight:700;color:${scoreColor(ev.runtime_score)}">${ev.runtime_score.toFixed(0)}%</div></div>
+      <div style="text-align:center;padding:12px;background:#0f172a;border-radius:6px"><div style="font-size:10px;color:#64748b;text-transform:uppercase">Performance</div><div style="font-size:24px;font-weight:700;color:${scoreColor(ev.performance_score)}">${ev.performance_score.toFixed(0)}%</div></div>
+    </div>
+    <div class="cert cert-${ev.certification.replace(' ','-')}" style="margin-bottom:16px">${ev.certification}</div>
+    <p style="font-size:12px;color:#94a3b8">Avg latency: ${ev.avg_latency_ms.toFixed(3)} ms · Avg confidence: ${ev.avg_confidence.toFixed(3)} · Errors: ${ev.error_count}</p>
+    </div>
+  `;
+  if (ev.logic_evidence.length > 0) {
+    html += `<div class="panel"><h4>Logic Scenarios (${ev.logic_evidence.filter(s => s.passed).length}/${ev.logic_evidence.length} passed)</h4><table><tr><th>Scenario</th><th>Category</th><th>Pass</th><th>Message</th></tr>`;
+    ev.logic_evidence.forEach(s => {
+      html += `<tr><td style="font-family:monospace;font-size:11px">${s.scenario_id}</td><td>${s.category}</td><td style="color:${s.passed ? '#10b981' : '#ef4444'};font-weight:700">${s.passed ? '✓' : '✗'}</td><td style="font-size:11px">${s.message}</td></tr>`;
+    });
+    html += `</table></div>`;
+  }
+  if (ev.math_evidence.length > 0) {
+    html += `<div class="panel"><h4>Cross-Validation (${ev.math_evidence.filter(c => c.passed).length}/${ev.math_evidence.length} passed)</h4><table><tr><th>Reference</th><th>Agent</th><th>Reference</th><th>Diff</th><th>Pass</th></tr>`;
+    ev.math_evidence.forEach(c => {
+      html += `<tr><td>${c.reference}</td><td style="font-family:monospace">${c.agent_value}</td><td style="font-family:monospace">${c.reference_value}</td><td style="font-family:monospace">${c.difference !== null ? c.difference.toFixed(6) : 'N/A'}</td><td style="color:${c.passed ? '#10b981' : '#ef4444'};font-weight:700">${c.passed ? '✓' : '✗'}</td></tr>`;
+    });
+    html += `</table></div>`;
+  }
+  if (ev.failure_cases.length > 0) {
+    html += `<div class="panel"><h4>Failure Cases (${ev.failure_cases.length})</h4>`;
+    ev.failure_cases.forEach(fc => { html += `<div style="font-size:12px;color:#fca5a5;padding:4px 0;border-bottom:1px solid #334155">${fc}</div>`; });
+    html += `</div>`;
+  }
+  if (ev.improvement_suggestions.length > 0) {
+    html += `<div class="panel"><h4>Improvement Suggestions</h4>`;
+    ev.improvement_suggestions.forEach(s => { html += `<div style="font-size:12px;color:#fcd34d;padding:4px 0;border-bottom:1px solid #334155">→ ${s}</div>`; });
+    html += `</div>`;
+  }
+  document.getElementById('execute-result').innerHTML = html;
+}
+
+function renderPipeline() {
+  document.getElementById('main').innerHTML = `<div class="panel" style="display:flex;justify-content:space-between;align-items:center">
+    <div><h3 style="margin:0">Complete Pipeline Execution</h3><p style="margin:4px 0 0 0;font-size:13px;color:#94a3b8">Market Data → Provider → Layer 1 → 2 → 3 → 4 → 5 → Workspace → Dashboard</p></div>
+    <button class="success" onclick="executePipeline()">▶ Run Pipeline</button></div>
+    <div id="pipeline-result"></div>`;
+}
+
+async function executePipeline() {
+  document.getElementById('pipeline-result').innerHTML = '<div class="loading">Executing pipeline…</div>';
+  clearError();
+  try {
+    const result = await api('/validation/pipeline', { method: 'POST', body: JSON.stringify({ bar_count: 60 }) });
+    renderPipelineResult(result);
+  } catch (e) { showError(e.message); document.getElementById('pipeline-result').innerHTML = '<div class="empty">Pipeline failed</div>'; }
+}
+
+function renderPipelineResult(result) {
+  let html = `<div class="panel"><h4>Pipeline Steps (${result.pipeline_steps.length})</h4>`;
+  result.pipeline_steps.forEach(step => {
+    const statusColor = step.status === 'ok' ? '#10b981' : step.status === 'error' ? '#ef4444' : '#f59e0b';
+    html += `<div class="pipeline-step">
+      <div class="num">${step.step}</div>
+      <div><div class="name">${step.name}</div><div class="component">${step.component}</div></div>
+      <div style="font-size:11px;color:#94a3b8;font-family:monospace">${JSON.stringify(step.details).substring(0, 100)}</div>
+      <div class="status" style="background:${statusColor}40;color:${statusColor}">${step.status}</div>
+    </div>`;
+  });
+  html += `</div>`;
+  html += `<div class="panel"><h4>Final Result</h4><pre>${JSON.stringify(result.workspace_result, null, 2).substring(0, 2000)}</pre></div>`;
+  document.getElementById('pipeline-result').innerHTML = html;
+}
+
+async function loadCertification(silent) {
+  if (!silent) document.getElementById('main').innerHTML = '<div class="loading">Loading certification…</div>';
+  clearError();
+  try {
+    const result = await api('/validation/certification');
+    certificationTable = result.certification_table;
+    if (activeTab === 'certification') renderCertification();
+  } catch (e) { showError(e.message); }
+}
+
+function renderCertification() {
+  if (!certificationTable.length) { document.getElementById('main').innerHTML = '<div class="empty">No certification data. Click "Validate All Agents" first.</div>'; return; }
+  let html = `<div class="panel"><h4>Phase 9 — Final Certification Table</h4>
+  <table><tr><th>Agent</th><th>Layer</th><th class="num">Math</th><th class="num">Logic</th><th class="num">Runtime</th><th class="num">Perf</th><th class="num">Latency (ms)</th><th class="num">Conf</th><th class="num">Errors</th><th>Certification</th></tr>`;
+  certificationTable.forEach(row => {
+    html += `<tr>
+      <td style="font-family:monospace;font-size:11px">${row.agent_id}</td>
+      <td>L${row.layer}</td>
+      <td class="num" style="color:${scoreColor(row.math_score)}">${row.math_score.toFixed(0)}%</td>
+      <td class="num" style="color:${scoreColor(row.logic_score)}">${row.logic_score.toFixed(0)}%</td>
+      <td class="num" style="color:${scoreColor(row.runtime_score)}">${row.runtime_score.toFixed(0)}%</td>
+      <td class="num" style="color:${scoreColor(row.performance_score)}">${row.performance_score.toFixed(0)}%</td>
+      <td class="num">${row.avg_latency_ms.toFixed(3)}</td>
+      <td class="num">${row.avg_confidence.toFixed(3)}</td>
+      <td class="num" style="color:${row.error_count > 0 ? '#ef4444' : '#10b981'}">${row.error_count}</td>
+      <td><span class="cert cert-${row.certification.replace(' ','-')}" style="display:inline-block">${row.certification}</span></td>
+    </tr>`;
+  });
+  html += `</table></div>`;
+  document.getElementById('main').innerHTML = html;
+}
+
+async function validateAll() {
+  document.getElementById('main').innerHTML = '<div class="loading">Validating all agents… (this takes a few seconds)</div>';
+  clearError();
+  try {
+    const result = await api('/validation/validate-all', { method: 'POST' });
+    certificationTable = result.summary; // not the table but we reload
+    await loadCertification(true);
+    renderCertification();
+    alert(`Validation complete!\n\nCertified: ${result.summary.certification_counts.CERTIFIED}\nProvisional: ${result.summary.certification_counts.PROVISIONAL}\nNeeds Improvement: ${result.summary.certification_counts['NEEDS IMPROVEMENT']}`);
+  } catch (e) { showError(e.message); document.getElementById('main').innerHTML = '<div class="empty">Validation failed</div>'; }
+}
+
+// Initial load
+loadInventory();
+</script>
+</body>
+</html>
